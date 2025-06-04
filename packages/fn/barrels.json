@@ -1,0 +1,18 @@
+{
+    "delete": true,
+    "noHeader": true,
+    "noSemicolon": true,
+    "local": true,
+    "directory": [
+        "./src/array",
+        "./src/function",
+        "./src/map",
+        "./src/number",
+        "./src/object",
+        "./src/option",
+        "./src/promise",
+        "./src/result",
+        "./src/set",
+        "./src/string"
+    ]
+}

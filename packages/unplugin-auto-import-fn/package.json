@@ -1,0 +1,51 @@
+{
+    "name": "@monstermann/unplugin-auto-import-fn",
+    "type": "module",
+    "version": "0.0.0",
+    "description": "A utility library for TypeScript.",
+    "author": "Michael Ostermann <michaelostermann@me.com>",
+    "license": "MIT",
+    "homepage": "https://MichaelOstermann.github.io/fn",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MichaelOstermann/fn.git"
+    },
+    "bugs": {
+        "url": "https://github.com/MichaelOstermann/fn/issues"
+    },
+    "keywords": [
+        "curried",
+        "fp",
+        "functional",
+        "lodash",
+        "radash",
+        "radashi",
+        "ramda",
+        "remeda",
+        "stdlib",
+        "toolkit",
+        "typescript",
+        "underscore",
+        "util",
+        "utilities",
+        "utility",
+        "utils" 
+    ],
+    "sideEffects": false,
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        }
+    },
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "bundle": "bun run tsdown",
+        "release": "bun publish --access public"
+    }
+}

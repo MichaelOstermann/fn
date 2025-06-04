@@ -1,0 +1,100 @@
+{
+    "name": "@monstermann/fn",
+    "type": "module",
+    "version": "0.0.0",
+    "description": "A utility library for TypeScript.",
+    "author": "Michael Ostermann <michaelostermann@me.com>",
+    "license": "MIT",
+    "homepage": "https://MichaelOstermann.github.io/fn",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MichaelOstermann/fn.git"
+    },
+    "bugs": {
+        "url": "https://github.com/MichaelOstermann/fn/issues"
+    },
+    "keywords": [
+        "curried",
+        "fp",
+        "functional",
+        "lodash",
+        "radash",
+        "radashi",
+        "ramda",
+        "remeda",
+        "stdlib",
+        "toolkit",
+        "typescript",
+        "underscore",
+        "util",
+        "utilities",
+        "utility",
+        "utils" 
+    ],
+    "sideEffects": false,
+    "exports": {
+        "./array": {
+            "types": "./dist/array/index.d.ts",
+            "import": "./dist/array/index.js"
+        },
+        "./map": {
+            "types": "./dist/map/index.d.ts",
+            "import": "./dist/map/index.js"
+        },
+        "./number": {
+            "types": "./dist/number/index.d.ts",
+            "import": "./dist/number/index.js"
+        },
+        "./object": {
+            "types": "./dist/object/index.d.ts",
+            "import": "./dist/object/index.js"
+        },
+        "./option": {
+            "types": "./dist/option/index.d.ts",
+            "import": "./dist/option/index.js"
+        },
+        "./promise": {
+            "types": "./dist/promise/index.d.ts",
+            "import": "./dist/promise/index.js"
+        },
+        "./result": {
+            "types": "./dist/result/index.d.ts",
+            "import": "./dist/result/index.js"
+        },
+        "./set": {
+            "types": "./dist/set/index.d.ts",
+            "import": "./dist/set/index.js"
+        },
+        "./string": {
+            "types": "./dist/string/index.d.ts",
+            "import": "./dist/string/index.js"
+        },
+        "./function": {
+            "types": "./dist/function/index.d.ts",
+            "import": "./dist/function/index.js"
+        },
+        "./types": {
+            "types": "./dist/types/index.d.ts",
+            "import": "./dist/types/index.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "bundle": "bun run barrels && bun run tsdown",
+        "barrels": "barrelsby -c barrels.json",
+        "release": "bun publish --access public"
+    },
+    "dependencies": {
+        "@monstermann/dfdl": "^0.0.1",
+        "@monstermann/remmi": "^0.0.0",
+        "@monstermann/result": "^0.2.0",
+        "string-ts": "^2.2.1",
+        "type-fest": "^4.41.0"
+    },
+    "devDependencies": {
+        "barrelsby": "^2.8.1",
+        "vitest": "^3.1.3"
+    }
+}
