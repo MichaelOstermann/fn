@@ -48,7 +48,6 @@ const autoImports = {
 }
 
 const recommended = [
-    autoImports.types.named(),
     autoImports.function.named(),
     autoImports.array.wildcard(),
     autoImports.map.wildcard(),

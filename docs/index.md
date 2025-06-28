@@ -474,7 +474,6 @@ Fn.result.wildcard("R");
 Fn.set.wildcard("St");
 Fn.string.wildcard("S");
 
-Fn.types.named();
 Fn.result.named({ include: ["ok", "okP", "err", "errP"] });
 Fn.function.named();
 
@@ -490,7 +489,6 @@ import * as R from "@monstermann/fn/result";
 import * as St from "@monstermann/fn/set";
 import * as S from "@monstermann/fn/string";
 
-import type { Ok, Err, … } from "@monstermann/fn/types";
 import { ok, err, … } from "@monstermann/fn/result";
 import { pipe, when, noop, … } from "@monstermann/fn/function";
 ```
