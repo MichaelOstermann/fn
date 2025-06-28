@@ -20,17 +20,17 @@ import { is } from "../function/is"
  * ```
  */
 export const mapEach: {
-    <T, U>(mapper: ArrayMap<T>): (target: T[]) => U[]
-    <T, U>(mapper: ArrayMap<T>): (target: readonly T[]) => readonly U[]
+    <T, U>(mapper: ArrayMap<T, U>): (target: T[]) => U[]
+    <T, U>(mapper: ArrayMap<T, U>): (target: readonly T[]) => readonly U[]
 
-    <T, U>(target: T[], mapper: ArrayMap<T>): U[]
-    <T, U>(target: readonly T[], mapper: ArrayMap<T>): readonly U[]
-} = dual(2, <T, U>(target: T[], mapper: ArrayMap<T>): U[] => {
+    <T, U>(target: T[], mapper: ArrayMap<T, U>): U[]
+    <T, U>(target: readonly T[], mapper: ArrayMap<T, U>): readonly U[]
+} = dual(2, <T, U>(target: T[], mapper: ArrayMap<T, U>): U[] => {
     let result: any
     for (let i = 0; i < target.length; i++) {
         const prev = target[i]! as T
         const next = mapper(prev, i, target)
-        if (is(prev, next)) continue
+        if (is(prev, next as any)) continue
         result ??= cloneArray(target)
         result[i] = next
     }
