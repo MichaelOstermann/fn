@@ -24,8 +24,8 @@ import { dual } from "@monstermann/dfdl"
  * ```
  */
 export const mapOr: {
-    <T, U, V>(map: (value: NonNil<T>, or: V) => U): (target: T) => U | V
-    <T, U, V>(target: T, map: (value: NonNil<T>) => U, or: V): U | V
+    <T, U, V>(map: (value: NonNil<NoInfer<T>>, or: V) => U): (target: T) => U | V
+    <T, U, V>(target: T, map: (value: NonNil<NoInfer<T>>) => U, or: V): U | V
 } = dual(3, (target: any, map: any, or: any): any => {
     if (target == null) return or
     return map(target)
