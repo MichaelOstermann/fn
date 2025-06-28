@@ -29,7 +29,7 @@ export const flatMap: {
     let hasChanges = false
     const result = target.flatMap((a, b, c) => {
         const output = mapper(a, b, c)
-        hasChanges ||= !(target.length === 1 && is(target[0], a))
+        hasChanges ||= !(output.length === 1 && is(output[0], a as any))
         return output
     })
     return hasChanges
