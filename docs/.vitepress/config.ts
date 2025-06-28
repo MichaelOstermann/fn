@@ -110,6 +110,7 @@ export default defineConfig({
                             { link: "prepend", text: "prepend" },
                             { link: "repeat", text: "repeat" },
                             { link: "replace", text: "replace" },
+                            { link: "replaceAll", text: "replaceAll" },
                             { link: "reverse", text: "reverse" },
                             { link: "slice", text: "slice" },
                             { link: "snakeCase", text: "snakeCase" },

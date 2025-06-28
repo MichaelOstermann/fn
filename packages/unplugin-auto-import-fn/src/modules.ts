@@ -384,6 +384,7 @@ export const modules = {
         "prepend",
         "repeat",
         "replace",
+        "replaceAll",
         "reverse",
         "slice",
         "snakeCase",
