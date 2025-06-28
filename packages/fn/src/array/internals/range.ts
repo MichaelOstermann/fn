@@ -19,12 +19,14 @@ export function addRange(range: Range, idx: number): void {
 }
 
 export function spliceRange<T>(target: T[], range: Range): void {
-    for (let i = 0; i < range.length; i++) {
-        const start = range[i]!
+    let i = range.length
+    while (i--) {
+        let start = range[i]!
         let len = 1
-        while (range[i + 1] === start + len) {
+        while (range[i - 1] === start - 1) {
+            start--
             len++
-            i++
+            i--
         }
         target.splice(start, len)
     }
