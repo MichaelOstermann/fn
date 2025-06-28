@@ -18,8 +18,8 @@ import { dual } from "@monstermann/dfdl"
  * ```
  */
 export const get: {
-    <T extends UnknownRecord, U extends keyof AllUnionFields<T>>(key: U): (target: T) => AllUnionFields<T>[U] | undefined
-    <T extends UnknownRecord, U extends keyof AllUnionFields<T>>(target: T, key: U): AllUnionFields<T>[U] | undefined
+    <T extends UnknownRecord, U extends keyof AllUnionFields<T>>(key: U): (target: T) => AllUnionFields<T>[U]
+    <T extends UnknownRecord, U extends keyof AllUnionFields<T>>(target: T, key: U): AllUnionFields<T>[U]
 } = dual(2, (target: any, key: any): any => {
     return target[key]
 })
