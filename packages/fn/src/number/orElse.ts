@@ -35,9 +35,9 @@ import { dual } from "@monstermann/dfdl"
  * ```
  */
 export const orElse: {
-    <T, U>(orElse: (value: T) => U): (target: T) => Extract<T, number> | U
-    <T, U>(target: T, orElse: (value: T) => U): Extract<T, number> | U
-} = dual(2, <T, U>(target: T, orElse: (value: T) => U): Extract<T, number> | U => {
+    <T, U>(orElse: (value: NoInfer<T>) => U): (target: T) => Extract<T, number> | U
+    <T, U>(target: T, orElse: (value: NoInfer<T>) => U): Extract<T, number> | U
+} = dual(2, <T, U>(target: T, orElse: (value: NoInfer<T>) => U): Extract<T, number> | U => {
     return Number.isFinite(target)
         ? target as Extract<T, number>
         : orElse(target)
