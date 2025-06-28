@@ -477,6 +477,7 @@ export default defineConfig({
                             { link: "isRegExp", text: "isRegExp" },
                             { link: "isSymbol", text: "isSymbol" },
                             { link: "isTruthy", text: "isTruthy" },
+                            { link: "log", text: "log" },
                             { link: "markAsImmutable", text: "markAsImmutable" },
                             { link: "markAsMutable", text: "markAsMutable" },
                             { link: "noop", text: "noop" },

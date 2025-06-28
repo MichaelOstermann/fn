@@ -169,6 +169,7 @@ export const modules = {
         "isRegExp",
         "isSymbol",
         "isTruthy",
+        "log",
         "markAsImmutable",
         "markAsMutable",
         "noop",
