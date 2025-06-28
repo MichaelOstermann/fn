@@ -39,30 +39,30 @@ import { dual } from "@monstermann/dfdl"
  */
 export const when: {
     <T, U extends T, V>(
-        predicate: (value: T) => value is U,
-        onTrue: (value: U) => V
+        predicate: (value: NoInfer<T>) => value is U,
+        onTrue: (value: NoInfer<U>) => V
     ): (value: T) => T | V
 
     <T, V>(
-        predicate: (value: T) => boolean,
-        onTrue: (value: T) => V
+        predicate: (value: NoInfer<T>) => boolean,
+        onTrue: (value: NoInfer<T>) => V
     ): (value: T) => T | V
 
     <T, U extends T, V>(
         value: T,
-        predicate: (value: T) => value is U,
-        onTrue: (value: U) => V
+        predicate: (value: NoInfer<T>) => value is U,
+        onTrue: (value: NoInfer<U>) => V
     ): T | V
 
     <T, V>(
         value: T,
-        predicate: (value: T) => boolean,
-        onTrue: (value: T) => V
+        predicate: (value: NoInfer<T>) => boolean,
+        onTrue: (value: NoInfer<T>) => V
     ): T | V
 } = dual(3, <T, V>(
     value: T,
-    predicate: (value: T) => boolean,
-    onTrue: (value: T) => V,
+    predicate: (value: NoInfer<T>) => boolean,
+    onTrue: (value: NoInfer<T>) => V,
 ): T | V => {
     return predicate(value)
         ? onTrue(value)
