@@ -3,7 +3,7 @@ import type { UnknownRecord } from "./internals/types"
 import { dual } from "@monstermann/dfdl"
 
 type TestAllPredicates<T extends object> = Partial<{
-    [K in keyof T]: (value: T[K], key: K, target: Readonly<T>) => boolean
+    [K in keyof T]: (value: NoInfer<T>[K], key: K, target: Readonly<T>) => boolean
 }>
 
 type TestAllResult<T extends object, U> = Simplify<T & {
