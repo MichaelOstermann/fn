@@ -21,7 +21,7 @@ export const dropLast: {
     <T>(target: T[], amount: number): T[]
     <T>(target: readonly T[], amount: number): readonly T[]
 } = dual(2, <T>(target: T[], amount: number): T[] => {
-    if (target.length === 0 || amount < 0 || !Number.isInteger(amount)) return target
+    if (!Number.isInteger(amount) || target.length === 0 || amount < 0) return target
     if (target.length <= amount) return markAsMutable([])
     target = cloneArray(target)
     target.splice(target.length - amount, amount)
