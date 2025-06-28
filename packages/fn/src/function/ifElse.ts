@@ -26,24 +26,11 @@ import { dual } from "@monstermann/dfdl"
  * ```
  */
 export const ifElse: {
-    <T, U extends T, A, B>(
-        predicate: (value: T) => value is U,
-        onTrue: (value: U) => A,
-        onFalse: (value: Exclude<T, U>) => B
-    ): (value: T) => A | B
-
     <T, A, B>(
         predicate: (value: T) => boolean,
         onTrue: (value: T) => A,
         onFalse: (value: T) => B
     ): (value: T) => A | B
-
-    <T, U extends T, A, B>(
-        value: T,
-        predicate: (value: T) => value is U,
-        onTrue: (value: U) => A,
-        onFalse: (value: Exclude<T, U>) => B
-    ): A | B
 
     <T, A, B>(
         value: T,
