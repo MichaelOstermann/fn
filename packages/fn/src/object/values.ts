@@ -19,5 +19,5 @@ export const values: {
     (): <T extends UnknownRecord>(target: T) => AllUnionFields<T> extends infer U ? U[keyof U][] : never
     <T extends UnknownRecord>(target: T): AllUnionFields<T> extends infer U ? U[keyof U][] : never
 } = dual(1, <T extends object>(target: T): any => {
-    return Object.keys(target)
+    return Object.values(target)
 })
