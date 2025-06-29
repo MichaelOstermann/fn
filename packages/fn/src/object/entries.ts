@@ -19,5 +19,5 @@ export const entries: {
     (): <T extends UnknownRecord>(target: T) => Entries<T>
     <T extends UnknownRecord>(target: T): Entries<T>
 } = dual(1, <T extends UnknownRecord>(target: T): any => {
-    return Object.keys(target)
+    return Object.entries(target)
 })
