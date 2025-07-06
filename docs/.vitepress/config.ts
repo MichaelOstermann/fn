@@ -74,6 +74,7 @@ export default defineConfig({
                             { link: "constantCase", text: "constantCase" },
                             { link: "drop", text: "drop" },
                             { link: "dropLast", text: "dropLast" },
+                            { link: "empty", text: "empty" },
                             { link: "endsWith", text: "endsWith" },
                             { link: "has", text: "has" },
                             { link: "hasAll", text: "hasAll" },

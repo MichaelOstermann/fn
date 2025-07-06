@@ -11,6 +11,7 @@ export const modules = {
         "countBy",
         "drop",
         "dropLast",
+        "empty",
         "every",
         "filter",
         "find",
