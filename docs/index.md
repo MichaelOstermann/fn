@@ -519,3 +519,9 @@ Fn.array.named({ exclude: (name) => name.startsWith("find") });
 // Alias named imports:
 Fn.array.named({ aliases: { append: "push" } });
 ```
+
+## Credits
+
+- [gustavoguichard/string-ts](https://github.com/gustavoguichard/string-ts)
+- [Remeda](https://github.com/remeda/remeda)
+- [Effect](https://github.com/Effect-TS/effect)
