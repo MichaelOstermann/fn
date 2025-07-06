@@ -142,6 +142,7 @@ export const modules = {
         "setAtOrElse",
         "setAtOrThrow",
         "shuffle",
+        "slice",
         "some",
         "sort",
         "sum",

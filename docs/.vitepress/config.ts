@@ -274,6 +274,7 @@ export default defineConfig({
                             { link: "setAtOrElse", text: "setAtOrElse" },
                             { link: "setAtOrThrow", text: "setAtOrThrow" },
                             { link: "shuffle", text: "shuffle" },
+                            { link: "slice", text: "slice" },
                             { link: "some", text: "some" },
                             { link: "sort", text: "sort" },
                             { link: "sum", text: "sum" },
