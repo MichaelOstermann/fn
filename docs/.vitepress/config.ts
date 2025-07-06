@@ -245,6 +245,7 @@ export default defineConfig({
                             { link: "partition", text: "partition" },
                             { link: "prepend", text: "prepend" },
                             { link: "random", text: "random" },
+                            { link: "randomOr", text: "randomOr" },
                             { link: "reduce", text: "reduce" },
                             { link: "reject", text: "reject" },
                             { link: "remove", text: "remove" },

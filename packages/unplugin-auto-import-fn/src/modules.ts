@@ -113,6 +113,7 @@ export const modules = {
         "partition",
         "prepend",
         "random",
+        "randomOr",
         "reduce",
         "reject",
         "remove",
