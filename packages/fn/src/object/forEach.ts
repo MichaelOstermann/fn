@@ -1,5 +1,4 @@
 import type { UnionToIntersection } from "type-fest"
-import type { UnknownRecord } from "./internals/types"
 import { dual } from "@monstermann/dfdl"
 
 type ForEachCallback<T extends object> = T extends unknown
@@ -25,10 +24,10 @@ type ForEachCallback<T extends object> = T extends unknown
  * ```
  */
 export const forEach: {
-    <T extends UnknownRecord>(fn: ForEachCallback<T>): (target: T) => T
-    <T extends UnknownRecord>(target: T, fn: ForEachCallback<T>): T
-} = dual(2, <T extends UnknownRecord>(target: T, fn: ForEachCallback<T>): T => {
-    for (const key of Object.keys(target)) {
+    <T extends object>(fn: ForEachCallback<T>): (target: T) => T
+    <T extends object>(target: T, fn: ForEachCallback<T>): T
+} = dual(2, <T extends object>(target: T, fn: ForEachCallback<T>): T => {
+    for (const key of Object.keys(target) as (keyof T)[]) {
         fn([key, target[key]], target)
     }
     return target

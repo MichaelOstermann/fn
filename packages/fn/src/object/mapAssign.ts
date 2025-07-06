@@ -1,5 +1,4 @@
 import type { Merge } from "type-fest"
-import type { UnknownRecord } from "./internals/types"
 import { dual } from "@monstermann/dfdl"
 import { merge } from "./merge"
 
@@ -22,8 +21,8 @@ import { merge } from "./merge"
  * ```
  */
 export const mapAssign: {
-    <T extends UnknownRecord, U extends UnknownRecord>(map: (target: NoInfer<T>) => U): (target: T) => T extends unknown ? Merge<T, U> : never
-    <T extends UnknownRecord, U extends UnknownRecord>(target: T, map: (target: NoInfer<T>) => U): T extends unknown ? Merge<T, U> : never
+    <T extends object, U extends object>(map: (target: NoInfer<T>) => U): (target: T) => T extends unknown ? Merge<T, U> : never
+    <T extends object, U extends object>(target: T, map: (target: NoInfer<T>) => U): T extends unknown ? Merge<T, U> : never
 } = dual(2, (target: any, map: any): any => {
     return merge(target, map(target))
 })

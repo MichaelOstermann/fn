@@ -1,4 +1,3 @@
-import type { UnknownRecord } from "./internals/types"
 import { dual } from "@monstermann/dfdl"
 import { cloneObject } from "@monstermann/remmi"
 
@@ -18,6 +17,6 @@ import { cloneObject } from "@monstermann/remmi"
  * ```
  */
 export const clone: {
-    (): <T extends UnknownRecord>(target: T) => T
-    <T extends UnknownRecord>(target: T): T
+    (): <T extends object>(target: T) => T
+    <T extends object>(target: T): T
 } = dual(1, cloneObject)

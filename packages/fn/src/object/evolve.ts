@@ -1,5 +1,4 @@
 import type { UnknownArray } from "type-fest"
-import type { UnknownRecord } from "./internals/types"
 import { dual } from "@monstermann/dfdl"
 import { cloneObject } from "@monstermann/remmi"
 import { is } from "../function/is"
@@ -40,8 +39,8 @@ type Evolver<T> = T extends object
  * ```
  */
 export const evolve: {
-    <T extends UnknownRecord, U extends Evolver<T>>(evolver: U): (target: T) => T
-    <T extends UnknownRecord, U extends Evolver<T>>(target: T, evolver: U): T
+    <T extends object, U extends Evolver<T>>(evolver: U): (target: T) => T
+    <T extends object, U extends Evolver<T>>(target: T, evolver: U): T
 } = dual(2, (target: any, evolver: any): any => {
     let result
     for (const key in evolver) {

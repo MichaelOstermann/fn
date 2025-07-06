@@ -1,5 +1,4 @@
 import type { Simplify } from "type-fest"
-import type { UnknownRecord } from "./internals/types"
 import { dual } from "@monstermann/dfdl"
 
 type TestAllPredicates<T extends object> = Partial<{
@@ -28,8 +27,8 @@ type TestAllResult<T extends object, U> = Simplify<T & {
  * ```
  */
 export const testAll: {
-    <T extends UnknownRecord, U extends TestAllPredicates<T>>(props: U): (target: T) => target is TestAllResult<T, U>
-    <T extends UnknownRecord, U extends TestAllPredicates<T>>(target: T, props: U): target is TestAllResult<T, U>
+    <T extends object, U extends TestAllPredicates<T>>(props: U): (target: T) => target is TestAllResult<T, U>
+    <T extends object, U extends TestAllPredicates<T>>(target: T, props: U): target is TestAllResult<T, U>
 } = dual(2, (target: any, props: any): target is any => {
     for (const key in props) {
         if (!props[key](target[key], key, target)) return false

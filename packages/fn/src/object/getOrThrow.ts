@@ -1,6 +1,5 @@
 import type { AllUnionFields } from "type-fest"
 import type { NonNil } from "../internals/types"
-import type { UnknownRecord } from "./internals/types"
 import { dual } from "@monstermann/dfdl"
 import { FnError } from "../function/FnError"
 
@@ -20,8 +19,8 @@ import { FnError } from "../function/FnError"
  * ```
  */
 export const getOrThrow: {
-    <T extends UnknownRecord, U extends keyof AllUnionFields<T>>(key: U): (target: T) => NonNil<AllUnionFields<T>[U]>
-    <T extends UnknownRecord, U extends keyof AllUnionFields<T>>(target: T, key: U): NonNil<AllUnionFields<T>[U]>
+    <T extends object, U extends keyof AllUnionFields<T>>(key: U): (target: T) => NonNil<AllUnionFields<T>[U]>
+    <T extends object, U extends keyof AllUnionFields<T>>(target: T, key: U): NonNil<AllUnionFields<T>[U]>
 } = dual(2, (target: any, key: any): any => {
     const value = target[key]
     if (value != null) return value

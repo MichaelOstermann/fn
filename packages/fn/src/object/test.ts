@@ -1,5 +1,4 @@
 import type { AllUnionFields, Simplify } from "type-fest"
-import type { UnknownRecord } from "./internals/types"
 import { dual } from "@monstermann/dfdl"
 
 type Test<T extends object, U, V> = T extends unknown
@@ -33,23 +32,23 @@ type Test<T extends object, U, V> = T extends unknown
  * ```
  */
 export const test: {
-    <T extends UnknownRecord, U extends keyof AllUnionFields<T>, V extends AllUnionFields<T>[U]>(
+    <T extends object, U extends keyof AllUnionFields<T>, V extends AllUnionFields<T>[U]>(
         key: U,
         predicate: (value: AllUnionFields<T>[U]) => value is V
     ): (target: T) => target is Test<T, U, V>
 
-    <T extends UnknownRecord, U extends keyof AllUnionFields<T>>(
+    <T extends object, U extends keyof AllUnionFields<T>>(
         key: U,
         predicate: (value: AllUnionFields<T>[U]) => boolean
     ): (target: T) => target is Test<T, U, AllUnionFields<T>[U]>
 
-    <T extends UnknownRecord, U extends keyof AllUnionFields<T>, V extends AllUnionFields<T>[U]>(
+    <T extends object, U extends keyof AllUnionFields<T>, V extends AllUnionFields<T>[U]>(
         target: T,
         key: U,
         predicate: (value: AllUnionFields<T>[U]) => value is V
     ): target is Test<T, U, V>
 
-    <T extends UnknownRecord, U extends keyof AllUnionFields<T>>(
+    <T extends object, U extends keyof AllUnionFields<T>>(
         target: T,
         key: U,
         predicate: (value: AllUnionFields<T>[U]) => boolean

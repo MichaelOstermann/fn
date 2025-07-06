@@ -1,5 +1,4 @@
 import type { AllUnionFields } from "type-fest"
-import type { UnknownRecord } from "./internals/types"
 import { dual } from "@monstermann/dfdl"
 
 /**
@@ -16,8 +15,8 @@ import { dual } from "@monstermann/dfdl"
  * ```
  */
 export const values: {
-    (): <T extends UnknownRecord>(target: T) => AllUnionFields<T> extends infer U ? U[keyof U][] : never
-    <T extends UnknownRecord>(target: T): AllUnionFields<T> extends infer U ? U[keyof U][] : never
+    (): <T extends object>(target: T) => AllUnionFields<T> extends infer U ? U[keyof U][] : never
+    <T extends object>(target: T): AllUnionFields<T> extends infer U ? U[keyof U][] : never
 } = dual(1, <T extends object>(target: T): any => {
     return Object.values(target)
 })

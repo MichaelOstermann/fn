@@ -1,5 +1,4 @@
 import type { Simplify } from "type-fest"
-import type { UnknownRecord } from "./internals/types"
 import { dual } from "@monstermann/dfdl"
 
 type Matches<T extends object, U extends T> = T extends unknown
@@ -24,8 +23,8 @@ type Matches<T extends object, U extends T> = T extends unknown
  * ```
  */
 export const matches: {
-    <T extends UnknownRecord, U extends T>(props: Partial<U>): (target: T) => target is Matches<T, U>
-    <T extends UnknownRecord, U extends T>(target: T, props: Partial<U>): target is Matches<T, U>
+    <T extends object, U extends T>(props: Partial<U>): (target: T) => target is Matches<T, U>
+    <T extends object, U extends T>(target: T, props: Partial<U>): target is Matches<T, U>
 } = dual(2, (target: any, props: any): target is any => {
     for (const key in props) {
         if (target[key] !== props[key]) return false
