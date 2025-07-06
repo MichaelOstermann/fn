@@ -1,3 +1,4 @@
+export * from "./filter"
 export * from "./isNone"
 export * from "./isSome"
 export * from "./map"

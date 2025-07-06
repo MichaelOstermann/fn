@@ -409,6 +409,7 @@ export default defineConfig({
                         collapsed: true,
                         text: "Option",
                         items: [
+                            { link: "filter", text: "filter" },
                             { link: "isNone", text: "isNone" },
                             { link: "isSome", text: "isSome" },
                             { link: "map", text: "map" },

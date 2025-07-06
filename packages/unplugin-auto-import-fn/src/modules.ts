@@ -275,6 +275,7 @@ export const modules = {
         "values",
     ],
     option: [
+        "filter",
         "isNone",
         "isSome",
         "map",
