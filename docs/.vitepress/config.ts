@@ -246,6 +246,7 @@ export default defineConfig({
                             { link: "prepend", text: "prepend" },
                             { link: "random", text: "random" },
                             { link: "randomOr", text: "randomOr" },
+                            { link: "randomOrElse", text: "randomOrElse" },
                             { link: "reduce", text: "reduce" },
                             { link: "reject", text: "reject" },
                             { link: "remove", text: "remove" },

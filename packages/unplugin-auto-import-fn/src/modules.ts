@@ -114,6 +114,7 @@ export const modules = {
         "prepend",
         "random",
         "randomOr",
+        "randomOrElse",
         "reduce",
         "reject",
         "remove",
