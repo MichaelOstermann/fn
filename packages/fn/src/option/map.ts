@@ -24,8 +24,8 @@ import { dual } from "@monstermann/dfdl"
  * ```
  */
 export const map: {
-    <T, U>(map: (value: NonNil<NoInfer<T>>) => U): (target: T) => Exclude<T, NonNil<T>> | U
-    <T, U>(target: T, map: (value: NonNil<NoInfer<T>>) => U): Exclude<T, NonNil<T>> | U
+    <T, U>(map: (value: NoInfer<NonNil<T>>) => U): (target: T) => Exclude<T, NonNil<T>> | U
+    <T, U>(target: T, map: (value: NoInfer<NonNil<T>>) => U): Exclude<T, NonNil<T>> | U
 } = dual(2, (target: any, map: any): any => {
     if (target == null) return target
     return map(target)
