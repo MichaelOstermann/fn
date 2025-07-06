@@ -253,6 +253,7 @@ export const modules = {
         "entries",
         "evolve",
         "forEach",
+        "fromEntries",
         "get",
         "getOr",
         "getOrElse",

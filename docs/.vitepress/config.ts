@@ -294,6 +294,7 @@ export default defineConfig({
                             { link: "entries", text: "entries" },
                             { link: "evolve", text: "evolve" },
                             { link: "forEach", text: "forEach" },
+                            { link: "fromEntries", text: "fromEntries" },
                             { link: "get", text: "get" },
                             { link: "getOr", text: "getOr" },
                             { link: "getOrElse", text: "getOrElse" },
