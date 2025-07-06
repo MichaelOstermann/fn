@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isNone(value)`
@@ -13,6 +13,6 @@ import { dual } from "@monstermann/dfdl"
 export const isNone: {
     (): (value: unknown) => value is null | undefined
     (value: unknown): value is null | undefined
-} = dual(1, (value: unknown): value is null | undefined => {
+} = dfdlT((value: unknown): value is null | undefined => {
     return value == null
-})
+}, 1)

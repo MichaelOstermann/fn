@@ -1,5 +1,5 @@
 import type { IsInteger } from "type-fest"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 type Int<T> = T extends unknown
     ? number extends T
@@ -35,6 +35,6 @@ type Int<T> = T extends unknown
 export const isInt: {
     <T>(): (value: T) => value is Int<T>
     <T>(value: T): value is Int<T>
-} = dual(1, <T>(value: T): value is Int<T> => {
+} = dfdlT(<T>(value: T): value is Int<T> => {
     return Number.isInteger(value)
-})
+}, 1)

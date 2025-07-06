@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { FnError } from "../function/FnError"
 
 /**
@@ -19,8 +19,8 @@ import { FnError } from "../function/FnError"
 export const indexOfOrThrow: {
     (source: string): (target: string) => number
     (target: string, source: string): number
-} = dual(2, (a: string, b: string): number => {
+} = dfdlT((a: string, b: string): number => {
     const idx = a.indexOf(b)
     if (Number.isFinite(idx)) return idx
     throw new FnError("String.indexOfOrThrow: Value not found.", [a, b])
-})
+}, 2)

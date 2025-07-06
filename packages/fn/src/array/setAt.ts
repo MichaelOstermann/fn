@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 import { is } from "../function/is"
 import { resolveOffset } from "./internals/offset"
@@ -26,11 +26,11 @@ export const setAt: {
 
     <T>(target: T[], idx: number, value: NoInfer<T>): T[]
     <T>(target: readonly T[], idx: number, value: NoInfer<T>): readonly T[]
-} = dual(3, <T>(target: T[], idx: number, value: NoInfer<T>): T[] => {
+} = dfdlT(<T>(target: T[], idx: number, value: NoInfer<T>): T[] => {
     const offset = resolveOffset(target, idx)
     if (offset < 0) return target
     if (is(target[offset], value)) return target
     target = cloneArray(target)
     target.splice(offset, 1, value)
     return target
-})
+}, 3)

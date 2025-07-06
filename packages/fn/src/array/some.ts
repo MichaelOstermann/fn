@@ -1,5 +1,5 @@
 import type { ArrayPredicate } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `some(array, predicate)`
@@ -20,6 +20,6 @@ import { dual } from "@monstermann/dfdl"
 export const some: {
     <T>(predicate: ArrayPredicate<T>): (target: readonly T[]) => boolean
     <T>(target: readonly T[], predicate: ArrayPredicate<T>): boolean
-} = dual(2, <T>(target: readonly T[], predicate: ArrayPredicate<T>): boolean => {
+} = dfdlT(<T>(target: readonly T[], predicate: ArrayPredicate<T>): boolean => {
     return target.some(predicate)
-})
+}, 2)

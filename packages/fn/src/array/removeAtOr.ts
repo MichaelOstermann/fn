@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 import { resolveOffset } from "./internals/offset"
 
@@ -20,10 +20,10 @@ import { resolveOffset } from "./internals/offset"
 export const removeAtOr: {
     <U>(idx: number, or: U): <T>(target: readonly T[]) => T[] | U
     <T, U>(target: readonly T[], idx: number, or: U): T[] | U
-} = dual(3, <T, U>(target: readonly T[], idx: number, or: U): T[] | U => {
+} = dfdlT(<T, U>(target: readonly T[], idx: number, or: U): T[] | U => {
     const offset = resolveOffset(target, idx)
     if (offset < 0) return or
     const result = cloneArray(target)
     result.splice(offset, 1)
     return result
-})
+}, 3)

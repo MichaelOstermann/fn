@@ -1,5 +1,5 @@
 import type { ArrayGuard, ArrayPredicate } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `none(array, predicate)`
@@ -22,6 +22,6 @@ export const none: {
     <T>(predicate: ArrayPredicate<T>): (target: readonly T[]) => boolean
     <T, U extends T>(target: readonly T[], predicate: ArrayGuard<T, U>): target is Exclude<T, U>[]
     <T>(target: readonly T[], predicate: ArrayPredicate<T>): boolean
-} = dual(2, <T, U extends T>(target: readonly T[], predicate: ArrayGuard<T, U>): target is Exclude<T, U>[] => {
+} = dfdlT(<T, U extends T>(target: readonly T[], predicate: ArrayGuard<T, U>): target is Exclude<T, U>[] => {
     return !target.some(predicate)
-})
+}, 2)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `has(array, value)`
@@ -16,6 +16,6 @@ import { dual } from "@monstermann/dfdl"
 export const has: {
     <T>(value: NoInfer<T>): (target: readonly T[]) => boolean
     <T>(target: readonly T[], value: NoInfer<T>): boolean
-} = dual(2, <T>(target: readonly T[], value: NoInfer<T>): boolean => {
+} = dfdlT(<T>(target: readonly T[], value: NoInfer<T>): boolean => {
     return target.includes(value)
-})
+}, 2)

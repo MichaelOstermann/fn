@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { markAsMutable } from "@monstermann/remmi"
 
 /**
@@ -20,9 +20,9 @@ export const unique: {
 
     <T>(target: T[]): T[]
     <T>(target: readonly T[]): readonly T[]
-} = dual(1, <T>(target: T[]): T[] => {
+} = dfdlT(<T>(target: T[]): T[] => {
     const set = new Set(target)
     return set.size === target.length
         ? target
         : markAsMutable(Array.from(set))
-})
+}, 1)

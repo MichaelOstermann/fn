@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { FnError } from "../function/FnError"
 
 /**
@@ -21,10 +21,10 @@ import { FnError } from "../function/FnError"
 export const medianOrThrow: {
     (): (target: readonly number[]) => number
     (target: readonly number[]): number
-} = dual(1, (target: readonly number[]): number => {
+} = dfdlT((target: readonly number[]): number => {
     if (target.length === 0) throw new FnError("Array.medianOrThrow: Target is empty.", [target])
     const sorted = target.toSorted((a, b) => a - b)
     const mid = Math.floor(sorted.length / 2)
     if (sorted.length % 2 === 0) return (sorted[mid - 1]! + sorted[mid]!) / 2
     else return sorted[mid]!
-})
+}, 1)

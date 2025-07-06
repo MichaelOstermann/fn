@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 
 /**
@@ -20,9 +20,9 @@ export const insertAt: {
 
     <T>(target: T[], idx: number, value: NoInfer<T>): T[]
     <T>(target: readonly T[], idx: number, value: NoInfer<T>): readonly T[]
-} = dual(3, <T>(target: T[], idx: number, value: NoInfer<T>): T[] => {
+} = dfdlT(<T>(target: T[], idx: number, value: NoInfer<T>): T[] => {
     if (idx < 0 || idx > target.length) return target
     target = cloneArray(target)
     target.splice(idx, 0, value)
     return target
-})
+}, 3)

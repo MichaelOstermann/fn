@@ -1,5 +1,5 @@
 import type { MapMap } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 import { FnError } from "../function/FnError"
 import { is } from "../function/is"
@@ -53,7 +53,7 @@ export const mapOrThrow: {
 
     <K, V>(target: Map<K, V>, key: NoInfer<K>, transform: MapMap<K, V>): Map<K, V>
     <K, V>(target: ReadonlyMap<K, V>, key: NoInfer<K>, transform: MapMap<K, V>): ReadonlyMap<K, V>
-} = dual(3, <K, V>(target: Map<K, V>, key: NoInfer<K>, transform: MapMap<K, V>): Map<K, V> => {
+} = dfdlT(<K, V>(target: Map<K, V>, key: NoInfer<K>, transform: MapMap<K, V>): Map<K, V> => {
     if (!target.has(key)) throw new FnError("Map.mapOrThrow: Key does not exist.", [target, key, transform])
     const prev = target.get(key)! as V
     const next = transform(prev, key, target)
@@ -61,4 +61,4 @@ export const mapOrThrow: {
     const result = cloneMap(target)
     result.set(key, next)
     return result
-})
+}, 3)

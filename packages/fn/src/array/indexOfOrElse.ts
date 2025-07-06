@@ -1,5 +1,5 @@
 import type { OrElse } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `indexOfOrElse(target, value, orElse)`
@@ -25,7 +25,7 @@ import { dual } from "@monstermann/dfdl"
 export const indexOfOrElse: {
     <T, U>(value: NoInfer<T>, orElse: OrElse<T, U>): (target: readonly T[]) => number | U
     <T, U>(target: readonly T[], value: NoInfer<T>, orElse: OrElse<T, U>): number | U
-} = dual(3, <T, U>(target: readonly T[], value: NoInfer<T>, orElse: OrElse<T, U>): number | U => {
+} = dfdlT(<T, U>(target: readonly T[], value: NoInfer<T>, orElse: OrElse<T, U>): number | U => {
     const idx = target.indexOf(value)
     return idx < 0 ? orElse(target) : idx
-})
+}, 3)

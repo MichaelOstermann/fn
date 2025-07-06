@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isArray(value)`
@@ -10,6 +10,6 @@ import { dual } from "@monstermann/dfdl"
 export const isArray: {
     (): (target: unknown) => target is unknown[]
     (target: unknown): target is unknown[]
-} = dual(1, (target: unknown): target is unknown[] => {
+} = dfdlT((target: unknown): target is unknown[] => {
     return Array.isArray(target)
-})
+}, 1)

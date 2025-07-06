@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `last(array)`
@@ -16,6 +16,6 @@ import { dual } from "@monstermann/dfdl"
 export const last: {
     (): <T>(target: readonly T[]) => T | undefined
     <T>(target: readonly T[]): T | undefined
-} = dual(1, <T>(target: readonly T[]): T | undefined => {
+} = dfdlT(<T>(target: readonly T[]): T | undefined => {
     return target.at(-1)
-})
+}, 1)

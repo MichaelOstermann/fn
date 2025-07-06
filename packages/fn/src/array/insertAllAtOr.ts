@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { insertAllAt } from "./insertAllAt"
 
 /**
@@ -22,7 +22,7 @@ export const insertAllAtOr: {
 
     <T, U>(target: T[], idx: number, values: Iterable<NoInfer<T>>, or: U): T[] | U
     <T, U>(target: readonly T[], idx: number, values: Iterable<NoInfer<T>>, or: U): readonly T[] | U
-} = dual(4, <T, U>(target: T[], idx: number, values: Iterable<NoInfer<T>>, or: U): T[] | U => {
+} = dfdlT(<T, U>(target: T[], idx: number, values: Iterable<NoInfer<T>>, or: U): T[] | U => {
     if (idx < 0 || idx > target.length) return or
     return insertAllAt(target, idx, values)
-})
+}, 4)

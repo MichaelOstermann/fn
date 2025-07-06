@@ -1,5 +1,5 @@
 import type { MapMap } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `forEach(map, fn)`
@@ -32,7 +32,7 @@ export const forEach: {
 
     <K, V>(target: Map<K, V>, fn: MapMap<K, V, any>): Map<K, V>
     <K, V>(target: ReadonlyMap<K, V>, fn: MapMap<K, V, any>): ReadonlyMap<K, V>
-} = dual(2, <K, V>(target: Map<K, V>, fn: MapMap<K, V, any>): Map<K, V> => {
+} = dfdlT(<K, V>(target: Map<K, V>, fn: MapMap<K, V, any>): Map<K, V> => {
     target.forEach(fn)
     return target
-})
+}, 2)

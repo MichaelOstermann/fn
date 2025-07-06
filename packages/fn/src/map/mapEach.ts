@@ -1,5 +1,5 @@
 import type { MapMap } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 import { is } from "../function/is"
 
@@ -34,7 +34,7 @@ export const mapEach: {
 
     <K, V, U>(target: Map<K, V>, fn: MapMap<K, V, U>): Map<K, U>
     <K, V, U>(target: ReadonlyMap<K, V>, fn: MapMap<K, V, U>): ReadonlyMap<K, U>
-} = dual(2, (target: any, fn: any): any => {
+} = dfdlT((target: any, fn: any): any => {
     let result
     for (const [k, prev] of target) {
         const next = fn(prev, k, target)
@@ -43,4 +43,4 @@ export const mapEach: {
         result.set(k, next)
     }
     return result ?? target
-})
+}, 2)

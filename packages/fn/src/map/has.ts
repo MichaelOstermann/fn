@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `has(map, key)`
@@ -44,6 +44,6 @@ import { dual } from "@monstermann/dfdl"
 export const has: {
     <K, V>(key: NoInfer<K>): (target: ReadonlyMap<K, V>) => boolean
     <K, V>(target: ReadonlyMap<K, V>, key: NoInfer<K>): boolean
-} = dual(2, <K, V>(target: ReadonlyMap<K, V>, key: NoInfer<K>): boolean => {
+} = dfdlT(<K, V>(target: ReadonlyMap<K, V>, key: NoInfer<K>): boolean => {
     return target.has(key)
-})
+}, 2)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isNotFinite(target)`
@@ -24,6 +24,6 @@ import { dual } from "@monstermann/dfdl"
 export const isNotFinite: {
     (): (target: number) => boolean
     (target: number): boolean
-} = dual(1, (target: number): boolean => {
+} = dfdlT((target: number): boolean => {
     return !Number.isFinite(target)
-})
+}, 1)

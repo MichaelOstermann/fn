@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `sum(array)`
@@ -16,6 +16,6 @@ import { dual } from "@monstermann/dfdl"
 export const sum: {
     (): (target: readonly number[]) => number
     (target: readonly number[]): number
-} = dual(1, (target: readonly number[]): number => {
+} = dfdlT((target: readonly number[]): number => {
     return target.reduce((a, b) => a + b, 0)
-})
+}, 1)

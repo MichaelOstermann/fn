@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `at(array, offset)`
@@ -16,6 +16,6 @@ import { dual } from "@monstermann/dfdl"
 export const at: {
     (offset: number): <T>(target: readonly T[]) => T | undefined
     <T>(target: readonly T[], offset: number): T | undefined
-} = dual(2, <T>(target: readonly T[], offset: number): T | undefined => {
+} = dfdlT(<T>(target: readonly T[], offset: number): T | undefined => {
     return target.at(offset)
-})
+}, 2)

@@ -1,5 +1,5 @@
 import type { NonNil } from "../internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `orElse(target, orElse)`
@@ -27,6 +27,6 @@ import { dual } from "@monstermann/dfdl"
 export const orElse: {
     <T, U>(orElse: () => U): (target: T) => NonNil<T> | U
     <T, U>(target: T, orElse: () => U): NonNil<T> | U
-} = dual(2, (target: any, orElse: any): any => {
+} = dfdlT((target: any, orElse: any): any => {
     return target ?? orElse()
-})
+}, 2)

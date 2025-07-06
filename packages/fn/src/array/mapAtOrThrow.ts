@@ -1,5 +1,5 @@
 import type { ArrayMap } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 import { FnError } from "../function/FnError"
 import { is } from "../function/is"
@@ -27,7 +27,7 @@ export const mapAtOrThrow: {
 
     <T>(target: T[], idx: number, map: ArrayMap<T>): T[]
     <T>(target: readonly T[], idx: number, map: ArrayMap<T>): readonly T[]
-} = dual(3, <T>(target: T[], idx: number, map: ArrayMap<T>): T[] => {
+} = dfdlT(<T>(target: T[], idx: number, map: ArrayMap<T>): T[] => {
     const offset = resolveOffset(target, idx)
     if (offset < 0) throw new FnError("Array.mapAtOrThrow: Index is out of range.", [target, idx, map])
     const prev = target[offset]! as T
@@ -36,4 +36,4 @@ export const mapAtOrThrow: {
     target = cloneArray(target)
     target.splice(offset, 1, next)
     return target
-})
+}, 3)

@@ -1,5 +1,5 @@
 import type { IsFloat } from "type-fest"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 type Float<T> = T extends unknown
     ? number extends T
@@ -33,7 +33,7 @@ type Float<T> = T extends unknown
 export const isFloat: {
     <T>(): (value: T) => value is Float<T>
     <T>(value: T): value is Float<T>
-} = dual(1, <T>(value: T): value is Float<T> => {
+} = dfdlT(<T>(value: T): value is Float<T> => {
     return Number.isFinite(value)
         && !Number.isInteger(value)
-})
+}, 1)

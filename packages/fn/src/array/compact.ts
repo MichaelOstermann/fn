@@ -1,5 +1,5 @@
 import type { NonNil } from "../internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { filter } from "./filter"
 
 /**
@@ -21,6 +21,6 @@ export const compact: {
 
     <T>(target: T[]): NonNil<T>[]
     <T>(target: readonly T[]): readonly NonNil<T>[]
-} = dual(1, <T>(target: T[]): any => {
+} = dfdlT(<T>(target: T[]): any => {
     return filter(target, v => v != null)
-})
+}, 1)

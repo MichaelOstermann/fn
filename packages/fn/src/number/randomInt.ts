@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `randomInt(start, end)`
@@ -20,8 +20,8 @@ import { dual } from "@monstermann/dfdl"
 export const randomInt: {
     (end: number): (start: number) => number
     (start: number, end: number): number
-} = dual(2, (start: number, end: number): number => {
+} = dfdlT((start: number, end: number): number => {
     const a = Math.ceil(Math.min(start, end))
     const b = Math.floor(Math.max(start, end))
     return Math.floor(Math.random() * (b - a + 1) + a)
-})
+}, 2)

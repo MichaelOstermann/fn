@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `join(array, separator)`
@@ -16,6 +16,6 @@ import { dual } from "@monstermann/dfdl"
 export const join: {
     <T>(separator: string): (target: readonly T[]) => string
     <T>(target: readonly T[], separator: string): string
-} = dual(2, <T>(target: readonly T[], separator: string): string => {
+} = dfdlT(<T>(target: readonly T[], separator: string): string => {
     return target.join(separator)
-})
+}, 2)

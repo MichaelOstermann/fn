@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `max(target, source)`
@@ -20,6 +20,6 @@ import { dual } from "@monstermann/dfdl"
 export const max: {
     (source: number): (target: number) => number
     (target: number, source: number): number
-} = dual(2, (a: number, b: number): number => {
+} = dfdlT((a: number, b: number): number => {
     return Math.max(a, b)
-})
+}, 2)

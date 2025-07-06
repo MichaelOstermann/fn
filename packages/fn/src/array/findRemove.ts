@@ -1,5 +1,5 @@
 import type { ArrayPredicate } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 
 /**
@@ -24,10 +24,10 @@ export const findRemove: {
 
     <T>(target: T[], predicate: ArrayPredicate<T>): T[]
     <T>(target: readonly T[], predicate: ArrayPredicate<T>): readonly T[]
-} = dual(2, <T>(target: T[], predicate: ArrayPredicate<T>): T[] => {
+} = dfdlT(<T>(target: T[], predicate: ArrayPredicate<T>): T[] => {
     const idx = target.findIndex(predicate)
     if (idx === -1) return target
     const result = cloneArray(target)
     result.splice(idx, 1)
     return result
-})
+}, 2)

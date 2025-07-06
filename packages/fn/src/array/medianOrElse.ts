@@ -1,5 +1,5 @@
 import type { OrElse } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `medianOrElse(array, orElse)`
@@ -30,10 +30,10 @@ import { dual } from "@monstermann/dfdl"
 export const medianOrElse: {
     <T>(orElse: OrElse<number, T>): (target: readonly number[]) => number | T
     <T>(target: readonly number[], orElse: OrElse<number, T>): number | T
-} = dual(2, <T>(target: readonly number[], orElse: OrElse<number, T>): number | T => {
+} = dfdlT(<T>(target: readonly number[], orElse: OrElse<number, T>): number | T => {
     if (target.length === 0) return orElse(target)
     const sorted = target.toSorted((a, b) => a - b)
     const mid = Math.floor(sorted.length / 2)
     if (sorted.length % 2 === 0) return (sorted[mid - 1]! + sorted[mid]!) / 2
     else return sorted[mid]!
-})
+}, 2)

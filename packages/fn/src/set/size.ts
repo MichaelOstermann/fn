@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `size(target)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const size: {
     (): <T extends ReadonlySet<unknown>>(target: T) => number
     <T extends ReadonlySet<unknown>>(target: T): number
-} = dual(1, <T extends ReadonlySet<unknown>>(target: T): number => {
+} = dfdlT(<T extends ReadonlySet<unknown>>(target: T): number => {
     return target.size
-})
+}, 1)

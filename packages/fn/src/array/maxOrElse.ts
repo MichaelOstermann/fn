@@ -1,5 +1,5 @@
 import type { OrElse } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `maxOrElse(array, orElse)`
@@ -25,7 +25,7 @@ import { dual } from "@monstermann/dfdl"
 export const maxOrElse: {
     <T>(orElse: OrElse<number, T>): (target: readonly number[]) => number | T
     <T>(target: readonly number[], orElse: OrElse<number, T>): number | T
-} = dual(2, <T>(target: readonly number[], orElse: OrElse<number, T>): number | T => {
+} = dfdlT(<T>(target: readonly number[], orElse: OrElse<number, T>): number | T => {
     if (target.length === 0) return orElse(target)
     return target.reduce((a, b) => Math.max(a, b), 0)
-})
+}, 2)

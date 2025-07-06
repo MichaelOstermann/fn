@@ -1,6 +1,6 @@
 import type { AllUnionFields } from "type-fest"
 import type { NonNil } from "../internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `getOr(target, key, or)`
@@ -20,6 +20,6 @@ import { dual } from "@monstermann/dfdl"
 export const getOr: {
     <T extends object, U extends keyof AllUnionFields<T>, V>(key: U, or: V): (target: T) => NonNil<AllUnionFields<T>[U] | V>
     <T extends object, U extends keyof AllUnionFields<T>, V>(target: T, key: U, or: V): NonNil<AllUnionFields<T>[U] | V>
-} = dual(3, (target: any, key: any, or: any): any => {
+} = dfdlT((target: any, key: any, or: any): any => {
     return target[key] || or
-})
+}, 3)

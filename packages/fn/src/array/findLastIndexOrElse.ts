@@ -1,5 +1,5 @@
 import type { ArrayPredicate, OrElse } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `findLastIndexOrElse(target, predicate, orElse)`
@@ -39,7 +39,7 @@ import { dual } from "@monstermann/dfdl"
 export const findLastIndexOrElse: {
     <T, U>(predicate: ArrayPredicate<T>, orElse: OrElse<T, U>): (target: readonly T[]) => number | U
     <T, U>(target: readonly T[], predicate: ArrayPredicate<T>, orElse: OrElse<T, U>): number | U
-} = dual(3, <T, U>(target: readonly T[], predicate: ArrayPredicate<T>, orElse: OrElse<T, U>): number | U => {
+} = dfdlT(<T, U>(target: readonly T[], predicate: ArrayPredicate<T>, orElse: OrElse<T, U>): number | U => {
     const idx = target.findLastIndex(predicate)
     return idx < 0 ? orElse(target) : idx
-})
+}, 3)

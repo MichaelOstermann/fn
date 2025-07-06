@@ -1,5 +1,5 @@
 import type { KebabCase } from "string-ts"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { kebabCase as apply } from "string-ts"
 
 /**
@@ -20,6 +20,6 @@ import { kebabCase as apply } from "string-ts"
 export const kebabCase: {
     (): <T extends string>(target: T) => KebabCase<T>
     <T extends string>(target: T): KebabCase<T>
-} = dual(1, <T extends string>(target: T): KebabCase<T> => {
+} = dfdlT(<T extends string>(target: T): KebabCase<T> => {
     return apply(target)
-})
+}, 1)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `startsWith(target, source)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const startsWith: {
     (source: string): (target: string) => boolean
     (target: string, source: string): boolean
-} = dual(2, (a: string, b: string): boolean => {
+} = dfdlT((a: string, b: string): boolean => {
     return a.startsWith(b)
-})
+}, 2)

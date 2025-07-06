@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneSet } from "@monstermann/remmi"
 
 /**
@@ -26,9 +26,9 @@ import { cloneSet } from "@monstermann/remmi"
 export const removeOrElse: {
     <T, U>(value: NoInfer<T>, orElse: (target: ReadonlySet<NoInfer<T>>) => U): (target: ReadonlySet<T>) => Set<T> | U
     <T, U>(target: ReadonlySet<T>, value: NoInfer<T>, orElse: (target: ReadonlySet<NoInfer<T>>) => U): Set<T> | U
-} = dual(3, <T, U>(target: ReadonlySet<T>, value: NoInfer<T>, orElse: (target: ReadonlySet<NoInfer<T>>) => U): Set<T> | U => {
+} = dfdlT(<T, U>(target: ReadonlySet<T>, value: NoInfer<T>, orElse: (target: ReadonlySet<NoInfer<T>>) => U): Set<T> | U => {
     if (!target.has(value)) return orElse(target)
     const result = cloneSet(target)
     result.delete(value)
     return result
-})
+}, 3)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `intersection(target, source)`
@@ -18,7 +18,7 @@ import { dual } from "@monstermann/dfdl"
 export const intersection: {
     <T, U>(source: Set<U>): (target: Set<T>) => Set<T | U>
     <T, U>(target: Set<T>, source: Set<U>): Set<T | U>
-} = dual(2, <T, U>(target: Set<T>, source: Set<U>): Set<T | U> => {
+} = dfdlT(<T, U>(target: Set<T>, source: Set<U>): Set<T | U> => {
     if (target.size === 0) return target
     if (source.size === 0) return source
 
@@ -34,4 +34,4 @@ export const intersection: {
     }
 
     return target
-})
+}, 2)

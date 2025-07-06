@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `append(target, source)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const append: {
     (source: Iterable<string>): (target: string) => string
     (target: string, source: Iterable<string>): string
-} = dual(2, (a: string, b: Iterable<string>): string => {
+} = dfdlT((a: string, b: Iterable<string>): string => {
     return a + (typeof b === "string" ? b : Array.from(b).join(""))
-})
+}, 2)

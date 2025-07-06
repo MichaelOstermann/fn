@@ -1,5 +1,5 @@
 import type { ArrayMap } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 import { is } from "../function/is"
 
@@ -25,7 +25,7 @@ export const mapEach: {
 
     <T, U>(target: T[], mapper: ArrayMap<T, U>): U[]
     <T, U>(target: readonly T[], mapper: ArrayMap<T, U>): readonly U[]
-} = dual(2, <T, U>(target: T[], mapper: ArrayMap<T, U>): U[] => {
+} = dfdlT(<T, U>(target: T[], mapper: ArrayMap<T, U>): U[] => {
     let result: any
     for (let i = 0; i < target.length; i++) {
         const prev = target[i]! as T
@@ -35,4 +35,4 @@ export const mapEach: {
         result[i] = next
     }
     return result ?? target
-})
+}, 2)

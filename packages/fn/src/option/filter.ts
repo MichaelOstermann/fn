@@ -1,5 +1,5 @@
 import type { NonNil } from "../internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `filter(target, predicate)`
@@ -31,8 +31,8 @@ export const filter: {
 
     <T, U extends NonNil<T>>(target: T, predicate: (value: NoInfer<NonNil<T>>) => value is U): U | undefined
     <T>(target: T, predicate: (value: NoInfer<NonNil<T>>) => boolean): T | undefined
-} = dual(2, <T>(target: T, predicate: (value: NoInfer<NonNil<T>>) => boolean): T | undefined => {
+} = dfdlT(<T>(target: T, predicate: (value: NoInfer<NonNil<T>>) => boolean): T | undefined => {
     if (target == null) return target
     if (!predicate(target as NonNil<T>)) return undefined
     return target
-})
+}, 2)

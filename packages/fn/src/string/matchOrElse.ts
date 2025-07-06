@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `matchOrElse(target, source, orElse)`
@@ -25,6 +25,6 @@ import { dual } from "@monstermann/dfdl"
 export const matchOrElse: {
     <T>(source: string | RegExp, orElse: (target: string) => T): (target: string) => RegExpMatchArray | T
     <T>(target: string, source: string | RegExp, orElse: (target: string) => T): RegExpMatchArray | T
-} = dual(3, <T>(target: string, source: string | RegExp, orElse: (target: string) => T): RegExpMatchArray | T => {
+} = dfdlT(<T>(target: string, source: string | RegExp, orElse: (target: string) => T): RegExpMatchArray | T => {
     return target.match(source) ?? orElse(target)
-})
+}, 3)

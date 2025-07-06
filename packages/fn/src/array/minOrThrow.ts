@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { FnError } from "../function/FnError"
 
 /**
@@ -19,7 +19,7 @@ import { FnError } from "../function/FnError"
 export const minOrThrow: {
     (): (target: readonly number[]) => number
     (target: readonly number[]): number
-} = dual(1, (target: readonly number[]): number => {
+} = dfdlT((target: readonly number[]): number => {
     if (target.length === 0) throw new FnError("Array.minOrThrow: Target is empty.", [target])
     return target.reduce((a, b) => Math.min(a, b), 0)
-})
+}, 1)

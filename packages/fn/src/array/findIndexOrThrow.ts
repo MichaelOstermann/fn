@@ -1,5 +1,5 @@
 import type { ArrayPredicate } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { FnError } from "../function/FnError"
 
 /**
@@ -26,8 +26,8 @@ import { FnError } from "../function/FnError"
 export const findIndexOrThrow: {
     <T>(predicate: ArrayPredicate<T>): (target: readonly T[]) => number
     <T>(target: readonly T[], predicate: ArrayPredicate<T>): number
-} = dual(2, <T>(target: readonly T[], predicate: ArrayPredicate<T>): number => {
+} = dfdlT(<T>(target: readonly T[], predicate: ArrayPredicate<T>): number => {
     const idx = target.findIndex(predicate)
     if (idx < 0) throw new FnError("Array.findIndexOrThrow: No value found.", [target, predicate])
     return idx
-})
+}, 2)

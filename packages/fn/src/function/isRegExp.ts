@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isRegExp(target)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const isRegExp: {
     (): (target: unknown) => target is RegExp
     (target: unknown): target is RegExp
-} = dual(1, (target: unknown): target is RegExp => {
+} = dfdlT((target: unknown): target is RegExp => {
     return target instanceof RegExp
-})
+}, 1)

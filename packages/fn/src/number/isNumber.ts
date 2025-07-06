@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isNumber(target)`
@@ -26,6 +26,6 @@ import { dual } from "@monstermann/dfdl"
 export const isNumber: {
     (): (target: unknown) => target is number
     (target: unknown): target is number
-} = dual(1, (target: unknown): target is number => {
+} = dfdlT((target: unknown): target is number => {
     return typeof target === "number"
-})
+}, 1)

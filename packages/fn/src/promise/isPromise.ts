@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isPromise(target)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const isPromise: {
     (): (target: unknown) => target is Promise<unknown>
     (target: unknown): target is Promise<unknown>
-} = dual(1, (target: unknown): target is Promise<unknown> => {
+} = dfdlT((target: unknown): target is Promise<unknown> => {
     return target instanceof Promise
-})
+}, 1)

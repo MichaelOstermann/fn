@@ -1,5 +1,5 @@
 import type { ArrayPredicate, OrElse } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 import { is } from "../function/is"
 
@@ -34,7 +34,7 @@ export const findReplaceLastOrElse: {
 
     <T, U>(target: T[], predicate: ArrayPredicate<T>, replacement: NoInfer<T>, orElse: OrElse<T, U>): T[] | U
     <T, U>(target: readonly T[], predicate: ArrayPredicate<T>, replacement: NoInfer<T>, orElse: OrElse<T, U>): readonly T[] | U
-} = dual(4, <T, U>(target: T[], predicate: ArrayPredicate<T>, replacement: NoInfer<T>, orElse: OrElse<T, U>): T[] | U => {
+} = dfdlT(<T, U>(target: T[], predicate: ArrayPredicate<T>, replacement: NoInfer<T>, orElse: OrElse<T, U>): T[] | U => {
     const idx = target.findLastIndex(predicate)
     if (idx === -1) return orElse(target)
     const prev = target[idx]! as T
@@ -42,4 +42,4 @@ export const findReplaceLastOrElse: {
     const result = cloneArray(target)
     result.splice(idx, 1, replacement)
     return result
-})
+}, 4)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `parseInt(target)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const parseInt: {
     (): (target: string) => number
     (target: string): number
-} = dual(1, (target: string): number => {
+} = dfdlT((target: string): number => {
     return Number.parseInt(target)
-})
+}, 1)

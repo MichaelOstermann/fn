@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isBigInt(target)`
@@ -22,6 +22,6 @@ import { dual } from "@monstermann/dfdl"
 export const isBigInt: {
     (): (target: unknown) => target is bigint
     (target: unknown): target is bigint
-} = dual(1, (target: unknown): target is bigint => {
+} = dfdlT((target: unknown): target is bigint => {
     return typeof target === "bigint"
-})
+}, 1)

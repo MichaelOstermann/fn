@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isEmpty(target)`
@@ -18,8 +18,8 @@ import { dual } from "@monstermann/dfdl"
 export const isEmpty: {
     (): <T extends object>(target: T) => boolean
     <T extends object>(target: T): boolean
-} = dual(1, <T extends object>(target: T): boolean => {
+} = dfdlT(<T extends object>(target: T): boolean => {
     // eslint-disable-next-line no-unreachable-loop
     for (const _ in target) return false
     return true
-})
+}, 1)

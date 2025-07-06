@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `ifElse(predicate, onTrue, onFalse)`
@@ -38,7 +38,7 @@ export const ifElse: {
         onTrue: (value: NoInfer<T>) => A,
         onFalse: (value: NoInfer<T>) => B
     ): A | B
-} = dual(4, <T, A, B>(
+} = dfdlT(<T, A, B>(
     value: T,
     predicate: (value: T) => boolean,
     onTrue: (value: T) => A,
@@ -47,4 +47,4 @@ export const ifElse: {
     return predicate(value)
         ? onTrue(value)
         : onFalse(value)
-})
+}, 4)

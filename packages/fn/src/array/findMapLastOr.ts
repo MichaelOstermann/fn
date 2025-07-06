@@ -1,5 +1,5 @@
 import type { ArrayGuard, ArrayMap, ArrayPredicate } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 import { is } from "../function/is"
 
@@ -40,7 +40,7 @@ export const findMapLastOr: {
 
     <T, V>(target: T[], predicate: ArrayPredicate<T>, mapper: ArrayMap<T>, or: V): T[] | V
     <T, V>(target: readonly T[], predicate: ArrayPredicate<T>, mapper: ArrayMap<T>, or: V): readonly T[] | V
-} = dual(4, <T, V>(target: T[], predicate: ArrayPredicate<T>, mapper: ArrayMap<T>, or: V): T[] | V => {
+} = dfdlT(<T, V>(target: T[], predicate: ArrayPredicate<T>, mapper: ArrayMap<T>, or: V): T[] | V => {
     const idx = target.findLastIndex(predicate)
     if (idx === -1) return or
     const prev = target[idx]! as T
@@ -49,4 +49,4 @@ export const findMapLastOr: {
     const result = cloneArray(target)
     result.splice(idx, 1, next)
     return result
-})
+}, 4)

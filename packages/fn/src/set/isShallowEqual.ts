@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isShallowEqual(target, source)`
@@ -18,7 +18,7 @@ import { dual } from "@monstermann/dfdl"
 export const isShallowEqual: {
     <T>(source: ReadonlySet<NoInfer<T>>): (target: ReadonlySet<T>) => boolean
     <T>(target: ReadonlySet<T>, source: ReadonlySet<NoInfer<T>>): boolean
-} = dual(2, <T>(target: ReadonlySet<T>, source: ReadonlySet<NoInfer<T>>): boolean => {
+} = dfdlT(<T>(target: ReadonlySet<T>, source: ReadonlySet<NoInfer<T>>): boolean => {
     if (target.size !== source.size) return false
     for (const a of target) {
         if (!source.has(a)) return false
@@ -27,4 +27,4 @@ export const isShallowEqual: {
         if (!target.has(b)) return false
     }
     return true
-})
+}, 2)

@@ -1,5 +1,5 @@
 import type { NonNil } from "../internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isSome(value)`
@@ -15,6 +15,6 @@ import { dual } from "@monstermann/dfdl"
 export const isSome: {
     <T>(): (value: T) => value is NonNil<T>
     <T>(value: T): value is NonNil<T>
-} = dual(1, <T>(value: T): value is NonNil<T> => {
+} = dfdlT(<T>(value: T): value is NonNil<T> => {
     return value != null
-})
+}, 1)

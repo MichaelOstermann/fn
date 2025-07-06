@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `hasAll(target, source)`
@@ -16,9 +16,9 @@ import { dual } from "@monstermann/dfdl"
 export const hasAll: {
     (source: Iterable<string>): (target: string) => boolean
     (target: string, source: Iterable<string>): boolean
-} = dual(2, (target: string, source: Iterable<string>): boolean => {
+} = dfdlT((target: string, source: Iterable<string>): boolean => {
     for (const value of source) {
         if (!target.includes(value)) return false
     }
     return true
-})
+}, 2)

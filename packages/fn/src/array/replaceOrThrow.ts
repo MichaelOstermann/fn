@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 import { FnError } from "../function/FnError"
 import { is } from "../function/is"
@@ -24,11 +24,11 @@ export const replaceOrThrow: {
 
     <T>(target: T[], value: NoInfer<T>, replacement: NoInfer<T>): T[]
     <T>(target: readonly T[], value: NoInfer<T>, replacement: NoInfer<T>): readonly T[]
-} = dual(3, <T>(target: T[], value: NoInfer<T>, replacement: NoInfer<T>): T[] => {
+} = dfdlT(<T>(target: T[], value: NoInfer<T>, replacement: NoInfer<T>): T[] => {
     if (is(value, replacement)) return target
     const idx = target.indexOf(value)
     if (idx === -1) throw new FnError("Array.replaceOrThrow: Value not found.", [target, value, replacement])
     const result = cloneArray(target)
     result.splice(idx, 1, replacement)
     return result
-})
+}, 3)

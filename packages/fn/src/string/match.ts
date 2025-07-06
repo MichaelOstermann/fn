@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `match(target, source)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const match: {
     (source: string | RegExp): (target: string) => RegExpMatchArray | null
     (target: string, source: string | RegExp): RegExpMatchArray | null
-} = dual(2, (target: string, source: string | RegExp): RegExpMatchArray | null => {
+} = dfdlT((target: string, source: string | RegExp): RegExpMatchArray | null => {
     return target.match(source)
-})
+}, 2)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isBoolean(target)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const isBoolean: {
     (): (target: unknown) => target is boolean
     (target: unknown): target is boolean
-} = dual(1, (target: unknown): target is boolean => {
+} = dfdlT((target: unknown): target is boolean => {
     return typeof target === "boolean"
-})
+}, 1)

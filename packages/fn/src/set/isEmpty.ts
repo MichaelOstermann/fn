@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isEmpty(target)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const isEmpty: {
     (): <T extends ReadonlySet<unknown>>(target: T) => boolean
     <T extends ReadonlySet<unknown>>(target: T): boolean
-} = dual(1, <T extends ReadonlySet<unknown>>(target: T): boolean => {
+} = dfdlT(<T extends ReadonlySet<unknown>>(target: T): boolean => {
     return target.size === 0
-})
+}, 1)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `gt(target, source)`
@@ -20,6 +20,6 @@ import { dual } from "@monstermann/dfdl"
 export const gt: {
     (source: number): (target: number) => boolean
     (target: number, source: number): boolean
-} = dual(2, (a: number, b: number): boolean => {
+} = dfdlT((a: number, b: number): boolean => {
     return a > b
-})
+}, 2)

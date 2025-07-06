@@ -152,7 +152,8 @@ export const modules = {
     ],
     function: [
         "FnError",
-        "dual",
+        "dfdlT",
+        "dfdl",
         "flow",
         "ifElse",
         "invoke",

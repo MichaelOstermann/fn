@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isEmpty(map)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const isEmpty: {
     (): <T, U>(target: ReadonlyMap<T, U>) => boolean
     <T, U>(target: ReadonlyMap<T, U>): boolean
-} = dual(1, <T, U>(target: ReadonlyMap<T, U>): boolean => {
+} = dfdlT(<T, U>(target: ReadonlyMap<T, U>): boolean => {
     return target.size === 0
-})
+}, 1)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `parseFloat(target)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const parseFloat: {
     (): (target: string) => number
     (target: string): number
-} = dual(1, (target: string): number => {
+} = dfdlT((target: string): number => {
     return Number.parseFloat(target)
-})
+}, 1)

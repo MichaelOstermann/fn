@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 
 /**
@@ -25,6 +25,6 @@ import { cloneArray } from "@monstermann/remmi"
 export const sort: {
     <T>(comparator: (a: NoInfer<T>, b: NoInfer<T>) => number): (target: readonly T[]) => T[]
     <T>(target: readonly T[], comparator: (a: NoInfer<T>, b: NoInfer<T>) => number): T[]
-} = dual(2, <T>(target: readonly T[], comparator: (a: NoInfer<T>, b: NoInfer<T>) => number): T[] => {
+} = dfdlT(<T>(target: readonly T[], comparator: (a: NoInfer<T>, b: NoInfer<T>) => number): T[] => {
     return cloneArray(target).sort(comparator)
-})
+}, 2)

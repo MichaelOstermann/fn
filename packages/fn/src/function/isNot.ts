@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { is } from "./is"
 
 /**
@@ -19,6 +19,6 @@ import { is } from "./is"
 export const isNot: {
     <T, U extends T>(source: U): (target: T) => target is Exclude<T, U>
     <T, U extends T>(target: T, source: U): target is Exclude<T, U>
-} = dual(2, <T, U extends T>(target: T, source: U): target is Exclude<T, U> => {
+} = dfdlT(<T, U extends T>(target: T, source: U): target is Exclude<T, U> => {
     return !is(target, source)
-})
+}, 2)

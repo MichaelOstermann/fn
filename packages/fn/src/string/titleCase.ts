@@ -1,5 +1,5 @@
 import type { TitleCase } from "string-ts"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { titleCase as apply } from "string-ts"
 
 /**
@@ -20,6 +20,6 @@ import { titleCase as apply } from "string-ts"
 export const titleCase: {
     (): <T extends string>(target: T) => TitleCase<T>
     <T extends string>(target: T): TitleCase<T>
-} = dual(1, <T extends string>(target: T): TitleCase<T> => {
+} = dfdlT(<T extends string>(target: T): TitleCase<T> => {
     return apply(target)
-})
+}, 1)

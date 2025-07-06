@@ -1,5 +1,5 @@
 import type { ArrayGuard, ArrayPredicate } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `every(array, predicate)`
@@ -25,6 +25,6 @@ export const every: {
     <T>(predicate: ArrayPredicate<T>): (target: readonly T[]) => boolean
     <T, U extends T>(target: readonly T[], predicate: ArrayGuard<T, U>): target is U[]
     <T>(target: readonly T[], predicate: ArrayPredicate<T>): boolean
-} = dual(2, <T, U extends T>(target: readonly T[], predicate: ArrayGuard<T, U>): target is U[] => {
+} = dfdlT(<T, U extends T>(target: readonly T[], predicate: ArrayGuard<T, U>): target is U[] => {
     return target.every(predicate)
-})
+}, 2)

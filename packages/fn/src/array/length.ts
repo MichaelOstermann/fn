@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `length(array)`
@@ -16,6 +16,6 @@ import { dual } from "@monstermann/dfdl"
 export const length: {
     (): <T>(target: readonly T[]) => number
     <T>(target: readonly T[]): number
-} = dual(1, <T>(target: readonly T[]): number => {
+} = dfdlT(<T>(target: readonly T[]): number => {
     return target.length
-})
+}, 1)

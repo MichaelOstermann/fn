@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { markAsMutable } from "@monstermann/remmi"
 
 /**
@@ -20,7 +20,7 @@ export const insertAllAt: {
 
     <T>(target: T[], idx: number, values: Iterable<NoInfer<T>>): T[]
     <T>(target: readonly T[], idx: number, values: Iterable<NoInfer<T>>): readonly T[]
-} = dual(3, <T>(target: T[], idx: number, values: Iterable<NoInfer<T>>): T[] => {
+} = dfdlT(<T>(target: T[], idx: number, values: Iterable<NoInfer<T>>): T[] => {
     if (idx < 0 || idx > target.length) return target
     const vs = Array.from(values)
     const bLen = vs.length
@@ -34,4 +34,4 @@ export const insertAllAt: {
         result[idx + i] = vs[i]
     }
     return markAsMutable(result)
-})
+}, 3)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `mapEach(target, fn)`
@@ -28,7 +28,7 @@ export const mapEach: {
 
     <T, U>(target: Set<T>, fn: (value: NoInfer<T>, target: ReadonlySet<NoInfer<T>>) => U): Set<U>
     <T, U>(target: ReadonlySet<T>, fn: (value: NoInfer<T>, target: ReadonlySet<NoInfer<T>>) => U): ReadonlySet<U>
-} = dual(2, (target: any, fn: any): any => {
+} = dfdlT((target: any, fn: any): any => {
     let hasChanges = false
     const result = new Set()
     for (const prev of target) {
@@ -37,4 +37,4 @@ export const mapEach: {
         result.add(next)
     }
     return hasChanges ? result : target
-})
+}, 2)

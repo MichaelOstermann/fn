@@ -1,6 +1,6 @@
 import type { NonNil } from "../internals/types"
 import type { ArrayGuard, ArrayPredicate } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { FnError } from "../function/FnError"
 
 /**
@@ -24,8 +24,8 @@ export const findOrThrow: {
     <T>(predicate: ArrayPredicate<T>): (target: readonly T[]) => NonNil<T>
     <T, U extends T>(target: readonly T[], predicate: ArrayGuard<T, U>): NonNil<U>
     <T>(target: readonly T[], predicate: ArrayPredicate<T>): NonNil<T>
-} = dual(2, <T>(target: readonly T[], predicate: ArrayPredicate<T>): any => {
+} = dfdlT(<T>(target: readonly T[], predicate: ArrayPredicate<T>): any => {
     const value = target.find(predicate)
     if (value != null) return value
     throw new FnError("Array.findOrThrow: Value not found.", [target, predicate])
-})
+}, 2)

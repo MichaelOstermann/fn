@@ -1,5 +1,5 @@
 import type { OrElse } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `randomOrElse(array, callback)`
@@ -20,8 +20,8 @@ import { dual } from "@monstermann/dfdl"
 export const randomOrElse: {
     <T, U>(orElse: OrElse<T, U>): (target: readonly T[]) => T | U
     <T, U>(target: readonly T[], orElse: OrElse<T, U>): T | U
-} = dual(2, <T, U>(target: readonly T[], orElse: OrElse<T, U>): T | U => {
+} = dfdlT(<T, U>(target: readonly T[], orElse: OrElse<T, U>): T | U => {
     if (target.length === 0) return orElse(target)
     const idx = Math.floor(Math.random() * target.length)
     return target[idx]!
-})
+}, 2)

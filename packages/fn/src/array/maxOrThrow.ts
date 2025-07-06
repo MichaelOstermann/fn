@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { FnError } from "../function/FnError"
 
 /**
@@ -19,7 +19,7 @@ import { FnError } from "../function/FnError"
 export const maxOrThrow: {
     (): (target: readonly number[]) => number
     (target: readonly number[]): number
-} = dual(1, (target: readonly number[]): number => {
+} = dfdlT((target: readonly number[]): number => {
     if (target.length === 0) throw new FnError("Array.maxOrThrow: Target is empty.", [target])
     return target.reduce((a, b) => Math.max(a, b), 0)
-})
+}, 1)

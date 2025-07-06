@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `tap(fn)`
@@ -19,7 +19,7 @@ import { dual } from "@monstermann/dfdl"
 export const tap: {
     <T>(fn: (value: NoInfer<T>) => any): (target: T) => T
     <T>(target: T, fn: (value: NoInfer<T>) => any): T
-} = dual(2, <T>(target: T, fn: (value: NoInfer<T>) => any): T => {
+} = dfdlT(<T>(target: T, fn: (value: NoInfer<T>) => any): T => {
     fn(target)
     return target
-})
+}, 2)

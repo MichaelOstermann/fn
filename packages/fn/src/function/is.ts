@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `is(source)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const is: {
     <T, U extends T>(source: U): (target: T) => target is U
     <T, U extends T>(target: T, source: U): target is U
-} = dual(2, <T, U extends T>(target: T, source: U): target is U => {
+} = dfdlT(<T, U extends T>(target: T, source: U): target is U => {
     return target === source || Object.is(target, source)
-})
+}, 2)

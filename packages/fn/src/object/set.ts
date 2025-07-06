@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneObject } from "@monstermann/remmi"
 import { is } from "../function/is"
 
@@ -18,9 +18,9 @@ import { is } from "../function/is"
 export const set: {
     <T extends object, K extends keyof T>(key: K, value: T[K]): (target: T) => T
     <T extends object, K extends keyof T>(target: T, key: K, value: T[K]): T
-} = dual(3, (target: any, key: any, value: any): any => {
+} = dfdlT((target: any, key: any, value: any): any => {
     if (is(target[key], value)) return target
     target = cloneObject(target)
     target[key] = value
     return target
-})
+}, 3)

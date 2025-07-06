@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 
 /**
@@ -17,8 +17,8 @@ import { cloneArray } from "@monstermann/remmi"
 export const prepend: {
     <T>(value: NoInfer<T>): (target: readonly T[]) => T[]
     <T>(target: readonly T[], value: NoInfer<T>): T[]
-} = dual(2, <T>(target: readonly T[], value: NoInfer<T>): T[] => {
+} = dfdlT(<T>(target: readonly T[], value: NoInfer<T>): T[] => {
     const clone = cloneArray(target)
     clone.unshift(value)
     return clone
-})
+}, 2)

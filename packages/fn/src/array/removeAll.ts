@@ -1,5 +1,5 @@
 import type { IsLiteral } from "../internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 import { addRange, createRange, hasRange, spliceRange } from "./internals/range"
 
@@ -22,7 +22,7 @@ export const removeAll: {
 
     <T, const U extends T>(target: T[], values: Iterable<U>): IsLiteral<U> extends true ? Exclude<T, U>[] : T[]
     <T, const U extends T>(target: readonly T[], values: Iterable<U>): IsLiteral<U> extends true ? readonly Exclude<T, U>[] : readonly T[]
-} = dual(2, (target: any, values: any): any => {
+} = dfdlT((target: any, values: any): any => {
     const range = createRange()
 
     for (const value of values) {
@@ -39,4 +39,4 @@ export const removeAll: {
     }
 
     return target
-})
+}, 2)

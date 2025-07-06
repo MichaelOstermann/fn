@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `hasNone(array, values)`
@@ -16,9 +16,9 @@ import { dual } from "@monstermann/dfdl"
 export const hasNone: {
     <T, U extends T>(values: Iterable<U>): (target: readonly T[]) => target is Exclude<T, U>[]
     <T, U extends T>(target: readonly T[], values: Iterable<U>): target is Exclude<T, U>[]
-} = dual(2, <T, U extends T>(target: readonly T[], values: Iterable<U>): target is Exclude<T, U>[] => {
+} = dfdlT(<T, U extends T>(target: readonly T[], values: Iterable<U>): target is Exclude<T, U>[] => {
     for (const value of values) {
         if (target.includes(value)) return false
     }
     return true
-})
+}, 2)

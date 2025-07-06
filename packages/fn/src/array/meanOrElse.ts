@@ -1,5 +1,5 @@
 import type { OrElse } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `meanOrElse(array, orElse)`
@@ -25,7 +25,7 @@ import { dual } from "@monstermann/dfdl"
 export const meanOrElse: {
     <T>(orElse: OrElse<number, T>): (target: readonly number[]) => number | T
     <T>(target: readonly number[], orElse: OrElse<number, T>): number | T
-} = dual(2, <T>(target: readonly number[], orElse: OrElse<number, T>): number | T => {
+} = dfdlT(<T>(target: readonly number[], orElse: OrElse<number, T>): number | T => {
     if (target.length === 0) return orElse(target)
     return target.reduce((acc, val) => acc + val, 0) / target.length
-})
+}, 2)

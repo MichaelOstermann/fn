@@ -1,5 +1,5 @@
 import type { DistributedPick, KeysOfUnion } from "type-fest"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { markAsMutable } from "@monstermann/remmi"
 
 /**
@@ -18,9 +18,9 @@ import { markAsMutable } from "@monstermann/remmi"
 export const pick: {
     <T extends object, K extends KeysOfUnion<T>>(keys: Iterable<K>): (target: T) => DistributedPick<T, K>
     <T extends object, K extends KeysOfUnion<T>>(target: T, keys: Iterable<K>): DistributedPick<T, K>
-} = dual(2, (target: any, keys: any): any => {
+} = dfdlT((target: any, keys: any): any => {
     const result: any = {}
     for (const key of keys)
         result[key] = target[key]
     return markAsMutable(result)
-})
+}, 2)

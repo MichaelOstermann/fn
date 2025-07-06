@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `then(target, onResolved)`
@@ -19,6 +19,6 @@ import { dual } from "@monstermann/dfdl"
 export const then: {
     <T, U>(onResolved: (value: NoInfer<T>) => U | PromiseLike<U>): (target: Promise<T>) => Promise<U>
     <T, U>(target: Promise<T>, onResolved: (value: NoInfer<T>) => U | PromiseLike<U>): Promise<U>
-} = dual(2, <T, U>(target: Promise<T>, onResolved: (value: NoInfer<T>) => U | PromiseLike<U>): Promise<U> => {
+} = dfdlT(<T, U>(target: Promise<T>, onResolved: (value: NoInfer<T>) => U | PromiseLike<U>): Promise<U> => {
     return target.then(onResolved)
-})
+}, 2)

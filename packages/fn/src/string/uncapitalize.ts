@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { uncapitalize as apply } from "string-ts"
 
 /**
@@ -19,6 +19,6 @@ import { uncapitalize as apply } from "string-ts"
 export const uncapitalize: {
     (): <T extends string>(target: T) => Uncapitalize<T>
     <T extends string>(target: T): Uncapitalize<T>
-} = dual(1, <T extends string>(target: T): Uncapitalize<T> => {
+} = dfdlT(<T extends string>(target: T): Uncapitalize<T> => {
     return apply(target)
-})
+}, 1)

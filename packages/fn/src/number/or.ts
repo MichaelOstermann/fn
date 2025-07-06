@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `or(target, or)`
@@ -22,8 +22,8 @@ import { dual } from "@monstermann/dfdl"
 export const or: {
     <U>(or: U): <T>(target: T) => Extract<T, number> | U
     <T, U>(target: T, or: U): Extract<T, number> | U
-} = dual(2, <T, U>(target: T, or: U): Extract<T, number> | U => {
+} = dfdlT(<T, U>(target: T, or: U): Extract<T, number> | U => {
     return Number.isFinite(target)
         ? target as Extract<T, number>
         : or
-})
+}, 2)

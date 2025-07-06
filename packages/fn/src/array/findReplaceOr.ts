@@ -1,5 +1,5 @@
 import type { ArrayPredicate } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 import { is } from "../function/is"
 
@@ -25,7 +25,7 @@ export const findReplaceOr: {
 
     <T, U>(target: T[], predicate: ArrayPredicate<T>, replacement: NoInfer<T>, or: U): T[] | U
     <T, U>(target: readonly T[], predicate: ArrayPredicate<T>, replacement: NoInfer<T>, or: U): readonly T[] | U
-} = dual(4, <T, U>(target: T[], predicate: ArrayPredicate<T>, replacement: NoInfer<T>, or: U): T[] | U => {
+} = dfdlT(<T, U>(target: T[], predicate: ArrayPredicate<T>, replacement: NoInfer<T>, or: U): T[] | U => {
     const idx = target.findIndex(predicate)
     if (idx === -1) return or
     const prev = target[idx]! as T
@@ -33,4 +33,4 @@ export const findReplaceOr: {
     const result = cloneArray(target)
     result.splice(idx, 1, replacement)
     return result
-})
+}, 4)

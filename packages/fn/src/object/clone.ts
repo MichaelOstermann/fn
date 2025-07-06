@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneObject } from "@monstermann/remmi"
 
 /**
@@ -19,4 +19,4 @@ import { cloneObject } from "@monstermann/remmi"
 export const clone: {
     (): <T extends object>(target: T) => T
     <T extends object>(target: T): T
-} = dual(1, cloneObject)
+} = dfdlT(cloneObject, 1)

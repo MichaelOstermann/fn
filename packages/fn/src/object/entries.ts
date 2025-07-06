@@ -1,5 +1,5 @@
 import type { Entries } from "type-fest"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `entries(target)`
@@ -17,6 +17,6 @@ import { dual } from "@monstermann/dfdl"
 export const entries: {
     (): <T extends object>(target: T) => Entries<T>
     <T extends object>(target: T): Entries<T>
-} = dual(1, <T extends object>(target: T): any => {
+} = dfdlT(<T extends object>(target: T): any => {
     return Object.entries(target)
-})
+}, 1)

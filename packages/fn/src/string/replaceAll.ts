@@ -1,5 +1,5 @@
 import type { ReplaceAll } from "string-ts"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `replaceAll(target, search, replace)`
@@ -19,6 +19,6 @@ import { dual } from "@monstermann/dfdl"
 export const replaceAll: {
     <U extends string | RegExp, V extends string>(search: U, replacement: V): <T extends string>(target: T) => ReplaceAll<T, U, V>
     <T extends string, U extends string | RegExp, V extends string>(target: T, search: U, replacement: V): ReplaceAll<T, U, V>
-} = dual(3, <T extends string, U extends string | RegExp, V extends string>(target: T, search: U, replacement: V): ReplaceAll<T, U, V> => {
+} = dfdlT(<T extends string, U extends string | RegExp, V extends string>(target: T, search: U, replacement: V): ReplaceAll<T, U, V> => {
     return target.replaceAll(search, replacement) as ReplaceAll<T, U, V>
-})
+}, 3)

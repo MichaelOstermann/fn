@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `not(predicate)`
@@ -28,6 +28,6 @@ export const not: {
 
     <T, U extends T>(target: T, predicate: (value: NoInfer<T>) => value is U): target is Exclude<T, U>
     <T>(target: T, predicate: (value: NoInfer<T>) => boolean): boolean
-} = dual(2, <T, U extends T>(target: T, predicate: (value: NoInfer<T>) => T): target is Exclude<T, U> => {
+} = dfdlT(<T, U extends T>(target: T, predicate: (value: NoInfer<T>) => T): target is Exclude<T, U> => {
     return !predicate(target)
-})
+}, 2)

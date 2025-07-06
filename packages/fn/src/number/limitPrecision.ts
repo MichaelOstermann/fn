@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `limitPrecision(target, precision)`
@@ -20,7 +20,7 @@ import { dual } from "@monstermann/dfdl"
 export const limitPrecision: {
     (precision: number): (target: number) => number
     (target: number, precision: number): number
-} = dual(2, (target: number, precision: number): number => {
+} = dfdlT((target: number, precision: number): number => {
     precision = 10 ** precision
     return Math.round(target * precision) / precision
-})
+}, 2)

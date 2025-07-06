@@ -1,5 +1,5 @@
 import type { SnakeCase } from "string-ts"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { snakeCase as apply } from "string-ts"
 
 /**
@@ -20,6 +20,6 @@ import { snakeCase as apply } from "string-ts"
 export const snakeCase: {
     (): <T extends string>(target: T) => SnakeCase<T>
     <T extends string>(target: T): SnakeCase<T>
-} = dual(1, <T extends string>(target: T): SnakeCase<T> => {
+} = dfdlT(<T extends string>(target: T): SnakeCase<T> => {
     return apply(target)
-})
+}, 1)

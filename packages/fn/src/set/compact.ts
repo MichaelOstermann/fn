@@ -1,5 +1,5 @@
 import type { NonNil } from "../internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneSet } from "@monstermann/remmi"
 
 /**
@@ -23,10 +23,10 @@ export const compact: {
 
     <T>(target: Set<T>): Set<NonNil<T>>
     <T>(target: ReadonlySet<T>): ReadonlySet<NonNil<T>>
-} = dual(1, (target: any): any => {
+} = dfdlT((target: any): any => {
     if (!target.has(null) && !target.has(undefined)) return target
     target = cloneSet(target)
     target.delete(null)
     target.delete(undefined)
     return target
-})
+}, 1)

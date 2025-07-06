@@ -1,5 +1,5 @@
 import type { Merge } from "type-fest"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { merge } from "./merge"
 
 /**
@@ -23,6 +23,6 @@ import { merge } from "./merge"
 export const mapAssign: {
     <T extends object, U extends object>(map: (target: NoInfer<T>) => U): (target: T) => T extends unknown ? Merge<T, U> : never
     <T extends object, U extends object>(target: T, map: (target: NoInfer<T>) => U): T extends unknown ? Merge<T, U> : never
-} = dual(2, (target: any, map: any): any => {
+} = dfdlT((target: any, map: any): any => {
     return merge(target, map(target))
-})
+}, 2)

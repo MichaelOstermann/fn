@@ -1,5 +1,5 @@
 import type { Reverse } from "string-ts"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { reverse as apply } from "string-ts"
 
 /**
@@ -20,6 +20,6 @@ import { reverse as apply } from "string-ts"
 export const reverse: {
     (): <T extends string>(target: T) => Reverse<T>
     <T extends string>(target: T): Reverse<T>
-} = dual(1, <T extends string>(target: T): Reverse<T> => {
+} = dfdlT(<T extends string>(target: T): Reverse<T> => {
     return apply(target)
-})
+}, 1)

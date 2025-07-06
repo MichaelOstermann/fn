@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { merge } from "./merge"
 
 /**
@@ -20,6 +20,6 @@ import { merge } from "./merge"
 export const mapMerge: {
     <T extends object>(map: (target: NoInfer<T>) => Partial<NoInfer<T>>): (target: T) => T
     <T extends object>(target: T, map: (target: NoInfer<T>) => Partial<NoInfer<T>>): T
-} = dual(2, <T extends object>(target: T, map: (target: NoInfer<T>) => Partial<NoInfer<T>>): T => {
+} = dfdlT(<T extends object>(target: T, map: (target: NoInfer<T>) => Partial<NoInfer<T>>): T => {
     return merge(target, map(target))
-})
+}, 2)

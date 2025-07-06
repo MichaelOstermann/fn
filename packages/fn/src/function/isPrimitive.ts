@@ -1,5 +1,5 @@
 import type { Primitive } from "type-fest"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isPrimitive(value)`
@@ -21,10 +21,10 @@ import { dual } from "@monstermann/dfdl"
 export const isPrimitive: {
     (): (value: unknown) => value is Primitive
     (value: unknown): value is Primitive
-} = dual(1, (value: unknown): value is Primitive => {
+} = dfdlT((value: unknown): value is Primitive => {
     if (value == null) return true
     const t = typeof value
     if (t === "object") return false
     if (t === "function") return false
     return true
-})
+}, 1)

@@ -1,5 +1,5 @@
 import type { ConstantCase } from "string-ts"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { constantCase as apply } from "string-ts"
 
 /**
@@ -20,6 +20,6 @@ import { constantCase as apply } from "string-ts"
 export const constantCase: {
     (): <T extends string>(target: T) => ConstantCase<T>
     <T extends string>(target: T): ConstantCase<T>
-} = dual(1, <T extends string>(target: T): ConstantCase<T> => {
+} = dfdlT(<T extends string>(target: T): ConstantCase<T> => {
     return apply(target)
-})
+}, 1)

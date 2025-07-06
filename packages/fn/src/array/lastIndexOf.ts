@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `lastIndexOf(array, value)`
@@ -16,6 +16,6 @@ import { dual } from "@monstermann/dfdl"
 export const lastIndexOf: {
     <T>(value: NoInfer<T>): (target: readonly T[]) => number
     <T>(target: readonly T[], value: NoInfer<T>): number
-} = dual(2, <T>(target: readonly T[], value: NoInfer<T>): number => {
+} = dfdlT(<T>(target: readonly T[], value: NoInfer<T>): number => {
     return target.lastIndexOf(value)
-})
+}, 2)

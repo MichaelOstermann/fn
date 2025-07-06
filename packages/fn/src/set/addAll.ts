@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneSet } from "@monstermann/remmi"
 
 /**
@@ -22,7 +22,7 @@ export const addAll: {
 
     <T>(target: Set<T>, values: Iterable<NoInfer<T>>): Set<T>
     <T>(target: ReadonlySet<T>, values: Iterable<NoInfer<T>>): ReadonlySet<T>
-} = dual(2, <T>(target: Set<T>, values: Iterable<NoInfer<T>>): Set<T> => {
+} = dfdlT(<T>(target: Set<T>, values: Iterable<NoInfer<T>>): Set<T> => {
     let result
     for (const value of values) {
         if (target.has(value)) continue
@@ -30,4 +30,4 @@ export const addAll: {
         result.add(value)
     }
     return result ?? target
-})
+}, 2)

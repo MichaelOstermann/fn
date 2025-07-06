@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 
 /**
@@ -20,7 +20,7 @@ export const union: {
 
     <T>(target: T[], source: Iterable<NoInfer<T>>): T[]
     <T>(target: readonly T[], source: Iterable<NoInfer<T>>): readonly T[]
-} = dual(2, <T>(target: T[], source: Iterable<NoInfer<T>>): T[] => {
+} = dfdlT(<T>(target: T[], source: Iterable<NoInfer<T>>): T[] => {
     let result: T[] | undefined
     for (const item of source) {
         if (!target.includes(item)) {
@@ -29,4 +29,4 @@ export const union: {
         }
     }
     return result ?? target
-})
+}, 2)

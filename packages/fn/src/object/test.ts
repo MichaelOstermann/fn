@@ -1,5 +1,5 @@
 import type { AllUnionFields, Simplify } from "type-fest"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 type Test<T extends object, U, V> = T extends unknown
     ? U extends keyof T
@@ -53,6 +53,6 @@ export const test: {
         key: U,
         predicate: (value: AllUnionFields<T>[U]) => boolean
     ): target is Test<T, U, AllUnionFields<T>[U]>
-} = dual(3, (target: any, key: any, predicate: any): target is any => {
+} = dfdlT((target: any, key: any, predicate: any): target is any => {
     return predicate(target[key])
-})
+}, 3)

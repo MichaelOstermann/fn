@@ -1,5 +1,5 @@
 import type { Split } from "string-ts"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `split(target, source)`
@@ -21,6 +21,6 @@ export const split: {
     <U extends RegExp>(delimiter: U): <T extends string>(target: T) => string[]
     <T extends string, U extends string>(target: T, delimiter: U): Split<T, U>
     <T extends string, U extends RegExp>(target: T, delimiter: U): string[]
-} = dual(2, <T extends string, U extends string | RegExp>(target: T, delimiter: U): string[] => {
+} = dfdlT(<T extends string, U extends string | RegExp>(target: T, delimiter: U): string[] => {
     return target.split(delimiter)
-})
+}, 2)

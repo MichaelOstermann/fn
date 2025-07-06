@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `toString(target)`
@@ -22,6 +22,6 @@ import { dual } from "@monstermann/dfdl"
 export const toString: {
     (): (target: number) => string
     (target: number): string
-} = dual(1, (target: number): string => {
+} = dfdlT((target: number): string => {
     return String(target)
-})
+}, 1)

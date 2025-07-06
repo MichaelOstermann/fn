@@ -1,11 +1,20 @@
-# flow
+### flow
 
-A dataLast version of `pipe` that could be used to provide more complex
-computations to functions that accept a function as a param (like `map`,
-`filter`, `groupBy`, etc.).
+`flow(...fns)(input)`
+
+A data-last version of `pipe` for use with functions that accept a function parameter (like `map`, `filter`, etc.).
 
 ```ts
+import { flow, pipe } from "@monstermann/dfdl";
+
 const increment = (x: number) => x + 1;
 const double = (x: number) => x * 2;
-[1, 2, 3, 4].map(flow(increment, double)); // => [4, 6, 8, 10]
+
+flow(increment, double)(1); // 4
+
+[1, 2, 3, 4].map(flow(increment, double)); // [4, 6, 8, 10]
+
+// In comparison, `pipe` can feel too verbose:
+
+[1, 2, 3, 4].map((num) => pipe(num, increment, double)); // [4, 6, 8, 10]
 ```

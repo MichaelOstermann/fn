@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `toFixed(target, length)`
@@ -20,6 +20,6 @@ import { dual } from "@monstermann/dfdl"
 export const toFixed: {
     (length: number): (target: number) => string
     (target: number, length: number): string
-} = dual(2, (target: number, length: number): string => {
+} = dfdlT((target: number, length: number): string => {
     return target.toFixed(length)
-})
+}, 2)

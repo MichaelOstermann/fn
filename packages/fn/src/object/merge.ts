@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { isMutable, markAsMutable } from "@monstermann/remmi"
 
 /**
@@ -17,7 +17,7 @@ import { isMutable, markAsMutable } from "@monstermann/remmi"
 export const merge: {
     <T extends object>(source: Partial<NoInfer<T>>): (target: T) => T
     <T extends object>(target: T, source: Partial<NoInfer<T>>): T
-} = dual(2, <T extends object>(target: T, source: Partial<NoInfer<T>>): T => {
+} = dfdlT(<T extends object>(target: T, source: Partial<NoInfer<T>>): T => {
     for (const key in source) {
         if (target[key as keyof T] !== source[key as keyof T]) {
             if (isMutable(target)) return Object.assign(target, source)
@@ -25,4 +25,4 @@ export const merge: {
         }
     }
     return target
-})
+}, 2)

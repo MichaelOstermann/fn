@@ -1,6 +1,6 @@
 import type { NonNil } from "../internals/types"
 import type { ArrayGuard, ArrayPredicate, OrElse } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `findOrElse(array, predicate, callback)`
@@ -30,6 +30,6 @@ export const findOrElse: {
     <T, V>(predicate: ArrayPredicate<T>, orElse: OrElse<T, V>): (target: readonly T[]) => NonNil<T> | V
     <T, U extends T, V>(target: readonly T[], predicate: ArrayGuard<T, U>, orElse: OrElse<Exclude<T, U>, V>): NonNil<U> | V
     <T, V>(target: readonly T[], predicate: ArrayPredicate<T>, orElse: OrElse<T, V>): NonNil<T> | V
-} = dual(3, <T, V>(target: readonly T[], predicate: ArrayPredicate<T>, orElse: OrElse<T, V>): any => {
+} = dfdlT(<T, V>(target: readonly T[], predicate: ArrayPredicate<T>, orElse: OrElse<T, V>): any => {
     return target.find(predicate) ?? orElse(target)
-})
+}, 3)

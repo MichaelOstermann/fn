@@ -1,5 +1,5 @@
 import type { NonNil } from "../internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { FnError } from "../function/FnError"
 
 /**
@@ -22,7 +22,7 @@ import { FnError } from "../function/FnError"
 export const orThrow: {
     <T>(): (target: T) => NonNil<T>
     <T>(target: T): NonNil<T>
-} = dual(1, (target: any): any => {
+} = dfdlT((target: any): any => {
     if (target != null) return target
     throw new FnError("Nullable.orThrow: Value was nullable.", [target])
-})
+}, 1)

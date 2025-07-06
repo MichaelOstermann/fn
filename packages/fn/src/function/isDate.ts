@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isDate(target)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const isDate: {
     (): (target: unknown) => target is Date
     (target: unknown): target is Date
-} = dual(1, (target: unknown): target is Date => {
+} = dfdlT((target: unknown): target is Date => {
     return target instanceof Date
-})
+}, 1)

@@ -1,4 +1,5 @@
-export * from "./dual"
+export * from "./dfdl"
+export * from "./dfdlT"
 export * from "./flow"
 export * from "./FnError"
 export * from "./ifElse"

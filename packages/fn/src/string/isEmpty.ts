@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isEmpty(target)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const isEmpty: {
     (): (target: string) => boolean
     (target: string): boolean
-} = dual(1, (target: string): boolean => {
+} = dfdlT((target: string): boolean => {
     return target === ""
-})
+}, 1)

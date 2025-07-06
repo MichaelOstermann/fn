@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isSet(target)`
@@ -20,6 +20,6 @@ import { dual } from "@monstermann/dfdl"
 export const isSet: {
     (): (target: unknown) => target is Set<unknown>
     (target: unknown): target is Set<unknown>
-} = dual(1, (target: unknown): target is Set<unknown> => {
+} = dfdlT((target: unknown): target is Set<unknown> => {
     return target instanceof Set
-})
+}, 1)

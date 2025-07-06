@@ -1,5 +1,5 @@
 import type { PascalCase } from "string-ts"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { pascalCase as apply } from "string-ts"
 
 /**
@@ -20,6 +20,6 @@ import { pascalCase as apply } from "string-ts"
 export const pascalCase: {
     (): <T extends string>(target: T) => PascalCase<T>
     <T extends string>(target: T): PascalCase<T>
-} = dual(1, <T extends string>(target: T): PascalCase<T> => {
+} = dfdlT(<T extends string>(target: T): PascalCase<T> => {
     return apply(target)
-})
+}, 1)

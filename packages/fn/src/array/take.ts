@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray, markAsMutable } from "@monstermann/remmi"
 
 /**
@@ -20,10 +20,10 @@ export const take: {
 
     <T>(target: T[], amount: number): T[]
     <T>(target: readonly T[], amount: number): readonly T[]
-} = dual(2, <T>(target: T[], amount: number): T[] => {
+} = dfdlT(<T>(target: T[], amount: number): T[] => {
     if (!Number.isInteger(amount) || target.length <= amount) return target
     if (amount <= 0) return markAsMutable([])
     target = cloneArray(target)
     target.splice(amount, target.length - amount)
     return target
-})
+}, 2)

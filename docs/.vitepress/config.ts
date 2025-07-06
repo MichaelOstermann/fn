@@ -460,7 +460,8 @@ export default defineConfig({
                         collapsed: true,
                         text: "Function",
                         items: [
-                            { link: "dual", text: "dual" },
+                            { link: "dfdl", text: "dfdl" },
+                            { link: "dfdlT", text: "dfdlT" },
                             { link: "flow", text: "flow" },
                             { link: "FnError", text: "FnError" },
                             { link: "ifElse", text: "ifElse" },

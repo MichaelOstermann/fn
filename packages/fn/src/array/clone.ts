@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 
 /**
@@ -17,4 +17,4 @@ import { cloneArray } from "@monstermann/remmi"
 export const clone: {
     (): <T>(target: readonly T[]) => T[]
     <T>(target: readonly T[]): T[]
-} = dual(1, cloneArray)
+} = dfdlT(cloneArray, 1)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isObject(target)`
@@ -22,8 +22,8 @@ import { dual } from "@monstermann/dfdl"
 export const isObject: {
     (): (target: unknown) => target is Record<PropertyKey, unknown>
     (target: unknown): target is Record<PropertyKey, unknown>
-} = dual(1, (target: unknown): target is Record<PropertyKey, unknown> => {
+} = dfdlT((target: unknown): target is Record<PropertyKey, unknown> => {
     if (typeof target !== "object" || target === null) return false
     const proto = Object.getPrototypeOf(target)
     return proto === null || proto === Object.prototype
-})
+}, 1)

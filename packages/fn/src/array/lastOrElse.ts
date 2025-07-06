@@ -1,6 +1,6 @@
 import type { NonNil } from "../internals/types"
 import type { OrElse } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `lastOrElse(array, callback)`
@@ -21,6 +21,6 @@ import { dual } from "@monstermann/dfdl"
 export const lastOrElse: {
     <T, U>(orElse: OrElse<T, U>): (target: readonly T[]) => NonNil<T> | U
     <T, U>(target: readonly T[], orElse: OrElse<T, U>): NonNil<T> | U
-} = dual(2, <T, U>(target: readonly T[], orElse: OrElse<T, U>): any => {
+} = dfdlT(<T, U>(target: readonly T[], orElse: OrElse<T, U>): any => {
     return target.at(-1) ?? orElse(target)
-})
+}, 2)

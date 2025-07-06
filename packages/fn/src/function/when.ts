@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `when(predicate, onTrue)`
@@ -59,7 +59,7 @@ export const when: {
         predicate: (value: NoInfer<T>) => boolean,
         onTrue: (value: NoInfer<T>) => V
     ): T | V
-} = dual(3, <T, V>(
+} = dfdlT(<T, V>(
     value: T,
     predicate: (value: NoInfer<T>) => boolean,
     onTrue: (value: NoInfer<T>) => V,
@@ -67,4 +67,4 @@ export const when: {
     return predicate(value)
         ? onTrue(value)
         : value
-})
+}, 3)

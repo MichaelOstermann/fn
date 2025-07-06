@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `floor(target)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const floor: {
     (): (target: number) => number
     (target: number): number
-} = dual(1, (target: number): number => {
+} = dfdlT((target: number): number => {
     return Math.floor(target)
-})
+}, 1)

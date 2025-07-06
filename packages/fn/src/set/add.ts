@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneSet } from "@monstermann/remmi"
 
 /**
@@ -22,9 +22,9 @@ export const add: {
 
     <T>(target: Set<T>, value: NoInfer<T>): Set<T>
     <T>(target: ReadonlySet<T>, value: NoInfer<T>): ReadonlySet<T>
-} = dual(2, <T>(target: Set<T>, value: NoInfer<T>): Set<T> => {
+} = dfdlT(<T>(target: Set<T>, value: NoInfer<T>): Set<T> => {
     if (target.has(value)) return target
     target = cloneSet(target)
     target.add(value)
     return target
-})
+}, 2)

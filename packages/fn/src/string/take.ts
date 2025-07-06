@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `take(target, amount)`
@@ -16,8 +16,8 @@ import { dual } from "@monstermann/dfdl"
 export const take: {
     (amount: number): (target: string) => string
     (target: string, amount: number): string
-} = dual(2, (target: string, amount: number): string => {
+} = dfdlT((target: string, amount: number): string => {
     if (amount === 0) return ""
     if (amount >= target.length) return target
     return target.slice(0, amount)
-})
+}, 2)

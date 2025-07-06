@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `parseIntOr(target, or)`
@@ -18,7 +18,7 @@ import { dual } from "@monstermann/dfdl"
 export const parseIntOr: {
     <T>(or: T): (target: string) => number | T
     <T>(target: string, or: T): number | T
-} = dual(2, <T>(target: string, or: T): number | T => {
+} = dfdlT(<T>(target: string, or: T): number | T => {
     const value = Number.parseInt(target)
     return Number.isFinite(value) ? value : or
-})
+}, 2)

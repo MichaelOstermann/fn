@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isMap(target)`
@@ -20,6 +20,6 @@ import { dual } from "@monstermann/dfdl"
 export const isMap: {
     (): (target: unknown) => target is Map<unknown, unknown>
     (target: unknown): target is Map<unknown, unknown>
-} = dual(1, (target: unknown): target is Map<unknown, unknown> => {
+} = dfdlT((target: unknown): target is Map<unknown, unknown> => {
     return target instanceof Map
-})
+}, 1)

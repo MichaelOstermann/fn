@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `difference(target, source)`
@@ -18,7 +18,7 @@ import { dual } from "@monstermann/dfdl"
 export const difference: {
     <T, U>(source: Set<U>): (target: Set<T>) => Set<T>
     <T, U>(target: Set<T>, source: Set<U>): Set<T>
-} = dual(2, <T, U>(target: Set<T>, source: Set<U>): Set<T> => {
+} = dfdlT(<T, U>(target: Set<T>, source: Set<U>): Set<T> => {
     if (source.size === 0) return target
 
     for (const value of target) {
@@ -33,4 +33,4 @@ export const difference: {
     }
 
     return target
-})
+}, 2)

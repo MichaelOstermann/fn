@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `indexOfOrElse(target, source, orElse)`
@@ -25,7 +25,7 @@ import { dual } from "@monstermann/dfdl"
 export const indexOfOrElse: {
     <T>(source: string, orElse: (target: string) => T): (target: string) => number | T
     <T>(target: string, source: string, orElse: (target: string) => T): number | T
-} = dual(3, <T>(a: string, b: string, orElse: (target: string) => T): number | T => {
+} = dfdlT(<T>(a: string, b: string, orElse: (target: string) => T): number | T => {
     const idx = a.indexOf(b)
     return Number.isFinite(idx) ? idx : orElse(a)
-})
+}, 3)

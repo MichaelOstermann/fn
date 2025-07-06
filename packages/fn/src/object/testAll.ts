@@ -1,5 +1,5 @@
 import type { Simplify } from "type-fest"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 type TestAllPredicates<T extends object> = Partial<{
     [K in keyof T]: (value: NoInfer<T>[K], key: K, target: Readonly<T>) => boolean
@@ -29,9 +29,9 @@ type TestAllResult<T extends object, U> = Simplify<T & {
 export const testAll: {
     <T extends object, U extends TestAllPredicates<T>>(props: U): (target: T) => target is TestAllResult<T, U>
     <T extends object, U extends TestAllPredicates<T>>(target: T, props: U): target is TestAllResult<T, U>
-} = dual(2, (target: any, props: any): target is any => {
+} = dfdlT((target: any, props: any): target is any => {
     for (const key in props) {
         if (!props[key](target[key], key, target)) return false
     }
     return true
-})
+}, 2)

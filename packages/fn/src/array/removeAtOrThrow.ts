@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 import { FnError } from "../function/FnError"
 import { resolveOffset } from "./internals/offset"
@@ -20,10 +20,10 @@ import { resolveOffset } from "./internals/offset"
 export const removeAtOrThrow: {
     <T>(idx: number): (target: readonly T[]) => T[]
     <T>(target: readonly T[], idx: number): T[]
-} = dual(2, <T>(target: readonly T[], idx: number): T[] => {
+} = dfdlT(<T>(target: readonly T[], idx: number): T[] => {
     const offset = resolveOffset(target, idx)
     if (offset < 0) throw new FnError("removeAtOrThrow: Index is out of range.", [target, idx])
     const result = cloneArray(target)
     result.splice(offset, 1)
     return result
-})
+}, 2)

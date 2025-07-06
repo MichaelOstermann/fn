@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { FnError } from "../function/FnError"
 
 /**
@@ -19,8 +19,8 @@ import { FnError } from "../function/FnError"
 export const matchOrThrow: {
     (source: string | RegExp): (target: string) => RegExpMatchArray
     (target: string, source: string | RegExp): RegExpMatchArray
-} = dual(2, (target: string, source: string | RegExp): RegExpMatchArray => {
+} = dfdlT((target: string, source: string | RegExp): RegExpMatchArray => {
     const match = target.match(source)
     if (match) return match
     throw new FnError("String.matchOrThrow: Value did not match.", [target, source])
-})
+}, 2)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `test(target, source)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const test: {
     (source: RegExp): (target: string) => boolean
     (target: string, source: RegExp): boolean
-} = dual(2, (target: string, source: RegExp): boolean => {
+} = dfdlT((target: string, source: RegExp): boolean => {
     return source.test(target)
-})
+}, 2)

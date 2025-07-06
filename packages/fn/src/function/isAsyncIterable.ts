@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isAsyncIterable(value)`
@@ -29,6 +29,6 @@ import { dual } from "@monstermann/dfdl"
 export const isAsyncIterable: {
     (): (value: unknown) => value is AsyncIterable<unknown>
     (value: unknown): value is AsyncIterable<unknown>
-} = dual(1, (value: unknown): value is AsyncIterable<unknown> => {
+} = dfdlT((value: unknown): value is AsyncIterable<unknown> => {
     return value != null && typeof (value as any)[Symbol.asyncIterator] === "function"
-})
+}, 1)

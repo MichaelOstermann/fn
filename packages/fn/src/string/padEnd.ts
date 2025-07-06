@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `padEnd(target, length, fill)`
@@ -16,6 +16,6 @@ import { dual } from "@monstermann/dfdl"
 export const padEnd: {
     (length: number, fill: string): (target: string) => string
     (target: string, length: number, fill: string): string
-} = dual(3, (target: string, length: number, fill: string): string => {
+} = dfdlT((target: string, length: number, fill: string): string => {
     return target.padEnd(length, fill)
-})
+}, 3)

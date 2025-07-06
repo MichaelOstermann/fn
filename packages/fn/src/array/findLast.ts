@@ -1,5 +1,5 @@
 import type { ArrayGuard, ArrayPredicate } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `findLast(array, predicate)`
@@ -22,6 +22,6 @@ export const findLast: {
     <T>(predicate: ArrayPredicate<T>): (target: readonly T[]) => T | undefined
     <T, U extends T>(target: readonly T[], predicate: ArrayGuard<T, U>): U | undefined
     <T>(target: readonly T[], predicate: ArrayPredicate<T>): T | undefined
-} = dual(2, <T, U extends T>(target: readonly T[], predicate: ArrayGuard<T, U>): U | undefined => {
+} = dfdlT(<T, U extends T>(target: readonly T[], predicate: ArrayGuard<T, U>): U | undefined => {
     return target.findLast(predicate)
-})
+}, 2)

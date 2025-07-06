@@ -1,6 +1,6 @@
 import type { NonNil } from "../internals/types"
 import type { ArrayGuard, ArrayPredicate } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `findLastOr(array, predicate, fallback)`
@@ -23,6 +23,6 @@ export const findLastOr: {
     <T, V>(predicate: ArrayPredicate<T>, or: V): (target: readonly T[]) => NonNil<T> | V
     <T, U extends T, V>(target: readonly T[], predicate: ArrayGuard<T, U>, or: V): NonNil<U> | V
     <T, V>(target: readonly T[], predicate: ArrayPredicate<T>, or: V): NonNil<T> | V
-} = dual(3, <T, U extends T, V>(target: readonly T[], predicate: ArrayGuard<T, U>, or: V): any => {
+} = dfdlT(<T, U extends T, V>(target: readonly T[], predicate: ArrayGuard<T, U>, or: V): any => {
     return target.findLast(predicate) ?? or
-})
+}, 3)

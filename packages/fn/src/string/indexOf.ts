@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `indexOf(target, source)`
@@ -16,6 +16,6 @@ import { dual } from "@monstermann/dfdl"
 export const indexOf: {
     (source: string): (target: string) => number
     (target: string, source: string): number
-} = dual(2, (a: string, b: string): number => {
+} = dfdlT((a: string, b: string): number => {
     return a.indexOf(b)
-})
+}, 2)

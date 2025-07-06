@@ -1,5 +1,5 @@
 import type { KeysOfUnion, Simplify } from "type-fest"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 type HasProp<T extends object, U extends KeysOfUnion<T>> = T extends unknown
     ? U extends keyof T
@@ -25,6 +25,6 @@ type HasProp<T extends object, U extends KeysOfUnion<T>> = T extends unknown
 export const hasProp: {
     <T extends object, U extends KeysOfUnion<T>>(key: U): (target: T) => target is HasProp<T, U>
     <T extends object, U extends KeysOfUnion<T>>(target: T, key: U): target is HasProp<T, U>
-} = dual(2, <T extends object, U extends KeysOfUnion<T>>(target: T, key: U): target is HasProp<T, U> => {
+} = dfdlT(<T extends object, U extends KeysOfUnion<T>>(target: T, key: U): target is HasProp<T, U> => {
     return (target as any)[key] != null
-})
+}, 2)

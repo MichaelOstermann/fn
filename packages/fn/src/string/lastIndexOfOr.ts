@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `lastIndexOfOr(target, source, or)`
@@ -18,7 +18,7 @@ import { dual } from "@monstermann/dfdl"
 export const lastIndexOfOr: {
     <T>(source: string, or: T): (target: string) => number | T
     <T>(target: string, source: string, or: T): number | T
-} = dual(3, <T>(a: string, b: string, or: T): number | T => {
+} = dfdlT(<T>(a: string, b: string, or: T): number | T => {
     const idx = a.lastIndexOf(b)
     return Number.isFinite(idx) ? idx : or
-})
+}, 3)

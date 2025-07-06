@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isInRange(target, start, end)`
@@ -22,6 +22,6 @@ import { dual } from "@monstermann/dfdl"
 export const isInRange: {
     (start: number, end: number): (target: number) => boolean
     (target: number, start: number, end: number): boolean
-} = dual(3, (target: number, start: number, end: number): boolean => {
+} = dfdlT((target: number, start: number, end: number): boolean => {
     return target >= Math.min(start, end) && target <= Math.max(start, end)
-})
+}, 3)

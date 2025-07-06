@@ -1,5 +1,5 @@
 import type { MapGuard, MapPredicate } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
@@ -41,7 +41,7 @@ export const reject: {
 
     <K, V>(target: Map<K, V>, by: MapPredicate<K, V>): Map<K, V>
     <K, V>(target: ReadonlyMap<K, V>, by: MapPredicate<K, V>): ReadonlyMap<K, V>
-} = dual(2, (target: any, by: any): any => {
+} = dfdlT((target: any, by: any): any => {
     let result
     for (const [key, value] of target) {
         if (by(value, key, target)) {
@@ -50,4 +50,4 @@ export const reject: {
         }
     }
     return result ?? target
-})
+}, 2)

@@ -1,5 +1,5 @@
 import type { AllUnionFields, Simplify } from "type-fest"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { is as equals } from "../function/is"
 
 type PropIs<T extends object, U, V> = T extends unknown
@@ -28,6 +28,6 @@ type PropIs<T extends object, U, V> = T extends unknown
 export const is: {
     <T extends object, U extends keyof AllUnionFields<T>, const V extends AllUnionFields<T>[U]>(key: U, value: V): (target: T) => target is PropIs<T, U, V>
     <T extends object, U extends keyof AllUnionFields<T>, const V extends AllUnionFields<T>[U]>(target: T, key: U, value: V): target is PropIs<T, U, V>
-} = dual(3, (target: any, key: any, value: any): target is any => {
+} = dfdlT((target: any, key: any, value: any): target is any => {
     return equals(target[key], value)
-})
+}, 3)

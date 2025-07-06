@@ -1,5 +1,5 @@
 import type { CamelCase } from "string-ts"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { camelCase as apply } from "string-ts"
 
 /**
@@ -20,6 +20,6 @@ import { camelCase as apply } from "string-ts"
 export const camelCase: {
     (): <T extends string>(target: T) => CamelCase<T>
     <T extends string>(target: T): CamelCase<T>
-} = dual(1, <T extends string>(target: T): CamelCase<T> => {
+} = dfdlT(<T extends string>(target: T): CamelCase<T> => {
     return apply(target)
-})
+}, 1)

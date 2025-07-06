@@ -1,5 +1,5 @@
 import type { Trim } from "string-ts"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `trim(target)`
@@ -17,6 +17,6 @@ import { dual } from "@monstermann/dfdl"
 export const trim: {
     (): <T extends string>(target: T) => Trim<T>
     <T extends string>(target: T): Trim<T>
-} = dual(1, <T extends string>(target: T): Trim<T> => {
+} = dfdlT(<T extends string>(target: T): Trim<T> => {
     return target.trim() as Trim<T>
-})
+}, 1)

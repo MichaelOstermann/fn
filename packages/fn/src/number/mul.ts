@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `mul(target, source)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const mul: {
     (source: number): (target: number) => number
     (target: number, source: number): number
-} = dual(2, (a: number, b: number): number => {
+} = dfdlT((a: number, b: number): number => {
     return a * b
-})
+}, 2)

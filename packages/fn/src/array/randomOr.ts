@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `randomOr(array, fallback)`
@@ -16,8 +16,8 @@ import { dual } from "@monstermann/dfdl"
 export const randomOr: {
     <T, U>(or: U): (target: readonly T[]) => T | U
     <T, U>(target: readonly T[], or: U): T | U
-} = dual(2, <T, U>(target: readonly T[], or: U): T | U => {
+} = dfdlT(<T, U>(target: readonly T[], or: U): T | U => {
     if (target.length === 0) return or
     const idx = Math.floor(Math.random() * target.length)
     return target[idx]!
-})
+}, 2)

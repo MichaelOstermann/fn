@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `hasAll(map, keys)`
@@ -48,9 +48,9 @@ import { dual } from "@monstermann/dfdl"
 export const hasAll: {
     <K, V>(keys: Iterable<NoInfer<K>>): (target: ReadonlyMap<K, V>) => boolean
     <K, V>(target: ReadonlyMap<K, V>, keys: Iterable<NoInfer<K>>): boolean
-} = dual(2, <K, V>(target: ReadonlyMap<K, V>, keys: Iterable<NoInfer<K>>): boolean => {
+} = dfdlT(<K, V>(target: ReadonlyMap<K, V>, keys: Iterable<NoInfer<K>>): boolean => {
     for (const key of keys) {
         if (!target.has(key)) return false
     }
     return true
-})
+}, 2)

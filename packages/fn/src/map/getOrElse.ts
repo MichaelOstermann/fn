@@ -1,6 +1,6 @@
 import type { NonNil } from "../internals/types"
 import type { OrElse } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `getOrElse(map, key, orElse)`
@@ -65,6 +65,6 @@ import { dual } from "@monstermann/dfdl"
 export const getOrElse: {
     <K, V, U>(key: NoInfer<K>, orElse: OrElse<K, V, U>): (target: ReadonlyMap<K, V>) => NonNil<V> | U
     <K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, orElse: OrElse<K, V, U>): NonNil<V> | U
-} = dual(3, <K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, orElse: OrElse<K, V, U>): any => {
+} = dfdlT(<K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, orElse: OrElse<K, V, U>): any => {
     return target.get(key) ?? orElse(target)
-})
+}, 3)

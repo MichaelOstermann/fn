@@ -1,5 +1,5 @@
 import type { NonNil } from "../internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `lastOr(array, fallback)`
@@ -17,6 +17,6 @@ import { dual } from "@monstermann/dfdl"
 export const lastOr: {
     <T, U>(or: U): (target: readonly T[]) => NonNil<T> | U
     <T, U>(target: readonly T[], or: U): NonNil<T> | U
-} = dual(2, <T, U>(target: readonly T[], or: U): any => {
+} = dfdlT(<T, U>(target: readonly T[], or: U): any => {
     return target.at(-1) ?? or
-})
+}, 2)

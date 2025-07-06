@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { FnError } from "../function/FnError"
 import { insertAllAt } from "./insertAllAt"
 
@@ -23,7 +23,7 @@ export const insertAllAtOrThrow: {
 
     <T>(target: T[], idx: number, values: Iterable<NoInfer<T>>): T[]
     <T>(target: readonly T[], idx: number, values: Iterable<NoInfer<T>>): readonly T[]
-} = dual(3, <T>(target: T[], idx: number, values: Iterable<NoInfer<T>>): T[] => {
+} = dfdlT(<T>(target: T[], idx: number, values: Iterable<NoInfer<T>>): T[] => {
     if (idx < 0 || idx > target.length) throw new FnError("Array.insertAllAtOrThrow: Index is out of range.", [target, idx, values])
     return insertAllAt(target, idx, values)
-})
+}, 3)

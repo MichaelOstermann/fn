@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `drop(target, amount)`
@@ -16,8 +16,8 @@ import { dual } from "@monstermann/dfdl"
 export const drop: {
     (amount: number): (target: string) => string
     (target: string, amount: number): string
-} = dual(2, (target: string, amount: number): string => {
+} = dfdlT((target: string, amount: number): string => {
     if (amount === 0) return target
     if (amount >= target.length) return ""
     return target.slice(amount)
-})
+}, 2)

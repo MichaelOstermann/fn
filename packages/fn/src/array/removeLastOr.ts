@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 
 /**
@@ -19,10 +19,10 @@ import { cloneArray } from "@monstermann/remmi"
 export const removeLastOr: {
     <T, U>(value: NoInfer<T>, or: U): (target: readonly T[]) => T[] | U
     <T, U>(target: readonly T[], value: NoInfer<T>, or: U): T[] | U
-} = dual(3, <T, U>(target: readonly T[], value: NoInfer<T>, or: U): T[] | U => {
+} = dfdlT(<T, U>(target: readonly T[], value: NoInfer<T>, or: U): T[] | U => {
     const idx = target.lastIndexOf(value)
     if (idx < 0) return or
     const result = cloneArray(target)
     result.splice(idx, 1)
     return result
-})
+}, 3)

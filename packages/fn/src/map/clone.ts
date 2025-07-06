@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
@@ -27,4 +27,4 @@ import { cloneMap } from "@monstermann/remmi"
 export const clone: {
     (): <K, V>(target: ReadonlyMap<K, V>) => Map<K, V>
     <K, V>(target: ReadonlyMap<K, V>): Map<K, V>
-} = dual(1, cloneMap)
+} = dfdlT(cloneMap, 1)

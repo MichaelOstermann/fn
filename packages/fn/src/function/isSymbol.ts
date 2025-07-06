@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isSymbol(target)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const isSymbol: {
     (): (target: unknown) => target is symbol
     (target: unknown): target is symbol
-} = dual(1, (target: unknown): target is symbol => {
+} = dfdlT((target: unknown): target is symbol => {
     return typeof target === "symbol"
-})
+}, 1)

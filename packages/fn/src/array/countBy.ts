@@ -1,5 +1,5 @@
 import type { ArrayPredicate } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `countBy(target, predicate)`
@@ -19,6 +19,6 @@ import { dual } from "@monstermann/dfdl"
 export const countBy: {
     <T>(predicate: ArrayPredicate<T>): (target: readonly T[]) => number
     <T>(target: readonly T[], predicate: ArrayPredicate<T>): number
-} = dual(2, <T>(target: readonly T[], predicate: ArrayPredicate<T>): number => {
+} = dfdlT(<T>(target: readonly T[], predicate: ArrayPredicate<T>): number => {
     return target.reduce((acc, value, idx, target) => acc + (predicate(value, idx, target) ? 1 : 0), 0)
-})
+}, 2)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isShallowEqual(array, other)`
@@ -16,7 +16,7 @@ import { dual } from "@monstermann/dfdl"
 export const isShallowEqual: {
     <T, U extends T>(source: readonly U[]): (target: readonly T[]) => target is U[]
     <T, U extends T>(target: readonly T[], source: readonly U[]): target is U[]
-} = dual(2, <T, U extends T>(a: readonly T[], b: readonly U[]): a is U[] => {
+} = dfdlT(<T, U extends T>(a: readonly T[], b: readonly U[]): a is U[] => {
     if (a === b || Object.is(a, b)) return true
     const len = a.length
     if (len !== b.length) return false
@@ -24,4 +24,4 @@ export const isShallowEqual: {
         if (a[i] !== b[i] || !Object.is(a[i], b[i])) return false
     }
     return true
-})
+}, 2)

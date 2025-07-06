@@ -1,5 +1,5 @@
 import type { ArrayGuard, ArrayPredicate } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `partition(array, predicate)`
@@ -22,7 +22,7 @@ export const partition: {
     <T>(predicate: ArrayPredicate<T>): (target: readonly T[]) => [T[], T[]]
     <T, U extends T>(target: readonly T[], predicate: ArrayGuard<T, U>): [U[], Exclude<T, U>[]]
     <T>(target: readonly T[], predicate: ArrayPredicate<T>): [T[], T[]]
-} = dual(2, <T>(target: readonly T[], predicate: (value: NoInfer<T>, idx: number, target: readonly T[]) => boolean): [T[], T[]] => {
+} = dfdlT(<T>(target: readonly T[], predicate: (value: NoInfer<T>, idx: number, target: readonly T[]) => boolean): [T[], T[]] => {
     const left: T[] = []
     const right: T[] = []
 
@@ -35,4 +35,4 @@ export const partition: {
     }
 
     return [left, right] as const
-})
+}, 2)

@@ -1,5 +1,5 @@
 import type { MapMap } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 import { is } from "../function/is"
 
@@ -50,7 +50,7 @@ export const map: {
 
     <K, V>(target: Map<K, V>, key: NoInfer<K>, transform: MapMap<K, V>): Map<K, V>
     <K, V>(target: ReadonlyMap<K, V>, key: NoInfer<K>, transform: MapMap<K, V>): ReadonlyMap<K, V>
-} = dual(3, <K, V>(target: Map<K, V>, key: NoInfer<K>, transform: MapMap<K, V>): Map<K, V> => {
+} = dfdlT(<K, V>(target: Map<K, V>, key: NoInfer<K>, transform: MapMap<K, V>): Map<K, V> => {
     if (!target.has(key)) return target
     const prev = target.get(key)! as V
     const next = transform(prev, key, target)
@@ -58,4 +58,4 @@ export const map: {
     const result = cloneMap(target)
     result.set(key, next)
     return result
-})
+}, 3)

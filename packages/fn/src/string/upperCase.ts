@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { toUpperCase as apply } from "string-ts"
 
 /**
@@ -19,6 +19,6 @@ import { toUpperCase as apply } from "string-ts"
 export const upperCase: {
     (): <T extends string>(target: T) => Uppercase<T>
     <T extends string>(target: T): Uppercase<T>
-} = dual(1, <T extends string>(target: T): Uppercase<T> => {
+} = dfdlT(<T extends string>(target: T): Uppercase<T> => {
     return apply(target)
-})
+}, 1)

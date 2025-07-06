@@ -1,5 +1,5 @@
 import type { NonNil } from "../internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { FnError } from "../function/FnError"
 
 /**
@@ -62,8 +62,8 @@ import { FnError } from "../function/FnError"
 export const getOrThrow: {
     <K, V>(key: NoInfer<K>): (target: ReadonlyMap<K, V>) => NonNil<V>
     <K, V>(target: ReadonlyMap<K, V>, key: NoInfer<K>): NonNil<V>
-} = dual(2, <K, V>(target: ReadonlyMap<K, V>, key: NoInfer<K>): any => {
+} = dfdlT(<K, V>(target: ReadonlyMap<K, V>, key: NoInfer<K>): any => {
     const value = target.get(key)
     if (value != null) return value
     throw new FnError(`Map.getOrThrow: Value not found.`, [target, key])
-})
+}, 2)

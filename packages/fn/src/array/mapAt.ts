@@ -1,5 +1,5 @@
 import type { ArrayMap } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 import { is } from "../function/is"
 import { resolveOffset } from "./internals/offset"
@@ -26,7 +26,7 @@ export const mapAt: {
 
     <T>(target: T[], idx: number, map: ArrayMap<T>): T[]
     <T>(target: readonly T[], idx: number, map: ArrayMap<T>): readonly T[]
-} = dual(3, <T>(target: T[], idx: number, map: ArrayMap<T>): T[] => {
+} = dfdlT(<T>(target: T[], idx: number, map: ArrayMap<T>): T[] => {
     const offset = resolveOffset(target, idx)
     if (offset < 0) return target
     const prev = target[offset]! as T
@@ -35,4 +35,4 @@ export const mapAt: {
     target = cloneArray(target)
     target.splice(offset, 1, next)
     return target
-})
+}, 3)

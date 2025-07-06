@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneObject } from "@monstermann/remmi"
 import { is } from "../function/is"
 
@@ -21,11 +21,11 @@ import { is } from "../function/is"
 export const map: {
     <T extends object, U extends keyof T>(key: U, transform: (value: NoInfer<T>[U]) => T[U]): (target: T) => T
     <T extends object, U extends keyof T>(target: T, key: U, transform: (value: NoInfer<T>[U]) => T[U]): T
-} = dual(3, <T extends object, U extends keyof T>(target: T, key: U, transform: (value: NoInfer<T>[U]) => T[U]): T => {
+} = dfdlT(<T extends object, U extends keyof T>(target: T, key: U, transform: (value: NoInfer<T>[U]) => T[U]): T => {
     const prev = target[key]
     const next = transform(prev)
     if (is(prev, next)) return target
     const result = cloneObject(target)
     result[key] = next
     return result
-})
+}, 3)

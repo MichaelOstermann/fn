@@ -1,5 +1,5 @@
 import type { NonNil } from "../internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `mapOr(target, map, or)`
@@ -26,7 +26,7 @@ import { dual } from "@monstermann/dfdl"
 export const mapOr: {
     <T, U, V>(map: (value: NoInfer<NonNil<T>>, or: V) => U): (target: T) => U | V
     <T, U, V>(target: T, map: (value: NoInfer<NonNil<T>>) => U, or: V): U | V
-} = dual(3, (target: any, map: any, or: any): any => {
+} = dfdlT((target: any, map: any, or: any): any => {
     if (target == null) return or
     return map(target)
-})
+}, 3)

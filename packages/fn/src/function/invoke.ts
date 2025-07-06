@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 type AnyFn = (...args: any[]) => any
 
@@ -22,6 +22,6 @@ type MethodsOf<T> = keyof {
 export const invoke: {
     <T, K extends MethodsOf<T>>(method: K, args: T[K] extends AnyFn ? Parameters<T[K]> : never): (target: T) => T[K] extends AnyFn ? ReturnType<T[K]> : never
     <T, K extends MethodsOf<T>>(target: T, method: K, args: T[K] extends AnyFn ? Parameters<T[K]> : never): T[K] extends AnyFn ? ReturnType<T[K]> : never
-} = dual(3, <T, K extends MethodsOf<T>>(target: T, method: K, args: T[K] extends AnyFn ? Parameters<T[K]> : never): T[K] extends AnyFn ? ReturnType<T[K]> : never => {
+} = dfdlT(<T, K extends MethodsOf<T>>(target: T, method: K, args: T[K] extends AnyFn ? Parameters<T[K]> : never): T[K] extends AnyFn ? ReturnType<T[K]> : never => {
     return (target as any)[method](...args)
-})
+}, 3)

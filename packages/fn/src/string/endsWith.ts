@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `endsWith(target, source)`
@@ -16,6 +16,6 @@ import { dual } from "@monstermann/dfdl"
 export const endsWith: {
     (source: string): (target: string) => boolean
     (target: string, source: string): boolean
-} = dual(2, (a: string, b: string): boolean => {
+} = dfdlT((a: string, b: string): boolean => {
     return a.endsWith(b)
-})
+}, 2)

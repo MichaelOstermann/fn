@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 import { FnError } from "../function/FnError"
 
@@ -46,9 +46,9 @@ import { FnError } from "../function/FnError"
 export const removeOrThrow: {
     <K, V>(key: NoInfer<K>): (target: ReadonlyMap<K, V>) => Map<K, V>
     <K, V>(target: ReadonlyMap<K, V>, key: NoInfer<K>): Map<K, V>
-} = dual(2, <K, V>(target: ReadonlyMap<K, V>, key: NoInfer<K>): Map<K, V> => {
+} = dfdlT(<K, V>(target: ReadonlyMap<K, V>, key: NoInfer<K>): Map<K, V> => {
     if (!target.has(key)) throw new FnError("Map.removeOrThrow: Key does not exist.", [target, key])
     const result = cloneMap(target)
     result.delete(key)
     return result
-})
+}, 2)

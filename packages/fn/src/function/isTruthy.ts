@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isTruthy(target)`
@@ -20,6 +20,6 @@ import { dual } from "@monstermann/dfdl"
 export const isTruthy: {
     <T>(): (target: T) => target is Exclude<T, "" | 0 | false | null | undefined>
     <T>(target: T): target is Exclude<T, "" | 0 | false | null | undefined>
-} = dual(1, <T>(target: T): target is Exclude<T, "" | 0 | false | null | undefined> => {
+} = dfdlT(<T>(target: T): target is Exclude<T, "" | 0 | false | null | undefined> => {
     return !!target
-})
+}, 1)

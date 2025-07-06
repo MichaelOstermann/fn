@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `forEach(target, fn)`
@@ -22,7 +22,7 @@ export const forEach: {
 
     <T>(target: Set<T>, fn: (value: NoInfer<T>, target: ReadonlySet<NoInfer<T>>) => unknown): Set<T>
     <T>(target: ReadonlySet<T>, fn: (value: NoInfer<T>, target: ReadonlySet<NoInfer<T>>) => unknown): ReadonlySet<T>
-} = dual(2, <T>(target: Set<T>, fn: (value: NoInfer<T>, target: ReadonlySet<NoInfer<T>>) => unknown): Set<T> => {
+} = dfdlT(<T>(target: Set<T>, fn: (value: NoInfer<T>, target: ReadonlySet<NoInfer<T>>) => unknown): Set<T> => {
     for (const value of target) fn(value, target)
     return target
-})
+}, 2)

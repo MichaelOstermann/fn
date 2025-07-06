@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isError(target)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const isError: {
     (): (target: unknown) => target is Error
     (target: unknown): target is Error
-} = dual(1, (target: unknown): target is Error => {
+} = dfdlT((target: unknown): target is Error => {
     return target instanceof Error
-})
+}, 1)

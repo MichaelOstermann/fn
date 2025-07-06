@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneSet } from "@monstermann/remmi"
 
 /**
@@ -19,4 +19,4 @@ import { cloneSet } from "@monstermann/remmi"
 export const clone: {
     (): <T>(target: ReadonlySet<T>) => Set<T>
     <T>(target: ReadonlySet<T>): Set<T>
-} = dual(1, cloneSet)
+} = dfdlT(cloneSet, 1)

@@ -1,5 +1,5 @@
 import type { ArrayMap } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `forEach(array, callback)`
@@ -23,7 +23,7 @@ export const forEach: {
 
     <T>(target: T[], callback: ArrayMap<T, any>): T[]
     <T>(target: readonly T[], callback: ArrayMap<T, any>): readonly T[]
-} = dual(2, <T>(target: T[], callback: ArrayMap<T, any>): T[] => {
+} = dfdlT(<T>(target: T[], callback: ArrayMap<T, any>): T[] => {
     target.forEach(callback)
     return target
-})
+}, 2)

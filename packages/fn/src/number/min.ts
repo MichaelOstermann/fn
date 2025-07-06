@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `min(target, source)`
@@ -20,6 +20,6 @@ import { dual } from "@monstermann/dfdl"
 export const min: {
     (source: number): (target: number) => number
     (target: number, source: number): number
-} = dual(2, (a: number, b: number): number => {
+} = dfdlT((a: number, b: number): number => {
     return Math.min(a, b)
-})
+}, 2)

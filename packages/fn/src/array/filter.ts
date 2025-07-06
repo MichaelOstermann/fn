@@ -1,5 +1,5 @@
 import type { ArrayGuard, ArrayPredicate } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 import { addRange, createRange, hasRange, spliceRange } from "./internals/range"
 
@@ -31,7 +31,7 @@ export const filter: {
 
     <T>(target: T[], by: ArrayPredicate<T>): T[]
     <T>(target: readonly T[], by: ArrayPredicate<T>): readonly T[]
-} = dual(2, <T, U extends T>(target: T[], by: ArrayGuard<T, U>): (T | U)[] => {
+} = dfdlT(<T, U extends T>(target: T[], by: ArrayGuard<T, U>): (T | U)[] => {
     const range = createRange()
 
     for (let i = 0; i < target.length; i++) {
@@ -47,4 +47,4 @@ export const filter: {
     }
 
     return target
-})
+}, 2)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `sleep(duration)`
@@ -16,6 +16,6 @@ import { dual } from "@monstermann/dfdl"
 export const sleep: {
     (): (duration: number) => Promise<void>
     (duration: number): Promise<void>
-} = dual(1, (duration: number): Promise<void> => {
+} = dfdlT((duration: number): Promise<void> => {
     return new Promise(resolve => setTimeout(resolve, Math.max(duration, 0)))
-})
+}, 1)

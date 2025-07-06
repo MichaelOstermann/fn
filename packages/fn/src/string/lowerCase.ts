@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { toLowerCase as apply } from "string-ts"
 
 /**
@@ -19,6 +19,6 @@ import { toLowerCase as apply } from "string-ts"
 export const lowerCase: {
     (): <T extends string>(target: T) => Lowercase<T>
     <T extends string>(target: T): Lowercase<T>
-} = dual(1, <T extends string>(target: T): Lowercase<T> => {
+} = dfdlT(<T extends string>(target: T): Lowercase<T> => {
     return apply(target)
-})
+}, 1)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 type Falsy<T> = T extends unknown
     ? T extends string ? "" extends T ? "" : never
@@ -29,6 +29,6 @@ type Falsy<T> = T extends unknown
 export const isFalsy: {
     <T>(): (target: T) => target is Falsy<T>
     <T>(target: T): target is Falsy<T>
-} = dual(1, <T>(target: T): target is Falsy<T> => {
+} = dfdlT(<T>(target: T): target is Falsy<T> => {
     return !target
-})
+}, 1)

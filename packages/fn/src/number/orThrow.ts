@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { FnError } from "../function/FnError"
 
 /**
@@ -23,7 +23,7 @@ import { FnError } from "../function/FnError"
 export const orThrow: {
     (): <T>(target: T) => Extract<T, number>
     <T>(target: T): Extract<T, number>
-} = dual(1, <T>(target: T): Extract<T, number> => {
+} = dfdlT(<T>(target: T): Extract<T, number> => {
     if (Number.isFinite(target)) return target as Extract<T, number>
     throw new FnError("Number.orThrow: Value is not a finite number.", [target])
-})
+}, 1)

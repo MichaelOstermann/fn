@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `parseFloatOr(target, or)`
@@ -18,7 +18,7 @@ import { dual } from "@monstermann/dfdl"
 export const parseFloatOr: {
     <T>(or: T): (target: string) => number | T
     <T>(target: string, or: T): number | T
-} = dual(2, <T>(target: string, or: T): number | T => {
+} = dfdlT(<T>(target: string, or: T): number | T => {
     const value = Number.parseFloat(target)
     return Number.isFinite(value) ? value : or
-})
+}, 2)

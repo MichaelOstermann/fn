@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 
 /**
@@ -19,7 +19,7 @@ import { cloneArray } from "@monstermann/remmi"
 export const shuffle: {
     (): <T>(target: readonly T[]) => T[]
     <T>(target: readonly T[]): T[]
-} = dual(1, <T>(target: readonly T[]): T[] => {
+} = dfdlT(<T>(target: readonly T[]): T[] => {
     const result = cloneArray(target)
     for (let index = 0; index < target.length; index++) {
         const rand = index + Math.floor(Math.random() * (target.length - index))
@@ -28,4 +28,4 @@ export const shuffle: {
         result[index] = value
     }
     return result
-})
+}, 1)

@@ -87,9 +87,9 @@
         "release": "bun publish --access public"
     },
     "dependencies": {
-        "@monstermann/dfdl": "^0.0.1",
+        "@monstermann/dfdl": "^0.1.0",
         "@monstermann/remmi": "^0.0.0",
-        "@monstermann/result": "^0.2.0",
+        "@monstermann/result": "^0.3.0",
         "string-ts": "^2.2.1",
         "type-fest": "^4.41.0"
     },

@@ -1,5 +1,5 @@
 import type { KeysOfUnion } from "type-fest"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `keys(target)`
@@ -17,6 +17,6 @@ import { dual } from "@monstermann/dfdl"
 export const keys: {
     (): <T extends object>(target: T) => KeysOfUnion<T>[]
     <T extends object>(target: T): KeysOfUnion<T>[]
-} = dual(1, <T extends object>(target: T): any => {
+} = dfdlT(<T extends object>(target: T): any => {
     return Object.keys(target)
-})
+}, 1)

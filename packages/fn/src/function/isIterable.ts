@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isIterable(value)`
@@ -19,6 +19,6 @@ import { dual } from "@monstermann/dfdl"
 export const isIterable: {
     (): (value: unknown) => value is Iterable<unknown>
     (value: unknown): value is Iterable<unknown>
-} = dual(1, (value: unknown): value is Iterable<unknown> => {
+} = dfdlT((value: unknown): value is Iterable<unknown> => {
     return value != null && typeof (value as any)[Symbol.iterator] === "function"
-})
+}, 1)

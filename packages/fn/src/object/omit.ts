@@ -1,5 +1,5 @@
 import type { DistributedOmit, KeysOfUnion } from "type-fest"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { markAsMutable } from "@monstermann/remmi"
 
 /**
@@ -18,7 +18,7 @@ import { markAsMutable } from "@monstermann/remmi"
 export const omit: {
     <T extends object, K extends KeysOfUnion<T>>(keys: Iterable<K>): (target: T) => DistributedOmit<T, K>
     <T extends object, K extends KeysOfUnion<T>>(target: T, keys: Iterable<K>): DistributedOmit<T, K>
-} = dual(2, (target: any, keys: any): any => {
+} = dfdlT((target: any, keys: any): any => {
     for (const key of keys) {
         if (key in target) {
             const result = {} as any
@@ -31,4 +31,4 @@ export const omit: {
         }
     }
     return target
-})
+}, 2)

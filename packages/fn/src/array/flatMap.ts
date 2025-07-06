@@ -1,5 +1,5 @@
 import type { ArrayMap } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { markAsMutable } from "@monstermann/remmi"
 import { is } from "../function/is"
 
@@ -25,7 +25,7 @@ export const flatMap: {
 
     <T, U>(target: T[], mapper: ArrayMap<T, U[]>): U[]
     <T, U>(target: readonly T[], mapper: ArrayMap<T, U[]>): readonly U[]
-} = dual(2, <T, U>(target: T[], mapper: ArrayMap<T, U[]>): U[] => {
+} = dfdlT(<T, U>(target: T[], mapper: ArrayMap<T, U[]>): U[] => {
     let hasChanges = false
     const result = target.flatMap((a, b, c) => {
         const output = mapper(a, b, c)
@@ -35,4 +35,4 @@ export const flatMap: {
     return hasChanges
         ? markAsMutable(result)
         : target as any
-})
+}, 2)

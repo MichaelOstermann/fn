@@ -1,5 +1,5 @@
 import type { ArrayPredicate } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `findLastIndex(array, predicate)`
@@ -20,6 +20,6 @@ import { dual } from "@monstermann/dfdl"
 export const findLastIndex: {
     <T>(predicate: ArrayPredicate<T>): (target: readonly T[]) => number
     <T>(target: readonly T[], predicate: ArrayPredicate<T>): number
-} = dual(2, <T>(target: readonly T[], predicate: ArrayPredicate<T>): number => {
+} = dfdlT(<T>(target: readonly T[], predicate: ArrayPredicate<T>): number => {
     return target.findLastIndex(predicate)
-})
+}, 2)

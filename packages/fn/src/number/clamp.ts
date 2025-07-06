@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `clamp(value, min, max)`
@@ -20,6 +20,6 @@ import { dual } from "@monstermann/dfdl"
 export const clamp: {
     (min: number, max: number): (value: number) => number
     (value: number, min: number, max: number): number
-} = dual(3, (value: number, min: number, max: number): number => {
+} = dfdlT((value: number, min: number, max: number): number => {
     return Math.min(Math.max(value, min), max)
-})
+}, 3)

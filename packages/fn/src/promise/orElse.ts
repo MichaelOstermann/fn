@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `orElse(target, onRejected)`
@@ -19,6 +19,6 @@ import { dual } from "@monstermann/dfdl"
 export const orElse: {
     <T, U>(onRejected: (reason: unknown) => U | PromiseLike<U>): (target: Promise<T>) => Promise<T | U>
     <T, U>(target: Promise<T>, onRejected: (reason: unknown) => U | PromiseLike<U>): Promise<T | U>
-} = dual(2, <T, U>(target: Promise<T>, onRejected: (reason: unknown) => U | PromiseLike<U>): Promise<T | U> => {
+} = dfdlT(<T, U>(target: Promise<T>, onRejected: (reason: unknown) => U | PromiseLike<U>): Promise<T | U> => {
     return target.catch(onRejected)
-})
+}, 2)

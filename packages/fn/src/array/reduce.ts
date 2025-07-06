@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `reduce(array, initial, reducer)`
@@ -27,10 +27,10 @@ export const reduce: {
         acc: U,
         reducer: (acc: NoInfer<U>, value: NoInfer<T>, idx: number, target: readonly NoInfer<T>[]) => NoInfer<U>
     ): U
-} = dual(3, <T, U>(
+} = dfdlT(<T, U>(
     target: readonly T[],
     acc: U,
     reducer: (acc: NoInfer<U>, value: NoInfer<T>, idx: number, target: readonly NoInfer<T>[]) => NoInfer<U>,
 ): U => {
     return target.reduce(reducer, acc)
-})
+}, 3)

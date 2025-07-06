@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `toArray(target)`
@@ -18,6 +18,6 @@ import { dual } from "@monstermann/dfdl"
 export const toArray: {
     (): <T>(target: ReadonlySet<T>) => T[]
     <T>(target: ReadonlySet<T>): T[]
-} = dual(1, <T>(target: ReadonlySet<T>): T[] => {
+} = dfdlT(<T>(target: ReadonlySet<T>): T[] => {
     return Array.from(target)
-})
+}, 1)

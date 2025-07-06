@@ -1,5 +1,5 @@
 import type { NonNil } from "../internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `getOr(map, key, or)`
@@ -64,6 +64,6 @@ import { dual } from "@monstermann/dfdl"
 export const getOr: {
     <K, V, U>(key: NoInfer<K>, or: U): (target: ReadonlyMap<K, V>) => NonNil<V> | U
     <K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, or: U): NonNil<V> | U
-} = dual(3, <K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, or: U): any => {
+} = dfdlT(<K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, or: U): any => {
     return target.get(key) ?? or
-})
+}, 3)

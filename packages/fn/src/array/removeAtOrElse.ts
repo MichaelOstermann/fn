@@ -1,5 +1,5 @@
 import type { OrElse } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 import { resolveOffset } from "./internals/offset"
 
@@ -28,10 +28,10 @@ import { resolveOffset } from "./internals/offset"
 export const removeAtOrElse: {
     <T, U>(idx: number, orElse: OrElse<T, U>): (target: readonly T[]) => T[] | U
     <T, U>(target: readonly T[], idx: number, orElse: OrElse<T, U>): T[] | U
-} = dual(3, <T, U>(target: readonly T[], idx: number, orElse: OrElse<T, U>): T[] | U => {
+} = dfdlT(<T, U>(target: readonly T[], idx: number, orElse: OrElse<T, U>): T[] | U => {
     const offset = resolveOffset(target, idx)
     if (offset < 0) return orElse(target)
     const result = cloneArray(target)
     result.splice(offset, 1)
     return result
-})
+}, 3)

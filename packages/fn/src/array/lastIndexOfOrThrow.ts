@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { FnError } from "../function/FnError"
 
 /**
@@ -19,8 +19,8 @@ import { FnError } from "../function/FnError"
 export const lastIndexOfOrThrow: {
     <T>(value: NoInfer<T>): (target: readonly T[]) => number
     <T>(target: readonly T[], value: NoInfer<T>): number
-} = dual(2, <T>(target: readonly T[], value: NoInfer<T>): number => {
+} = dfdlT(<T>(target: readonly T[], value: NoInfer<T>): number => {
     const idx = target.lastIndexOf(value)
     if (idx < 0) throw new FnError("Array.lastIndexOf: No value found.", [target, value])
     return idx
-})
+}, 2)

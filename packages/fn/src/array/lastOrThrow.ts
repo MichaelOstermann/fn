@@ -1,5 +1,5 @@
 import type { NonNil } from "../internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { FnError } from "../function/FnError"
 
 /**
@@ -18,8 +18,8 @@ import { FnError } from "../function/FnError"
 export const lastOrThrow: {
     (): <T>(target: readonly T[]) => NonNil<T>
     <T>(target: readonly T[]): NonNil<T>
-} = dual(1, <T>(target: readonly T[]): any => {
+} = dfdlT(<T>(target: readonly T[]): any => {
     const value = target.at(-1)
     if (value != null) return value
     throw new FnError("Array.lastOrThrow: No value found.", [target])
-})
+}, 1)

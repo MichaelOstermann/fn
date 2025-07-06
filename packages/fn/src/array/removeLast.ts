@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneArray } from "@monstermann/remmi"
 
 /**
@@ -20,10 +20,10 @@ export const removeLast: {
 
     <T>(target: T[], value: NoInfer<T>): T[]
     <T>(target: readonly T[], value: NoInfer<T>): readonly T[]
-} = dual(2, <T>(target: T[], value: NoInfer<T>): T[] => {
+} = dfdlT(<T>(target: T[], value: NoInfer<T>): T[] => {
     const idx = target.lastIndexOf(value)
     if (idx < 0) return target
     const result = cloneArray(target)
     result.splice(idx, 1)
     return result
-})
+}, 2)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
@@ -52,7 +52,7 @@ export const removeAll: {
 
     <K, V>(target: Map<K, V>, keys: Iterable<NoInfer<K>>): Map<K, V>
     <K, V>(target: ReadonlyMap<K, V>, keys: Iterable<NoInfer<K>>): ReadonlyMap<K, V>
-} = dual(2, <K, V>(target: Map<K, V>, keys: Iterable<NoInfer<K>>): Map<K, V> => {
+} = dfdlT(<K, V>(target: Map<K, V>, keys: Iterable<NoInfer<K>>): Map<K, V> => {
     let result
     for (const key of keys) {
         if (!target.has(key)) continue
@@ -60,4 +60,4 @@ export const removeAll: {
         result.delete(key)
     }
     return result ?? target
-})
+}, 2)

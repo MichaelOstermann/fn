@@ -1,5 +1,5 @@
 import type { NonNil } from "../internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `map(target, map)`
@@ -26,7 +26,7 @@ import { dual } from "@monstermann/dfdl"
 export const map: {
     <T, U>(map: (value: NoInfer<NonNil<T>>) => U): (target: T) => Exclude<T, NonNil<T>> | U
     <T, U>(target: T, map: (value: NoInfer<NonNil<T>>) => U): Exclude<T, NonNil<T>> | U
-} = dual(2, (target: any, map: any): any => {
+} = dfdlT((target: any, map: any): any => {
     if (target == null) return target
     return map(target)
-})
+}, 2)

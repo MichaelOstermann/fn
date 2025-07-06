@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `round(target)`
@@ -22,6 +22,6 @@ import { dual } from "@monstermann/dfdl"
 export const round: {
     (): (target: number) => number
     (target: number): number
-} = dual(1, (target: number): number => {
+} = dfdlT((target: number): number => {
     return Math.round(target)
-})
+}, 1)

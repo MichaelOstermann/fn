@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
@@ -47,9 +47,9 @@ import { cloneMap } from "@monstermann/remmi"
 export const removeOr: {
     <K, V, U>(key: NoInfer<K>, or: U): (target: ReadonlyMap<K, V>) => Map<K, V> | U
     <K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, or: U): Map<K, V> | U
-} = dual(3, <K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, or: U): Map<K, V> | U => {
+} = dfdlT(<K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, or: U): Map<K, V> | U => {
     if (!target.has(key)) return or
     const result = cloneMap(target)
     result.delete(key)
     return result
-})
+}, 3)

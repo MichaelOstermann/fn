@@ -1,6 +1,6 @@
 import type { AllUnionFields } from "type-fest"
 import type { NonNil } from "../internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `getOrElse(target, key, orElse)`
@@ -27,6 +27,6 @@ import { dual } from "@monstermann/dfdl"
 export const getOrElse: {
     <T extends object, U extends keyof AllUnionFields<T>, V>(key: U, orElse: (target: NoInfer<T>) => V): (target: T) => NonNil<AllUnionFields<T>[U] | V>
     <T extends object, U extends keyof AllUnionFields<T>, V>(target: T, key: U, orElse: (target: NoInfer<T>) => V): NonNil<AllUnionFields<T>[U] | V>
-} = dual(3, (target: any, key: any, orElse: any): any => {
+} = dfdlT((target: any, key: any, orElse: any): any => {
     return target[key] || orElse(target)
-})
+}, 3)

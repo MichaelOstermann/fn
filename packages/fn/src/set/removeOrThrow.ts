@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneSet } from "@monstermann/remmi"
 import { FnError } from "../function/FnError"
 
@@ -20,9 +20,9 @@ import { FnError } from "../function/FnError"
 export const removeOrThrow: {
     <T>(value: NoInfer<T>): (target: ReadonlySet<T>) => Set<T>
     <T>(target: ReadonlySet<T>, value: NoInfer<T>): Set<T>
-} = dual(2, <T>(target: ReadonlySet<T>, value: NoInfer<T>): Set<T> => {
+} = dfdlT(<T>(target: ReadonlySet<T>, value: NoInfer<T>): Set<T> => {
     if (!target.has(value)) throw new FnError("Set.removeOrThrow: Value does not exist.", [target, value])
     const result = cloneSet(target)
     result.delete(value)
     return result
-})
+}, 2)

@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `get(map, key)`
@@ -44,6 +44,6 @@ import { dual } from "@monstermann/dfdl"
 export const get: {
     <K, V>(key: NoInfer<K>): (target: ReadonlyMap<K, V>) => V | undefined
     <K, V>(target: ReadonlyMap<K, V>, key: NoInfer<K>): V | undefined
-} = dual(2, <K, V>(target: ReadonlyMap<K, V>, key: NoInfer<K>): V | undefined => {
+} = dfdlT(<K, V>(target: ReadonlyMap<K, V>, key: NoInfer<K>): V | undefined => {
     return target.get(key)
-})
+}, 2)

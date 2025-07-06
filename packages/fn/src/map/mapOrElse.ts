@@ -1,5 +1,5 @@
 import type { MapMap, OrElse } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 import { is } from "../function/is"
 
@@ -62,7 +62,7 @@ export const mapOrElse: {
 
     <K, V, U>(target: Map<K, V>, key: NoInfer<K>, transform: MapMap<K, V>, orElse: OrElse<K, V, U>): Map<K, V> | U
     <K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, transform: MapMap<K, V>, orElse: OrElse<K, V, U>): ReadonlyMap<K, V> | U
-} = dual(4, <K, V, U>(target: Map<K, V>, key: NoInfer<K>, transform: MapMap<K, V>, orElse: OrElse<K, V, U>): Map<K, V> | U => {
+} = dfdlT(<K, V, U>(target: Map<K, V>, key: NoInfer<K>, transform: MapMap<K, V>, orElse: OrElse<K, V, U>): Map<K, V> | U => {
     if (!target.has(key)) return orElse(target)
     const prev = target.get(key)! as V
     const next = transform(prev, key, target)
@@ -70,4 +70,4 @@ export const mapOrElse: {
     const result = cloneMap(target)
     result.set(key, next)
     return result
-})
+}, 4)

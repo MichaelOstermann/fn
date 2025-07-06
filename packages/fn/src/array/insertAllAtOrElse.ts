@@ -1,5 +1,5 @@
 import type { OrElse } from "./internals/types"
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 import { insertAllAt } from "./insertAllAt"
 
 /**
@@ -29,7 +29,7 @@ export const insertAllAtOrElse: {
 
     <T, U>(target: T[], idx: number, values: Iterable<NoInfer<T>>, orElse: OrElse<T, U>): T[] | U
     <T, U>(target: readonly T[], idx: number, values: Iterable<NoInfer<T>>, orElse: OrElse<T, U>): readonly T[] | U
-} = dual(4, <T, U>(target: T[], idx: number, values: Iterable<NoInfer<T>>, orElse: OrElse<T, U>): T[] | U => {
+} = dfdlT(<T, U>(target: T[], idx: number, values: Iterable<NoInfer<T>>, orElse: OrElse<T, U>): T[] | U => {
     if (idx < 0 || idx > target.length) return orElse(target)
     return insertAllAt(target, idx, values)
-})
+}, 4)

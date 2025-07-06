@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-function-type */
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `isFunction(target)`
@@ -19,6 +19,6 @@ import { dual } from "@monstermann/dfdl"
 export const isFunction: {
     (): (target: unknown) => target is Function
     (target: unknown): target is Function
-} = dual(1, (target: unknown): target is Function => {
+} = dfdlT((target: unknown): target is Function => {
     return typeof target === "function"
-})
+}, 1)

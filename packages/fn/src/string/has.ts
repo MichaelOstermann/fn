@@ -1,4 +1,4 @@
-import { dual } from "@monstermann/dfdl"
+import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * `has(target, source)`
@@ -16,6 +16,6 @@ import { dual } from "@monstermann/dfdl"
 export const has: {
     (source: string): (target: string) => boolean
     (target: string, source: string): boolean
-} = dual(2, (target: string, source: string): boolean => {
+} = dfdlT((target: string, source: string): boolean => {
     return target.includes(source)
-})
+}, 2)
