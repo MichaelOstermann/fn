@@ -8,8 +8,8 @@ import { dfdlT } from "@monstermann/dfdl"
  * ```ts
  */
 export const isArray: {
-    (): (target: unknown) => target is unknown[]
-    (target: unknown): target is unknown[]
-} = dfdlT((target: unknown): target is unknown[] => {
+    (): (target: unknown) => target is readonly unknown[]
+    (target: unknown): target is readonly unknown[]
+} = dfdlT((target: unknown): target is readonly unknown[] => {
     return Array.isArray(target)
 }, 1)
