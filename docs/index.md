@@ -2,6 +2,23 @@
 
 **A utility library for TypeScript.**
 
+This package composes several libraries into one:
+
+- [@monstermann/match](https://MichaelOstermann.github.io/match) - Zero-runtime exhaustive pattern matching.
+- [@monstermann/dfdl](https://MichaelOstermann.github.io/dfdl) - Data-First / Data-Last oriented utilities.
+- [@monstermann/remmi](https://MichaelOstermann.github.io/remmi) - Reverse immer.
+- [@monstermann/array](https://MichaelOstermann.github.io/array) - Functional utilities for arrays.
+- [@monstermann/geometry](https://MichaelOstermann.github.io/geometry) - Functional geometry utilities.
+- [@monstermann/map](https://MichaelOstermann.github.io/map) - Functional utilities for maps.
+- [@monstermann/number](https://MichaelOstermann.github.io/number) - Functional utilities for numbers.
+- [@monstermann/object](https://MichaelOstermann.github.io/object) - Functional utilities for objects.
+- [@monstermann/promise](https://MichaelOstermann.github.io/promise) - Functional utilities for promises.
+- [@monstermann/result](https://MichaelOstermann.github.io/result/) - Functional utilities for success | error types.
+- [@monstermann/set](https://MichaelOstermann.github.io/set) - Functional utilities for sets.
+- [@monstermann/string](https://MichaelOstermann.github.io/string) - Functional utilities for strings.
+- [@monstermann/dll](https://MichaelOstermann.github.io/dll) - Functional doubly-linked lists.
+- [@monstermann/dsp](https://MichaelOstermann.github.io/dsp) - Small & fast disposables.
+
 ## Features
 
 - [Opt-in mutability](#opt-in-mutability)
@@ -10,7 +27,7 @@
 - [Graceful failure handling](#graceful-failure-handling)
 - [Namespaces](#namespaces)
 - [Native aliases](#native-aliases)
-- [Option & Result](#option-result)
+- [Tree-shaking](#tree-shaking)
 
 ### Opt-in mutability
 
@@ -25,17 +42,17 @@ You can read more about how this works in the documentation for [remmi](https://
 
 ```ts [immutable]
 const a = [];
-const b = append(a, 0); // [!code error]
-const c = append(b, 1); // [!code error]
-const d = append(c, 2); // [!code error]
+const b = Array.append(a, 0); // [!code error]
+const c = Array.append(b, 1); // [!code error]
+const d = Array.append(c, 2); // [!code error]
 ```
 
 ```ts [mutable]
 withMutations(() => {
     const a = [];
-    const b = append(a, 0); // [!code error]
-    const c = append(b, 1); // [!code warning]
-    const d = append(c, 2); // [!code warning]
+    const b = Array.append(a, 0); // [!code error]
+    const c = Array.append(b, 1); // [!code warning]
+    const d = Array.append(c, 2); // [!code warning]
     return d;
 });
 ```
@@ -52,13 +69,13 @@ This is particularly crucial in front-ends, as the primary means to prevent unne
 
 ```ts [merge]
 const before = { foo: true, bar: false };
-const after = merge(before, { foo: true });
+const after = Object.merge(before, { foo: true });
 before === after; // true
 ```
 
 ```ts [filter]
 const before = [1, 2, 3];
-const after = filter(before, (value) => value > 0);
+const after = Array.filter(before, (value) => value > 0);
 before === after; // true
 ```
 
@@ -111,13 +128,13 @@ Functions support both "data-first" and "data-last" signatures for seamless use 
 ::: code-group
 
 ```ts [data-first]
-findRemove([1, 2, 3, 4], (x) => x > 2); // [1, 2, 4]
+Array.findRemove([1, 2, 3, 4], (x) => x > 2); // [1, 2, 4]
 ```
 
 ```ts [data-last]
 pipe(
     [1, 2, 3, 4],
-    findRemove((x) => x > 2),
+    Array.findRemove((x) => x > 2),
 ); // [1, 2, 4]
 ```
 
@@ -132,39 +149,39 @@ Instead, potentially failing utilities come with `or`, `orElse` and `orThrow` va
 ::: code-group
 
 ```ts [default]
-first([]); // undefined
-parseInt("foo"); // NaN
-indexOf([0, 1, 2], 3); // -1
+Array.first([]); // undefined
+String.parseInt("foo"); // NaN
+Array.indexOf([0, 1, 2], 3); // -1
 ```
 
 ```ts [or]
-firstOr([], 0); // 0
-parseIntOr("foo", 0); // 0
-indexOfOr([0, 1, 2], 3, 0); // 0
+Array.firstOr([], 0); // 0
+String.parseIntOr("foo", 0); // 0
+Array.indexOfOr([0, 1, 2], 3, 0); // 0
 ```
 
 ```ts [orElse]
-firstOrElse([], (arr) => arr.length); // 0
-parseIntOrElse("foo", (str) => str.length); // 3
-indexOfOrElse([0, 1, 2], 3, (arr) => arr.length); // 3
+Array.firstOrElse([], (arr) => arr.length); // 0
+String.parseIntOrElse("foo", (str) => str.length); // 3
+Array.indexOfOrElse([0, 1, 2], 3, (arr) => arr.length); // 3
 ```
 
 ```ts [orThrow]
-firstOrThrow([]); // Throws FnError
-parseIntOrThrow("foo"); // Throws FnError
-indexOfOrThrow([0, 1, 2], 3); // Throws FnError
+Array.firstOrThrow([]); // Throws FnError
+String.parseIntOrThrow("foo"); // Throws FnError
+Array.indexOfOrThrow([0, 1, 2], 3); // Throws FnError
 ```
 
 :::
 
 ### Namespaces
 
-This library is primarily intended to be used with wildcard imports:
+This library primarily exports namespaces, for example:
 
 ```ts
-import * as O from "@monstermann/fn/object";
+import { Object } from "@monstermann/fn/object";
 
-O.merge(a, b);
+Object.merge(a, b);
 ```
 
 #### In-editor discovery
@@ -172,10 +189,10 @@ O.merge(a, b);
 With namespaces, you can easily discover what is available, without having to constantly pull up the documentation and memorize all the function names:
 
 ```ts
-import * as A from "@monstermann/fn/array";
+import { Array } from "@monstermann/fn";
 
- A.|
-// ^ Your editor will show everything that is available!
+ Array.|
+//     ^ Your editor will show everything that is available!
 ```
 
 #### Consistent naming
@@ -188,19 +205,18 @@ So the bigger a utility becomes, the more difficult it is to maintain it. Using 
 
 ::: code-group
 
-```ts [Named imports]
+```ts [Global functions]
 import { drop, sliceFrom } from "…";
 
 drop([1, 2, 3], 2); // [3]
 sliceFrom("Hello World!", 6); // "World!"
 ```
 
-```ts [Wildcard imports]
-import * as A from "@monstermann/fn/array";
-import * as S from "@monstermann/fn/string";
+```ts [Namespaces]
+import { Array, String } from "@monstermann/fn";
 
-A.drop([1, 2, 3], 2); // [3]
-S.drop("Hello World!", 6); // "World!"
+Array.drop([1, 2, 3], 2); // [3]
+String.drop("Hello World!", 6); // "World!"
 ```
 
 :::
@@ -211,11 +227,9 @@ In long and complex pipelines, it can sometimes be difficult to maintain a menta
 
 While you could hover all parts in your editor to read the type signatures, namespaces based on types can give you a decent glance of what is happening:
 
-`A`rray, `S`tring, `N`umber
-
 ::: code-group
 
-```ts [Named imports]
+```ts [Global functions]
 pipe(
     ["foo", "bar", "baz"],
     mapEach(parseInt()),
@@ -227,41 +241,16 @@ pipe(
 ); //=> Nanana Batman!
 ```
 
-```ts [Wildcard imports]
+```ts [Namespaces]
 pipe(
     ["foo", "bar", "baz"],
-    A.mapEach(S.parseInt()),
-    A.mapEach(N.toString()),
-    A.mapEach(S.dropLast(1)),
-    A.join(""),
-    S.pascalCase(),
-    S.append(" Batman!"),
+    Array.mapEach(String.parseInt()),
+    Array.mapEach(Number.toString()),
+    Array.mapEach(String.dropLast(1)),
+    Array.join(""),
+    String.pascalCase(),
+    String.append(" Batman!"),
 ); //=> Nanana Batman!
-```
-
-:::
-
-#### Tree-shakeable
-
-Flat imports historically featured good support for tree-shaking, however these days popular bundlers typically can tree-shake more scenarios!
-
-::: code-group
-
-```ts [Source]
-import * as A from "@monstermann/fn/array";
-
-A.drop([1, 2, 3], 2); // [3]
-```
-
-```ts [ESBuild]
-"use strict";
-(() => {
-    // node_modules/@monstermann/fn/array/drop.ts
-    var drop = …;
-
-    // source.js
-    drop([1, 2, 3], 2);
-})();
 ```
 
 :::
@@ -276,63 +265,12 @@ This can prevent having to memorize what is natively available and what is avail
 
 ```ts [data-first]
 "Hello World!".indexOf("W"); // 6
-S.indexOf("Hello World!", "W"); // 6
+String.indexOf("Hello World!", "W"); // 6
 ```
 
 ```ts [data-last]
 pipe("Hello World!", (str) => str.indexOf("W")); // 6
-pipe("Hello World!", S.indexOf("W")); // 6
-```
-
-:::
-
-### Option & Result
-
-This library comes with a very simple take on `Option` and `Result` utilities that can sometimes come in clutch:
-
-::: code-group
-
-<!-- prettier-ignore -->
-```ts [Option]
-const it = null as number | null | undefined
-
-or(it, 10); // 10
-orElse(it, () => 10); // 10
-orThrow(it); // throws FnError
-
-map(it, (x) => x * 2); // null
-mapOr(it, (x) => x * 2, 0); // 0
-mapOrElse(it, (x) => x * 2, () => 0); // 0
-```
-
-```ts [Result]
-// { ok: false, error: "Error!" }
-const error = err("Error!");
-
-okOr(error, true); // true
-okOrElse(error, (error) => true); // true
-okOrThrow(error); // Throws "Error!"
-
-// { ok: true, value: 0 }
-const success = ok(0);
-
-mapOk(success, (num) => num + 1); // ok(1)
-mapErr(success, (num) => num + 1); // ok(0)
-```
-
-```ts [Result (Async)]
-// Promise<{ ok: false, error: "Error!" }>
-const error = errP("Error!");
-
-okOr(error, true); // Promise<true>
-okOrElse(error, (error) => true); // Promise<true>
-okOrThrow(error); // Throws "Error!"
-
-// Promise<{ ok: true, value: 0 }>
-const success = okP(0);
-
-mapOk(success, (num) => num + 1); // okP(1)
-mapErr(success, (num) => num + 1); // okP(0)
+pipe("Hello World!", String.indexOf("W")); // 6
 ```
 
 :::
@@ -359,166 +297,90 @@ bun add @monstermann/fn
 
 :::
 
-## unplugin-auto-import-fn
-
-One major downside of wildcard (or default) imports is that editors can not easily autocomplete them, contrary to named imports.
-
-To alleviate this, there is an optional preset available for [`unplugin-auto-import`](https://github.com/unplugin/unplugin-auto-import) that allows your bundler to automatically add the necessary imports based on your usage, without polluting the global namespace with too many identifiers:
-
-::: code-group
-
-```ts [Source]
-// No imports necessary:
-A.drop([1, 2, 3], 2);
-```
-
-```ts [Transformed]
-// unplugin-auto-import will automatically add this:
-import * as A from "@monstermann/fn/array";
-
-A.drop([1, 2, 3], 2);
-```
-
-```ts [Build]
-// Tree-shaken build from common bundlers:
-"use strict";
-(() => {
-    // node_modules/@monstermann/fn/array/drop.ts
-    var drop = …;
-
-    // source.js
-    drop([1, 2, 3], 2);
-})();
-```
-
-:::
+## Tree-shaking
 
 ### Installation
 
 ::: code-group
 
 ```sh [npm]
-npm install -D unplugin-auto-import @monstermann/unplugin-auto-import-fn
+npm install -D @monstermann/unplugin-fn
 ```
 
 ```sh [pnpm]
-pnpm add -D unplugin-auto-import @monstermann/unplugin-auto-import-fn
+pnpm -D add @monstermann/unplugin-fn
 ```
 
 ```sh [yarn]
-yarn add -D unplugin-auto-import @monstermann/unplugin-auto-import-fn
+yarn -D add @monstermann/unplugin-fn
 ```
 
 ```sh [bun]
-bun add -D unplugin-auto-import @monstermann/unplugin-auto-import-fn
+bun -D add @monstermann/unplugin-fn
 ```
 
 :::
 
 ### Usage
 
-Please consult the documentation for [`unplugin-auto-import`](https://github.com/unplugin/unplugin-auto-import) on how to set this up for other bundlers!
-
 ::: code-group
 
-```ts [vite.config.ts + Recommended]
-import AutoImport from "unplugin-auto-import/vite";
-import Fn from "@monstermann/unplugin-auto-import-fn";
+```ts [Vite]
+// vite.config.ts
+import fn from "@monstermann/unplugin-fn/vite";
 
 export default defineConfig({
-    plugins: [
-        AutoImport({
-            dts: true,
-            imports: Fn.recommended, // [!code highlight]
-        }),
-    ],
+    plugins: [fn()],
 });
 ```
 
-<!-- prettier-ignore -->
-```ts [vite.config.ts + Custom]
-import AutoImport from "unplugin-auto-import/vite";
-import Fn from "@monstermann/unplugin-auto-import-fn";
+```ts [Rollup]
+// rollup.config.js
+import fn from "@monstermann/unplugin-fn/rollup";
 
-export default defineConfig({
-    plugins: [
-        AutoImport({
-            dts: true,
-            imports: [
-                Fn.array.wildcard("Arr"), // [!code highlight]
-                Fn.number.wildcard("Num"), // [!code highlight]
-            ],
-        }),
-    ],
+export default {
+    plugins: [fn()],
+};
+```
+
+```ts [Rolldown]
+// rolldown.config.js
+import fn from "@monstermann/unplugin-fn/rolldown";
+
+export default {
+    plugins: [fn()],
+};
+```
+
+```ts [Webpack]
+// webpack.config.js
+const fn = require("@monstermann/unplugin-fn/webpack");
+
+module.exports = {
+    plugins: [fn()],
+};
+```
+
+```ts [Rspack]
+// rspack.config.js
+const fn = require("@monstermann/unplugin-fn/rspack");
+
+module.exports = {
+    plugins: [fn()],
+};
+```
+
+```ts [ESBuild]
+// esbuild.config.js
+import { build } from "esbuild";
+import fn from "@monstermann/unplugin-fn/esbuild";
+
+build({
+    plugins: [fn()],
 });
 ```
 
 :::
-
-### Recommended preset
-
-```ts
-import Fn from "@monstermann/unplugin-auto-import-fn";
-
-Fn.recommended;
-
-// Equivalent to this setup:
-
-Fn.array.wildcard("A");
-Fn.map.wildcard("M");
-Fn.number.wildcard("N");
-Fn.object.wildcard("O");
-Fn.option.wildcard("Ot");
-Fn.promise.wildcard("P");
-Fn.result.wildcard("R");
-Fn.set.wildcard("St");
-Fn.string.wildcard("S");
-
-Fn.result.named({ include: ["ok", "okP", "err", "errP"] });
-Fn.function.named();
-
-// Resulting with:
-
-import * as A from "@monstermann/fn/array";
-import * as M from "@monstermann/fn/map";
-import * as N from "@monstermann/fn/number";
-import * as O from "@monstermann/fn/object";
-import * as Ot from "@monstermann/fn/option";
-import * as P from "@monstermann/fn/promise";
-import * as R from "@monstermann/fn/result";
-import * as St from "@monstermann/fn/set";
-import * as S from "@monstermann/fn/string";
-
-import { ok, err, … } from "@monstermann/fn/result";
-import { pipe, when, noop, … } from "@monstermann/fn/function";
-```
-
-### Customization
-
-If the default preset is not to your liking, for example if you would like to change the aliases, or only use select functions, you can create your own setup:
-
-```ts
-import Fn from "@monstermann/unplugin-auto-import-fn";
-
-// Import as wildcard:
-Fn.array.wildcard("A");
-
-// Enable all modules as named imports:
-Fn.array.named();
-
-// Include only specific named imports:
-Fn.array.named({ include: ["findMap"] });
-Fn.array.named({ include: /^find/ });
-Fn.array.named({ include: (name) => name.startsWith("find") });
-
-// Exclude specific named imports:
-Fn.array.named({ exclude: ["findMap"] });
-Fn.array.named({ exclude: /^find/ });
-Fn.array.named({ exclude: (name) => name.startsWith("find") });
-
-// Alias named imports:
-Fn.array.named({ aliases: { append: "push" } });
-```
 
 ## Credits
 

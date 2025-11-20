@@ -1,7 +1,7 @@
 {
     "name": "@monstermann/fn",
     "type": "module",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "description": "A utility library for TypeScript.",
     "author": "Michael Ostermann <michaelostermann@me.com>",
     "license": "MIT",
@@ -29,72 +29,40 @@
         "util",
         "utilities",
         "utility",
-        "utils" 
+        "utils"
     ],
     "sideEffects": false,
     "exports": {
-        "./array": {
-            "types": "./dist/array/index.d.ts",
-            "import": "./dist/array/index.js"
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
         },
-        "./map": {
-            "types": "./dist/map/index.d.ts",
-            "import": "./dist/map/index.js"
-        },
-        "./number": {
-            "types": "./dist/number/index.d.ts",
-            "import": "./dist/number/index.js"
-        },
-        "./object": {
-            "types": "./dist/object/index.d.ts",
-            "import": "./dist/object/index.js"
-        },
-        "./option": {
-            "types": "./dist/option/index.d.ts",
-            "import": "./dist/option/index.js"
-        },
-        "./promise": {
-            "types": "./dist/promise/index.d.ts",
-            "import": "./dist/promise/index.js"
-        },
-        "./result": {
-            "types": "./dist/result/index.d.ts",
-            "import": "./dist/result/index.js"
-        },
-        "./set": {
-            "types": "./dist/set/index.d.ts",
-            "import": "./dist/set/index.js"
-        },
-        "./string": {
-            "types": "./dist/string/index.d.ts",
-            "import": "./dist/string/index.js"
-        },
-        "./function": {
-            "types": "./dist/function/index.d.ts",
-            "import": "./dist/function/index.js"
-        },
-        "./types": {
-            "types": "./dist/types/index.d.ts",
-            "import": "./dist/types/index.js"
-        }
+        "./*": "./dist/*"
     },
     "files": [
         "dist"
     ],
     "scripts": {
-        "bundle": "bun run barrels && bun run tsdown",
-        "barrels": "barrelsby -c barrels.json",
+        "bundle": "bun run tsdown",
         "release": "bun publish --access public"
     },
     "dependencies": {
+        "@monstermann/array": "^0.0.0",
         "@monstermann/dfdl": "^0.1.0",
+        "@monstermann/dll": "^0.0.1",
+        "@monstermann/dsp": "^0.2.2",
+        "@monstermann/geometry": "^0.2.1",
+        "@monstermann/map": "^0.1.0",
+        "@monstermann/match": "^0.2.1",
+        "@monstermann/number": "^0.0.0",
+        "@monstermann/object": "^0.0.0",
+        "@monstermann/promise": "^0.0.0",
         "@monstermann/remmi": "^0.0.0",
-        "@monstermann/result": "^0.3.0",
-        "string-ts": "^2.2.1",
-        "type-fest": "^4.41.0"
+        "@monstermann/result": "^0.5.1",
+        "@monstermann/set": "^0.1.0",
+        "@monstermann/string": "^0.0.0"
     },
     "devDependencies": {
-        "barrelsby": "^2.8.1",
         "vitest": "^3.1.3"
     }
 }
