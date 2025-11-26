@@ -8,6 +8,7 @@ This package composes several libraries into one:
 - [@monstermann/dfdl](https://MichaelOstermann.github.io/dfdl) - Data-First / Data-Last oriented utilities.
 - [@monstermann/remmi](https://MichaelOstermann.github.io/remmi) - Reverse immer.
 - [@monstermann/array](https://MichaelOstermann.github.io/array) - Functional utilities for arrays.
+- [@monstermann/function](https://MichaelOstermann.github.io/function) - Functional utilities.
 - [@monstermann/geometry](https://MichaelOstermann.github.io/geometry) - Functional geometry utilities.
 - [@monstermann/map](https://MichaelOstermann.github.io/map) - Functional utilities for maps.
 - [@monstermann/number](https://MichaelOstermann.github.io/number) - Functional utilities for numbers.

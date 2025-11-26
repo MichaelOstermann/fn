@@ -51,6 +51,7 @@
         "@monstermann/dfdl": "^0.1.0",
         "@monstermann/dll": "^0.0.1",
         "@monstermann/dsp": "^0.2.2",
+        "@monstermann/function": "^0.0.0",
         "@monstermann/geometry": "^0.2.1",
         "@monstermann/map": "^0.1.0",
         "@monstermann/match": "^0.2.1",
