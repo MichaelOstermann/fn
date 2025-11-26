@@ -31,7 +31,7 @@
         "@monstermann/match": "^0.2.1",
         "@monstermann/number": "^0.0.0",
         "@monstermann/object": "^0.0.0",
-        "@monstermann/promise": "^0.0.0",
+        "@monstermann/promise": "^0.0.1",
         "@monstermann/remmi": "^0.0.0",
         "@monstermann/result": "^0.5.1",
         "@monstermann/set": "^0.1.0",
@@ -297,7 +297,7 @@
 
     "@monstermann/object": ["@monstermann/object@0.0.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.0.0", "type-fest": "^4.41.0" } }, "sha512-wAbaYQRsag1ChzULwKe1IWHEv7fEm6fF3hofTcmGbt6ZONW2gC8RXVIwaOv+eYpSVYJGU7DoVr094tTC8XT0Yg=="],
 
-    "@monstermann/promise": ["@monstermann/promise@0.0.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-7h91GiWVaKCaholQwlFKRlqE9f33QPGi6j5/R6M6qwzWHuHUkNA0s9jD814f6HLtyrd/l/xr87Q0XfBHYyVYZw=="],
+    "@monstermann/promise": ["@monstermann/promise@0.0.1", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-2Vxk07lY2E8uwb1YZA48kOZT75zOFzejGRYM/e9M1f4x9xDhr64DSv2sS84yNTGUgvUaS3Zzl3eqgoKIHY3ZOQ=="],
 
     "@monstermann/remmi": ["@monstermann/remmi@0.0.0", "", {}, "sha512-cK03blXDJiO7EkrFgLhuEet/3UFEraaB7tfuOoIcXpTY7OnUifxDGffNL3YeDvxL+JppnN+YnQ3qivnHVH0DiA=="],
 
