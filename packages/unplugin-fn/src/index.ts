@@ -78,6 +78,6 @@ export default createUnplugin<Options>(({ debug, enforce, exclude, include } = {
 
 function importFactory(pkgName: string) {
     return function (propertyName: string, importName: string, importAlias: string) {
-        return `import { ${propertyName} as ${importAlias} } from "@monstermann/${pkgName}/${importName}/${propertyName}.js"`
+        return `import { ${propertyName} as ${importAlias} } from "@monstermann/${pkgName}/${importName}/${propertyName}.mjs"`
     }
 }
