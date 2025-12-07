@@ -55,7 +55,7 @@
         "@monstermann/geometry": "^0.2.1",
         "@monstermann/map": "^0.1.0",
         "@monstermann/match": "^0.2.1",
-        "@monstermann/number": "^0.0.0",
+        "@monstermann/number": "^0.0.2",
         "@monstermann/object": "^0.0.0",
         "@monstermann/promise": "^0.0.1",
         "@monstermann/remmi": "^0.0.0",
