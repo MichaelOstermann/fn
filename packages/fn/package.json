@@ -53,7 +53,7 @@
         "@monstermann/dsp": "^0.2.3",
         "@monstermann/function": "^0.0.0",
         "@monstermann/geometry": "^0.2.2",
-        "@monstermann/map": "^0.1.1",
+        "@monstermann/map": "^0.1.2",
         "@monstermann/match": "^0.2.6",
         "@monstermann/number": "^0.0.2",
         "@monstermann/object": "^0.0.1",
@@ -64,6 +64,6 @@
         "@monstermann/string": "^0.0.1"
     },
     "devDependencies": {
-        "vitest": "^4.0.0"
+        "vitest": "^4.0.15"
     }
 }

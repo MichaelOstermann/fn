@@ -27,7 +27,7 @@
         "@monstermann/dsp": "^0.2.3",
         "@monstermann/function": "^0.0.0",
         "@monstermann/geometry": "^0.2.2",
-        "@monstermann/map": "^0.1.1",
+        "@monstermann/map": "^0.1.2",
         "@monstermann/match": "^0.2.6",
         "@monstermann/number": "^0.0.2",
         "@monstermann/object": "^0.0.1",
@@ -295,7 +295,7 @@
 
     "@monstermann/geometry": ["@monstermann/geometry@0.2.2", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-javz2GrrUDuYNkP7CHvWUIfSjD95joTD6dqKFqP33KaX2EBpGUGWtnAQnsCODdvQoNuTJgmq3GgAaU/T2FlSLw=="],
 
-    "@monstermann/map": ["@monstermann/map@0.1.1", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.0.0" } }, "sha512-sglXYSksaPFqxoyiNwlBgVn0wv1BQpql0iLMhtuAsCHK285XuIAhecxkR83Ifp9k42FT2rRObepMslSmNDID8Q=="],
+    "@monstermann/map": ["@monstermann/map@0.1.2", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.0.0" } }, "sha512-BNBXjWxHjxtx5rDEyJGCIrUxRPf8MszfEwWnV3HeXDjEyP/NQYou6ZVud+Y5OyaXKU0vg1OucbJ6xaTU+Rl1sg=="],
 
     "@monstermann/match": ["@monstermann/match@0.2.6", "", { "dependencies": { "type-fest": "^5.0.0" } }, "sha512-aFyiUBVzhNhUk1O7G6eC9SMOa0hVaBojmQY6SXJ4BeFhkcMsYyj4a8uGaH/MSgQ+aAykn5Moj3m/RR2zFa/sQg=="],
 
