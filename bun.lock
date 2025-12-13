@@ -28,7 +28,7 @@
         "@monstermann/function": "^0.0.1",
         "@monstermann/geometry": "^0.2.2",
         "@monstermann/map": "^0.1.2",
-        "@monstermann/match": "^0.2.6",
+        "@monstermann/match": "^0.2.7",
         "@monstermann/number": "^0.0.2",
         "@monstermann/object": "^0.0.1",
         "@monstermann/promise": "^0.0.3",
@@ -45,7 +45,7 @@
       "name": "@monstermann/unplugin-fn",
       "version": "0.4.3",
       "dependencies": {
-        "@monstermann/transform-match": "^0.2.6",
+        "@monstermann/transform-match": "^0.2.7",
         "@monstermann/tree-shake-import-namespaces": "^0.2.2",
         "unplugin": "^2.3.4",
         "unplugin-utils": "^0.3.0",
@@ -297,7 +297,7 @@
 
     "@monstermann/map": ["@monstermann/map@0.1.2", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.0.0" } }, "sha512-BNBXjWxHjxtx5rDEyJGCIrUxRPf8MszfEwWnV3HeXDjEyP/NQYou6ZVud+Y5OyaXKU0vg1OucbJ6xaTU+Rl1sg=="],
 
-    "@monstermann/match": ["@monstermann/match@0.2.6", "", { "dependencies": { "type-fest": "^5.0.0" } }, "sha512-aFyiUBVzhNhUk1O7G6eC9SMOa0hVaBojmQY6SXJ4BeFhkcMsYyj4a8uGaH/MSgQ+aAykn5Moj3m/RR2zFa/sQg=="],
+    "@monstermann/match": ["@monstermann/match@0.2.7", "", { "dependencies": { "type-fest": "^5.0.0" } }, "sha512-ucsGSJUHgKrpyfv/+Ccipo/3t37vWDwzEnMu3WUkHVJyS9w/5hOmL1r8KgNpW8dHOYeRM4Ly1dZQyAFkxRzUdA=="],
 
     "@monstermann/number": ["@monstermann/number@0.0.2", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "type-fest": "^5.0.0" } }, "sha512-8pmNuHPzzcVYRLq7IYuTGEoWGYz12CLNEitQCkKPn9KXS1l75PU2Fijt3P4ULvZPqY/Ru+nj37/5za9y13G6mQ=="],
 
@@ -317,7 +317,7 @@
 
     "@monstermann/tinybench-pretty-printer": ["@monstermann/tinybench-pretty-printer@0.3.0", "", { "dependencies": { "@monstermann/tables": "^0.0.0", "picocolors": "^1.0.1" }, "peerDependencies": { "tinybench": "^6.0.0" } }, "sha512-tuBUvFBQvBg8s9cktbt7xgdAD1UYbWPq9dGrkcs/2DFJxnSi6pGiagPKDX021KeGOPJSF5AfW4rZMJWSc8m18Q=="],
 
-    "@monstermann/transform-match": ["@monstermann/transform-match@0.2.6", "", { "dependencies": { "@jridgewell/remapping": "^2.3.4", "@jridgewell/sourcemap-codec": "^1.5.4", "magic-string": "^0.30.17", "oxc-parser": "^0.101.0", "oxc-walker": "^0.6.0", "redent": "^4.0.0" } }, "sha512-Vy6CiP6EG+DfqO91eDybKRPn8wGuwHp/h1xOuOcumebcI4AlDqbmUhrI8gotGGmR43tm9JEBIPv1GEKnn5nOug=="],
+    "@monstermann/transform-match": ["@monstermann/transform-match@0.2.7", "", { "dependencies": { "@jridgewell/remapping": "^2.3.4", "@jridgewell/sourcemap-codec": "^1.5.4", "magic-string": "^0.30.17", "oxc-parser": "^0.101.0", "oxc-walker": "^0.6.0", "redent": "^4.0.0" } }, "sha512-KHRTAVRTNfiMhQZ7oR2mzPrWbb91ZUmE2OEP4iLwwCH57aNQ0XRd8sid8qgH8mqTs+vjZKIW2aAGYzEO9vy9ag=="],
 
     "@monstermann/tree-shake-import-namespaces": ["@monstermann/tree-shake-import-namespaces@0.2.2", "", { "dependencies": { "@jridgewell/remapping": "^2.3.4", "@jridgewell/sourcemap-codec": "^1.5.4", "astring": "^1.9.0", "magic-string": "^0.30.17", "oxc-parser": "^0.101.0", "oxc-walker": "^0.6.0", "picocolors": "^1.1.1" } }, "sha512-NBJp/l8fZYtTwwWfoIN4PCW/eQTF/jYEczUmdZt6z9yjPKoiQfZyLtgQZ/mFObU68bzKR9q+8XYphggPpCkojg=="],
 
