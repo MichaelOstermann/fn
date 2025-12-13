@@ -25,7 +25,7 @@
         "@monstermann/dfdl": "^0.1.0",
         "@monstermann/dll": "^0.0.2",
         "@monstermann/dsp": "^0.2.3",
-        "@monstermann/function": "^0.0.0",
+        "@monstermann/function": "^0.0.1",
         "@monstermann/geometry": "^0.2.2",
         "@monstermann/map": "^0.1.2",
         "@monstermann/match": "^0.2.6",
@@ -291,7 +291,7 @@
 
     "@monstermann/fn": ["@monstermann/fn@workspace:packages/fn"],
 
-    "@monstermann/function": ["@monstermann/function@0.0.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "type-fest": "^4.41.0" } }, "sha512-pkB4kmobPpAjp1ldR4wTlMudStXXoZczn+v6GDLC84W/H3tHrtbUSw0J9QzDdzjr6rxfV2XPUlzPUga9UPmliw=="],
+    "@monstermann/function": ["@monstermann/function@0.0.1", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "type-fest": "^5.0.0" } }, "sha512-k5aqLb4GVXucYsW9T13tV9PvymEP81nTrXDF6XOcXqajE1QWR14wv1sRwnEF8BOHSP4s4bO2s7jvqi0qRlIUvA=="],
 
     "@monstermann/geometry": ["@monstermann/geometry@0.2.2", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-javz2GrrUDuYNkP7CHvWUIfSjD95joTD6dqKFqP33KaX2EBpGUGWtnAQnsCODdvQoNuTJgmq3GgAaU/T2FlSLw=="],
 
@@ -1366,8 +1366,6 @@
     "@jridgewell/gen-mapping/@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.5.0", "", {}, "sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ=="],
 
     "@jridgewell/trace-mapping/@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.5.0", "", {}, "sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ=="],
-
-    "@monstermann/function/type-fest": ["type-fest@4.41.0", "", {}, "sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA=="],
 
     "@stylistic/eslint-plugin/picomatch": ["picomatch@4.0.2", "", {}, "sha512-M7BAV6Rlcy5u+m6oPhAPFgJTzAioX/6B0DxyvDlo9l8+T3nLKbrczg2WLUyzd45L8RqfUMyGPzekbMvX2Ldkwg=="],
 
