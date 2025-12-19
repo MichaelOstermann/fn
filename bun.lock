@@ -34,7 +34,7 @@
         "@monstermann/promise": "^0.0.3",
         "@monstermann/remmi": "^0.0.0",
         "@monstermann/result": "^0.5.2",
-        "@monstermann/set": "^0.1.1",
+        "@monstermann/set": "^0.2.0",
         "@monstermann/string": "^0.0.1",
       },
       "devDependencies": {
@@ -309,7 +309,7 @@
 
     "@monstermann/result": ["@monstermann/result@0.5.2", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-Xda+6+Q87owT0isvg1OAg3xGHfiHQbWifLuvr0gsmfdaps+DFD5VMARN9pj/sQyauhBzDzUhsDGpqOBDfTCgNw=="],
 
-    "@monstermann/set": ["@monstermann/set@0.1.1", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.0.0" } }, "sha512-ASP996MtYiTP4g7haXI9IpO62uvQYYy1/meV+N/QnMT04ky4WT2tY0M8B/1V2u/1hOB9GZ5PvFytWzdCfI6wgQ=="],
+    "@monstermann/set": ["@monstermann/set@0.2.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.0.0" } }, "sha512-ys2ytb7jsbxYsjQoW4SeSBQmUYjClo7GtdbJsHCqlv4bm8nd9U2BRXU9vZ7kJRnkORTKymH6aBTj2tFWuyq5Kw=="],
 
     "@monstermann/string": ["@monstermann/string@0.0.1", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "string-ts": "^2.2.1" } }, "sha512-69ODUgXPvdW1LuZO4dps/WvHba5n0Z82yNn5jmnkf00zh335vjrn4dA0zlAWHDcttyxuLz6uNG5W8qGsHkdPWg=="],
 
