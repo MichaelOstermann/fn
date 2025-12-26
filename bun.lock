@@ -19,7 +19,7 @@
     },
     "packages/fn": {
       "name": "@monstermann/fn",
-      "version": "0.4.6",
+      "version": "0.4.7",
       "dependencies": {
         "@monstermann/array": "^0.0.2",
         "@monstermann/dfdl": "^0.1.0",
@@ -43,7 +43,7 @@
     },
     "packages/unplugin-fn": {
       "name": "@monstermann/unplugin-fn",
-      "version": "0.4.6",
+      "version": "0.4.7",
       "dependencies": {
         "@monstermann/transform-match": "^0.2.7",
         "@monstermann/tree-shake-import-namespaces": "^0.2.2",
