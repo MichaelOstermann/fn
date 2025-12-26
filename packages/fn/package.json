@@ -47,7 +47,7 @@
         "release": "bun publish --access public"
     },
     "dependencies": {
-        "@monstermann/array": "^0.0.1",
+        "@monstermann/array": "^0.0.2",
         "@monstermann/dfdl": "^0.1.0",
         "@monstermann/dll": "^0.0.2",
         "@monstermann/dsp": "^0.2.3",

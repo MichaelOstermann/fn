@@ -21,7 +21,7 @@
       "name": "@monstermann/fn",
       "version": "0.4.6",
       "dependencies": {
-        "@monstermann/array": "^0.0.1",
+        "@monstermann/array": "^0.0.2",
         "@monstermann/dfdl": "^0.1.0",
         "@monstermann/dll": "^0.0.2",
         "@monstermann/dsp": "^0.2.3",
@@ -279,7 +279,7 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.29", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-uw6guiW/gcAGPDhLmd77/6lW8QLeiV5RUTsAX46Db6oLhGaVj4lhnPwb184s1bkc8kdVg/+h988dro8GRDpmYQ=="],
 
-    "@monstermann/array": ["@monstermann/array@0.0.1", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.0.0", "type-fest": "^5.0.0" } }, "sha512-PBydqhGcVVzcJWQndtbGteyfFM+lW7OvssL4sBZffQxiTU7zj5f3WUTPgaLurc2UUrA5eTsmEKVaj6Q5eII8Vg=="],
+    "@monstermann/array": ["@monstermann/array@0.0.2", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.0.0", "type-fest": "^5.0.0" } }, "sha512-LV5G56xHPuz2nhXuvRuy7v2TZqSdCDPAsg0zj+U3D8X7CAdNHf+WTD//IN/RcCllY8Un404N7Q+yLtaIB0Sk0A=="],
 
     "@monstermann/dfdl": ["@monstermann/dfdl@0.1.0", "", {}, "sha512-9/Z9x3C2aT7843JmoGk3lnsUdP73xSmK8kduh+xth/NjEUcc3yCJYoAoNlpyQkv6WVtmsc41hy/W77pNsb8L8Q=="],
 
