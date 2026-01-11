@@ -32,7 +32,7 @@
         "@monstermann/number": "^0.0.2",
         "@monstermann/object": "^0.0.1",
         "@monstermann/promise": "^0.0.3",
-        "@monstermann/remmi": "^0.0.0",
+        "@monstermann/remmi": "^0.1.0",
         "@monstermann/result": "^0.5.2",
         "@monstermann/set": "^0.2.0",
         "@monstermann/string": "^0.0.1",
@@ -305,7 +305,7 @@
 
     "@monstermann/promise": ["@monstermann/promise@0.0.3", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-4VuIQkzB0TpI4PKbgWTJkoCnKRVVtWf4iFQL3WHTLzXUs8awwczzR2znZfYF4e6KqO9FAKQ/FQnBhEJO5SZgkg=="],
 
-    "@monstermann/remmi": ["@monstermann/remmi@0.0.0", "", {}, "sha512-cK03blXDJiO7EkrFgLhuEet/3UFEraaB7tfuOoIcXpTY7OnUifxDGffNL3YeDvxL+JppnN+YnQ3qivnHVH0DiA=="],
+    "@monstermann/remmi": ["@monstermann/remmi@0.1.0", "", {}, "sha512-Jxj/e39iYJXHrBsIhcapvhh0lBrNYRm6Awux3Y7Py3wzyXX7DQWIbGvrJmL5MQEtuh022IDlMI+iwkYEyTzyCg=="],
 
     "@monstermann/result": ["@monstermann/result@0.5.2", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-Xda+6+Q87owT0isvg1OAg3xGHfiHQbWifLuvr0gsmfdaps+DFD5VMARN9pj/sQyauhBzDzUhsDGpqOBDfTCgNw=="],
 
@@ -1410,6 +1410,14 @@
     "@jridgewell/gen-mapping/@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.5.0", "", {}, "sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ=="],
 
     "@jridgewell/trace-mapping/@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.5.0", "", {}, "sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ=="],
+
+    "@monstermann/array/@monstermann/remmi": ["@monstermann/remmi@0.0.0", "", {}, "sha512-cK03blXDJiO7EkrFgLhuEet/3UFEraaB7tfuOoIcXpTY7OnUifxDGffNL3YeDvxL+JppnN+YnQ3qivnHVH0DiA=="],
+
+    "@monstermann/map/@monstermann/remmi": ["@monstermann/remmi@0.0.0", "", {}, "sha512-cK03blXDJiO7EkrFgLhuEet/3UFEraaB7tfuOoIcXpTY7OnUifxDGffNL3YeDvxL+JppnN+YnQ3qivnHVH0DiA=="],
+
+    "@monstermann/object/@monstermann/remmi": ["@monstermann/remmi@0.0.0", "", {}, "sha512-cK03blXDJiO7EkrFgLhuEet/3UFEraaB7tfuOoIcXpTY7OnUifxDGffNL3YeDvxL+JppnN+YnQ3qivnHVH0DiA=="],
+
+    "@monstermann/set/@monstermann/remmi": ["@monstermann/remmi@0.0.0", "", {}, "sha512-cK03blXDJiO7EkrFgLhuEet/3UFEraaB7tfuOoIcXpTY7OnUifxDGffNL3YeDvxL+JppnN+YnQ3qivnHVH0DiA=="],
 
     "@oxc-parser/binding-wasm32-wasi/@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@1.1.0", "", { "dependencies": { "@emnapi/core": "^1.7.1", "@emnapi/runtime": "^1.7.1", "@tybys/wasm-util": "^0.10.1" } }, "sha512-Fq6DJW+Bb5jaWE69/qOE0D1TUN9+6uWhCeZpdnSBk14pjLcCWR7Q8n49PTSPHazM37JqrsdpEthXy2xn6jWWiA=="],
 
