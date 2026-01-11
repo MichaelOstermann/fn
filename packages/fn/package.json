@@ -57,7 +57,7 @@
         "@monstermann/match": "^0.2.7",
         "@monstermann/number": "^0.0.2",
         "@monstermann/object": "^0.0.1",
-        "@monstermann/promise": "^0.0.3",
+        "@monstermann/promise": "^0.1.0",
         "@monstermann/remmi": "^0.1.0",
         "@monstermann/result": "^0.6.0",
         "@monstermann/set": "^0.2.0",
