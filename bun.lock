@@ -31,7 +31,7 @@
         "@monstermann/match": "^0.2.7",
         "@monstermann/number": "^0.0.2",
         "@monstermann/object": "^0.0.1",
-        "@monstermann/promise": "^0.0.3",
+        "@monstermann/promise": "^0.1.0",
         "@monstermann/remmi": "^0.1.0",
         "@monstermann/result": "^0.6.0",
         "@monstermann/set": "^0.2.0",
@@ -303,7 +303,7 @@
 
     "@monstermann/object": ["@monstermann/object@0.0.1", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.0.0", "type-fest": "^5.0.0" } }, "sha512-kmT5HagZ6HiP0aIMmQZ48DQIDBVObDE3KmleCGIaGOME6vPwDZbeMTcsCQ+idT92Ym57YFtOPrXWSJMFW/iYSg=="],
 
-    "@monstermann/promise": ["@monstermann/promise@0.0.3", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-4VuIQkzB0TpI4PKbgWTJkoCnKRVVtWf4iFQL3WHTLzXUs8awwczzR2znZfYF4e6KqO9FAKQ/FQnBhEJO5SZgkg=="],
+    "@monstermann/promise": ["@monstermann/promise@0.1.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-KcnxtO9ulBedToh0l34kpmXqAoe7sc6/q41sJs+4NP6S09/oajJcKW+TQuInRJTuMk2TR6yCwjV6UOSwA4XVnw=="],
 
     "@monstermann/remmi": ["@monstermann/remmi@0.1.0", "", {}, "sha512-Jxj/e39iYJXHrBsIhcapvhh0lBrNYRm6Awux3Y7Py3wzyXX7DQWIbGvrJmL5MQEtuh022IDlMI+iwkYEyTzyCg=="],
 
