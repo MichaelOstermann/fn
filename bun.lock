@@ -29,7 +29,7 @@
         "@monstermann/geometry": "^0.3.0",
         "@monstermann/map": "^0.1.2",
         "@monstermann/match": "^0.2.7",
-        "@monstermann/number": "^0.0.2",
+        "@monstermann/number": "^0.1.0",
         "@monstermann/object": "^0.0.1",
         "@monstermann/promise": "^0.1.0",
         "@monstermann/remmi": "^0.1.0",
@@ -299,7 +299,7 @@
 
     "@monstermann/match": ["@monstermann/match@0.2.7", "", { "dependencies": { "type-fest": "^5.0.0" } }, "sha512-ucsGSJUHgKrpyfv/+Ccipo/3t37vWDwzEnMu3WUkHVJyS9w/5hOmL1r8KgNpW8dHOYeRM4Ly1dZQyAFkxRzUdA=="],
 
-    "@monstermann/number": ["@monstermann/number@0.0.2", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "type-fest": "^5.0.0" } }, "sha512-8pmNuHPzzcVYRLq7IYuTGEoWGYz12CLNEitQCkKPn9KXS1l75PU2Fijt3P4ULvZPqY/Ru+nj37/5za9y13G6mQ=="],
+    "@monstermann/number": ["@monstermann/number@0.1.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-qV4T0D1xKT6ZsAnS1b/1eCCU9tEf1qT7JcVBOENTjudBMQ8TwrbO7TD9ZqygxWfNaaMK/3eMcwChl9rAH/t3AQ=="],
 
     "@monstermann/object": ["@monstermann/object@0.0.1", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.0.0", "type-fest": "^5.0.0" } }, "sha512-kmT5HagZ6HiP0aIMmQZ48DQIDBVObDE3KmleCGIaGOME6vPwDZbeMTcsCQ+idT92Ym57YFtOPrXWSJMFW/iYSg=="],
 
