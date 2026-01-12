@@ -34,7 +34,7 @@
         "@monstermann/promise": "^0.1.0",
         "@monstermann/remmi": "^0.1.0",
         "@monstermann/result": "^0.6.0",
-        "@monstermann/set": "^0.2.0",
+        "@monstermann/set": "^0.3.0",
         "@monstermann/string": "^0.1.0",
       },
       "devDependencies": {
@@ -309,7 +309,7 @@
 
     "@monstermann/result": ["@monstermann/result@0.6.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-RcrbkHS1njyOn5h0KAcG7cUbaQOVFK51adDnRWVS8K5ejqf8c2npw8mTDQU+Oq7Oz2I8wTDpq1NPl4VEWlXBRA=="],
 
-    "@monstermann/set": ["@monstermann/set@0.2.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.0.0" } }, "sha512-ys2ytb7jsbxYsjQoW4SeSBQmUYjClo7GtdbJsHCqlv4bm8nd9U2BRXU9vZ7kJRnkORTKymH6aBTj2tFWuyq5Kw=="],
+    "@monstermann/set": ["@monstermann/set@0.3.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.1.0" } }, "sha512-jv2rq1IwHGa03lTAso3678pCtDio3KukCkWi9XQ2NlA4vcZ1OPquGwjyTXnPi8ZdJYXaZKjiaJHqhe/GJqgexw=="],
 
     "@monstermann/string": ["@monstermann/string@0.1.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "string-ts": "^2.2.1" } }, "sha512-eC8ryT/0onVNhl6uQRpXyp+yX88IHtrG9M2X3KCFUDPPl2y2NcgKcVWdCTCWqpoUOu7WM9TOmczmR49uflNnWg=="],
 
@@ -1412,8 +1412,6 @@
     "@monstermann/array/@monstermann/remmi": ["@monstermann/remmi@0.0.0", "", {}, "sha512-cK03blXDJiO7EkrFgLhuEet/3UFEraaB7tfuOoIcXpTY7OnUifxDGffNL3YeDvxL+JppnN+YnQ3qivnHVH0DiA=="],
 
     "@monstermann/object/@monstermann/remmi": ["@monstermann/remmi@0.0.0", "", {}, "sha512-cK03blXDJiO7EkrFgLhuEet/3UFEraaB7tfuOoIcXpTY7OnUifxDGffNL3YeDvxL+JppnN+YnQ3qivnHVH0DiA=="],
-
-    "@monstermann/set/@monstermann/remmi": ["@monstermann/remmi@0.0.0", "", {}, "sha512-cK03blXDJiO7EkrFgLhuEet/3UFEraaB7tfuOoIcXpTY7OnUifxDGffNL3YeDvxL+JppnN+YnQ3qivnHVH0DiA=="],
 
     "@oxc-parser/binding-wasm32-wasi/@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@1.1.0", "", { "dependencies": { "@emnapi/core": "^1.7.1", "@emnapi/runtime": "^1.7.1", "@tybys/wasm-util": "^0.10.1" } }, "sha512-Fq6DJW+Bb5jaWE69/qOE0D1TUN9+6uWhCeZpdnSBk14pjLcCWR7Q8n49PTSPHazM37JqrsdpEthXy2xn6jWWiA=="],
 
