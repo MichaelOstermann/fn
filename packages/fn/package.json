@@ -61,7 +61,7 @@
         "@monstermann/remmi": "^0.1.0",
         "@monstermann/result": "^0.6.0",
         "@monstermann/set": "^0.2.0",
-        "@monstermann/string": "^0.0.1"
+        "@monstermann/string": "^0.1.0"
     },
     "devDependencies": {
         "vitest": "^4.0.15"
