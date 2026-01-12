@@ -53,7 +53,7 @@
         "@monstermann/dsp": "^0.3.0",
         "@monstermann/function": "^0.0.2",
         "@monstermann/geometry": "^0.3.0",
-        "@monstermann/map": "^0.1.2",
+        "@monstermann/map": "^0.2.0",
         "@monstermann/match": "^0.2.7",
         "@monstermann/number": "^0.1.0",
         "@monstermann/object": "^0.0.1",

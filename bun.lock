@@ -27,7 +27,7 @@
         "@monstermann/dsp": "^0.3.0",
         "@monstermann/function": "^0.0.2",
         "@monstermann/geometry": "^0.3.0",
-        "@monstermann/map": "^0.1.2",
+        "@monstermann/map": "^0.2.0",
         "@monstermann/match": "^0.2.7",
         "@monstermann/number": "^0.1.0",
         "@monstermann/object": "^0.0.1",
@@ -295,7 +295,7 @@
 
     "@monstermann/geometry": ["@monstermann/geometry@0.3.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-rGh1JiiimJu00/OiV2l/KiSWiQmhYna1KN81mKgi/CCnoEhanvp8GxnY0qM8HvNkhOkguYKo2JJ6+XZachiXTQ=="],
 
-    "@monstermann/map": ["@monstermann/map@0.1.2", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.0.0" } }, "sha512-BNBXjWxHjxtx5rDEyJGCIrUxRPf8MszfEwWnV3HeXDjEyP/NQYou6ZVud+Y5OyaXKU0vg1OucbJ6xaTU+Rl1sg=="],
+    "@monstermann/map": ["@monstermann/map@0.2.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.1.0" } }, "sha512-rFI9c+RIPRYZ4Czv3r6J7Pug7DvojgnlfvFeshsfBOyEb+x2tqYEk01JjvHYNR9XDS9Rz5+WX/lC6pxoogKXEg=="],
 
     "@monstermann/match": ["@monstermann/match@0.2.7", "", { "dependencies": { "type-fest": "^5.0.0" } }, "sha512-ucsGSJUHgKrpyfv/+Ccipo/3t37vWDwzEnMu3WUkHVJyS9w/5hOmL1r8KgNpW8dHOYeRM4Ly1dZQyAFkxRzUdA=="],
 
@@ -1410,8 +1410,6 @@
     "@jridgewell/trace-mapping/@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.5.0", "", {}, "sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ=="],
 
     "@monstermann/array/@monstermann/remmi": ["@monstermann/remmi@0.0.0", "", {}, "sha512-cK03blXDJiO7EkrFgLhuEet/3UFEraaB7tfuOoIcXpTY7OnUifxDGffNL3YeDvxL+JppnN+YnQ3qivnHVH0DiA=="],
-
-    "@monstermann/map/@monstermann/remmi": ["@monstermann/remmi@0.0.0", "", {}, "sha512-cK03blXDJiO7EkrFgLhuEet/3UFEraaB7tfuOoIcXpTY7OnUifxDGffNL3YeDvxL+JppnN+YnQ3qivnHVH0DiA=="],
 
     "@monstermann/object/@monstermann/remmi": ["@monstermann/remmi@0.0.0", "", {}, "sha512-cK03blXDJiO7EkrFgLhuEet/3UFEraaB7tfuOoIcXpTY7OnUifxDGffNL3YeDvxL+JppnN+YnQ3qivnHVH0DiA=="],
 
