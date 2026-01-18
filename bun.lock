@@ -27,7 +27,7 @@
         "@monstermann/dsp": "^0.3.0",
         "@monstermann/function": "^0.0.2",
         "@monstermann/geometry": "^0.3.0",
-        "@monstermann/map": "^0.2.0",
+        "@monstermann/map": "^0.3.0",
         "@monstermann/match": "^0.2.7",
         "@monstermann/number": "^0.1.0",
         "@monstermann/object": "^0.2.0",
@@ -295,7 +295,7 @@
 
     "@monstermann/geometry": ["@monstermann/geometry@0.3.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-rGh1JiiimJu00/OiV2l/KiSWiQmhYna1KN81mKgi/CCnoEhanvp8GxnY0qM8HvNkhOkguYKo2JJ6+XZachiXTQ=="],
 
-    "@monstermann/map": ["@monstermann/map@0.2.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.1.0" } }, "sha512-rFI9c+RIPRYZ4Czv3r6J7Pug7DvojgnlfvFeshsfBOyEb+x2tqYEk01JjvHYNR9XDS9Rz5+WX/lC6pxoogKXEg=="],
+    "@monstermann/map": ["@monstermann/map@0.3.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.2.0" } }, "sha512-gST1dAO0DjBf1WJoM4ZDYSRhGVK9UVuRuSD8FlKRaJ8g2a9XY4lhJY/+kuaqkVsjt5ztx4hb1MjLKUetVfi03w=="],
 
     "@monstermann/match": ["@monstermann/match@0.2.7", "", { "dependencies": { "type-fest": "^5.0.0" } }, "sha512-ucsGSJUHgKrpyfv/+Ccipo/3t37vWDwzEnMu3WUkHVJyS9w/5hOmL1r8KgNpW8dHOYeRM4Ly1dZQyAFkxRzUdA=="],
 
@@ -1410,8 +1410,6 @@
     "@jridgewell/trace-mapping/@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.5.0", "", {}, "sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ=="],
 
     "@monstermann/array/@monstermann/remmi": ["@monstermann/remmi@0.1.0", "", {}, "sha512-Jxj/e39iYJXHrBsIhcapvhh0lBrNYRm6Awux3Y7Py3wzyXX7DQWIbGvrJmL5MQEtuh022IDlMI+iwkYEyTzyCg=="],
-
-    "@monstermann/map/@monstermann/remmi": ["@monstermann/remmi@0.1.0", "", {}, "sha512-Jxj/e39iYJXHrBsIhcapvhh0lBrNYRm6Awux3Y7Py3wzyXX7DQWIbGvrJmL5MQEtuh022IDlMI+iwkYEyTzyCg=="],
 
     "@monstermann/object/@monstermann/remmi": ["@monstermann/remmi@0.1.0", "", {}, "sha512-Jxj/e39iYJXHrBsIhcapvhh0lBrNYRm6Awux3Y7Py3wzyXX7DQWIbGvrJmL5MQEtuh022IDlMI+iwkYEyTzyCg=="],
 
