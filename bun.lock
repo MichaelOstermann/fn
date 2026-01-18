@@ -34,7 +34,7 @@
         "@monstermann/promise": "^0.1.0",
         "@monstermann/remmi": "^0.2.0",
         "@monstermann/result": "^0.6.0",
-        "@monstermann/set": "^0.3.0",
+        "@monstermann/set": "^0.4.0",
         "@monstermann/string": "^0.1.0",
       },
       "devDependencies": {
@@ -309,7 +309,7 @@
 
     "@monstermann/result": ["@monstermann/result@0.6.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-RcrbkHS1njyOn5h0KAcG7cUbaQOVFK51adDnRWVS8K5ejqf8c2npw8mTDQU+Oq7Oz2I8wTDpq1NPl4VEWlXBRA=="],
 
-    "@monstermann/set": ["@monstermann/set@0.3.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.1.0" } }, "sha512-jv2rq1IwHGa03lTAso3678pCtDio3KukCkWi9XQ2NlA4vcZ1OPquGwjyTXnPi8ZdJYXaZKjiaJHqhe/GJqgexw=="],
+    "@monstermann/set": ["@monstermann/set@0.4.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.2.0" } }, "sha512-3P0eS+xra/inpUr2Ccqgu2WU6qsL9MXCrDQ3VsrbuOGX66ruYHU3iF584GWDNNdywrJiQikMzyT9Kj+aDplQoQ=="],
 
     "@monstermann/string": ["@monstermann/string@0.1.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "string-ts": "^2.2.1" } }, "sha512-eC8ryT/0onVNhl6uQRpXyp+yX88IHtrG9M2X3KCFUDPPl2y2NcgKcVWdCTCWqpoUOu7WM9TOmczmR49uflNnWg=="],
 
@@ -1414,8 +1414,6 @@
     "@monstermann/map/@monstermann/remmi": ["@monstermann/remmi@0.1.0", "", {}, "sha512-Jxj/e39iYJXHrBsIhcapvhh0lBrNYRm6Awux3Y7Py3wzyXX7DQWIbGvrJmL5MQEtuh022IDlMI+iwkYEyTzyCg=="],
 
     "@monstermann/object/@monstermann/remmi": ["@monstermann/remmi@0.1.0", "", {}, "sha512-Jxj/e39iYJXHrBsIhcapvhh0lBrNYRm6Awux3Y7Py3wzyXX7DQWIbGvrJmL5MQEtuh022IDlMI+iwkYEyTzyCg=="],
-
-    "@monstermann/set/@monstermann/remmi": ["@monstermann/remmi@0.1.0", "", {}, "sha512-Jxj/e39iYJXHrBsIhcapvhh0lBrNYRm6Awux3Y7Py3wzyXX7DQWIbGvrJmL5MQEtuh022IDlMI+iwkYEyTzyCg=="],
 
     "@oxc-parser/binding-wasm32-wasi/@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@1.1.0", "", { "dependencies": { "@emnapi/core": "^1.7.1", "@emnapi/runtime": "^1.7.1", "@tybys/wasm-util": "^0.10.1" } }, "sha512-Fq6DJW+Bb5jaWE69/qOE0D1TUN9+6uWhCeZpdnSBk14pjLcCWR7Q8n49PTSPHazM37JqrsdpEthXy2xn6jWWiA=="],
 
