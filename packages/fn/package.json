@@ -60,7 +60,7 @@
         "@monstermann/promise": "^0.1.0",
         "@monstermann/remmi": "^0.2.0",
         "@monstermann/result": "^0.6.0",
-        "@monstermann/set": "^0.3.0",
+        "@monstermann/set": "^0.4.0",
         "@monstermann/string": "^0.1.0"
     },
     "devDependencies": {
