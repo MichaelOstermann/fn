@@ -30,7 +30,7 @@
         "@monstermann/map": "^0.3.0",
         "@monstermann/match": "^0.2.7",
         "@monstermann/number": "^0.1.0",
-        "@monstermann/object": "^0.2.0",
+        "@monstermann/object": "^0.3.0",
         "@monstermann/promise": "^0.1.0",
         "@monstermann/remmi": "^0.2.0",
         "@monstermann/result": "^0.6.0",
@@ -301,7 +301,7 @@
 
     "@monstermann/number": ["@monstermann/number@0.1.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-qV4T0D1xKT6ZsAnS1b/1eCCU9tEf1qT7JcVBOENTjudBMQ8TwrbO7TD9ZqygxWfNaaMK/3eMcwChl9rAH/t3AQ=="],
 
-    "@monstermann/object": ["@monstermann/object@0.2.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.1.0", "type-fest": "^5.0.0" } }, "sha512-gBYrXeul65LlzVNhB8twRaPtXillEegm4U4Rqd6lnDsvy0x0Gm1qGI2JWcTS/L8ezXd4wPo/P1KWPM+KlRXTtg=="],
+    "@monstermann/object": ["@monstermann/object@0.3.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.2.0", "type-fest": "^5.0.0" } }, "sha512-+evrh1VY6CHv9GkBty4eSI2Hl1V9mm2W/6cEjsmTAikT2O59m1n0/9VNpbXORXlSdUHsQsrkiaz8a7BlafQHzA=="],
 
     "@monstermann/promise": ["@monstermann/promise@0.1.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-KcnxtO9ulBedToh0l34kpmXqAoe7sc6/q41sJs+4NP6S09/oajJcKW+TQuInRJTuMk2TR6yCwjV6UOSwA4XVnw=="],
 
@@ -1410,8 +1410,6 @@
     "@jridgewell/trace-mapping/@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.5.0", "", {}, "sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ=="],
 
     "@monstermann/array/@monstermann/remmi": ["@monstermann/remmi@0.1.0", "", {}, "sha512-Jxj/e39iYJXHrBsIhcapvhh0lBrNYRm6Awux3Y7Py3wzyXX7DQWIbGvrJmL5MQEtuh022IDlMI+iwkYEyTzyCg=="],
-
-    "@monstermann/object/@monstermann/remmi": ["@monstermann/remmi@0.1.0", "", {}, "sha512-Jxj/e39iYJXHrBsIhcapvhh0lBrNYRm6Awux3Y7Py3wzyXX7DQWIbGvrJmL5MQEtuh022IDlMI+iwkYEyTzyCg=="],
 
     "@oxc-parser/binding-wasm32-wasi/@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@1.1.0", "", { "dependencies": { "@emnapi/core": "^1.7.1", "@emnapi/runtime": "^1.7.1", "@tybys/wasm-util": "^0.10.1" } }, "sha512-Fq6DJW+Bb5jaWE69/qOE0D1TUN9+6uWhCeZpdnSBk14pjLcCWR7Q8n49PTSPHazM37JqrsdpEthXy2xn6jWWiA=="],
 
