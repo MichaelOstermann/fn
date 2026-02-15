@@ -33,7 +33,7 @@
         "@monstermann/object": "^0.3.0",
         "@monstermann/promise": "^0.1.0",
         "@monstermann/remmi": "^0.2.0",
-        "@monstermann/result": "^0.6.0",
+        "@monstermann/result": "^0.8.0",
         "@monstermann/set": "^0.4.0",
         "@monstermann/string": "^0.1.0",
       },
@@ -307,7 +307,7 @@
 
     "@monstermann/remmi": ["@monstermann/remmi@0.2.0", "", {}, "sha512-/2BUaWvXrSrQ9jDMxQudsYTXUiCYgUFO1O3bfgqL5E1Hd7JD9xwOBnBDSEnEQr3oi/wrgSkEWG2hMDyC1uk+Rg=="],
 
-    "@monstermann/result": ["@monstermann/result@0.6.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-RcrbkHS1njyOn5h0KAcG7cUbaQOVFK51adDnRWVS8K5ejqf8c2npw8mTDQU+Oq7Oz2I8wTDpq1NPl4VEWlXBRA=="],
+    "@monstermann/result": ["@monstermann/result@0.8.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-VjuBbn4jYYMX2cDVsaf5PmfF46c5EU4gcl7SFDWAslh3rcIsyVOJg5J4sfzH3kir+E8UjuZmP4sJfgZ3Z+cfxg=="],
 
     "@monstermann/set": ["@monstermann/set@0.4.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.2.0" } }, "sha512-3P0eS+xra/inpUr2Ccqgu2WU6qsL9MXCrDQ3VsrbuOGX66ruYHU3iF584GWDNNdywrJiQikMzyT9Kj+aDplQoQ=="],
 
