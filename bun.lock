@@ -29,7 +29,7 @@
         "@monstermann/geometry": "^0.3.0",
         "@monstermann/map": "^0.3.0",
         "@monstermann/match": "^0.2.7",
-        "@monstermann/number": "^0.1.0",
+        "@monstermann/number": "^0.2.0",
         "@monstermann/object": "^0.3.0",
         "@monstermann/promise": "^0.1.0",
         "@monstermann/remmi": "^0.2.0",
@@ -299,7 +299,7 @@
 
     "@monstermann/match": ["@monstermann/match@0.2.7", "", { "dependencies": { "type-fest": "^5.0.0" } }, "sha512-ucsGSJUHgKrpyfv/+Ccipo/3t37vWDwzEnMu3WUkHVJyS9w/5hOmL1r8KgNpW8dHOYeRM4Ly1dZQyAFkxRzUdA=="],
 
-    "@monstermann/number": ["@monstermann/number@0.1.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-qV4T0D1xKT6ZsAnS1b/1eCCU9tEf1qT7JcVBOENTjudBMQ8TwrbO7TD9ZqygxWfNaaMK/3eMcwChl9rAH/t3AQ=="],
+    "@monstermann/number": ["@monstermann/number@0.2.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0" } }, "sha512-Geg1kg/Bqy4sP9MxnyoOQ0CYerIdsSzpo2KDI5GMf+cdMU913lVSPVzBelmGB+2Ex6uHED7EzgL2wW2czBSYGg=="],
 
     "@monstermann/object": ["@monstermann/object@0.3.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.2.0", "type-fest": "^5.0.0" } }, "sha512-+evrh1VY6CHv9GkBty4eSI2Hl1V9mm2W/6cEjsmTAikT2O59m1n0/9VNpbXORXlSdUHsQsrkiaz8a7BlafQHzA=="],
 
