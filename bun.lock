@@ -23,7 +23,7 @@
       "dependencies": {
         "@monstermann/array": "^0.5.0",
         "@monstermann/dfdl": "^0.1.0",
-        "@monstermann/dll": "^0.1.0",
+        "@monstermann/dll": "^0.2.0",
         "@monstermann/dsp": "^0.4.0",
         "@monstermann/function": "^0.0.2",
         "@monstermann/geometry": "^0.4.0",
@@ -283,7 +283,7 @@
 
     "@monstermann/dfdl": ["@monstermann/dfdl@0.1.0", "", {}, "sha512-9/Z9x3C2aT7843JmoGk3lnsUdP73xSmK8kduh+xth/NjEUcc3yCJYoAoNlpyQkv6WVtmsc41hy/W77pNsb8L8Q=="],
 
-    "@monstermann/dll": ["@monstermann/dll@0.1.0", "", {}, "sha512-rEwwuhyUuyx323H5FrnZDJqlh27weJEQmz+D85jmn8AvWTO3Gi1WmCAoJqvWj54eqbntex0jGnxZnwdPjvcRZA=="],
+    "@monstermann/dll": ["@monstermann/dll@0.2.0", "", {}, "sha512-sNxk6ex/GfVbHCjQsXAEqlpcS/uo2bQsy2vRS7FBhb8Fs7D8wlwQM7Qo4bGt4moPTcWCwrBnbcfzb1LW6qM0aQ=="],
 
     "@monstermann/dsp": ["@monstermann/dsp@0.4.0", "", {}, "sha512-a7BVOXPx/unkYJL4rj9N5HevQ86RE1bnMG90q36hl0uqpByPLexDcFp0ArqnIm3oZO6srpv9Dv4YHIdWcO/4pQ=="],
 
