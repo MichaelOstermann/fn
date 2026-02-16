@@ -35,7 +35,7 @@
         "@monstermann/remmi": "^0.2.0",
         "@monstermann/result": "^0.8.0",
         "@monstermann/set": "^0.5.0",
-        "@monstermann/string": "^0.1.0",
+        "@monstermann/string": "^0.2.0",
       },
       "devDependencies": {
         "vitest": "^4.0.15",
@@ -311,7 +311,7 @@
 
     "@monstermann/set": ["@monstermann/set@0.5.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.2.0" } }, "sha512-kMOerGXwXzy7zcv0OtDRfJLEuRDe1J6dFGmBq6pHGe8lAxnU9KK/tEyIZQnrNrfoYzVVuy9ExJ2hBSMo3F0zzg=="],
 
-    "@monstermann/string": ["@monstermann/string@0.1.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "string-ts": "^2.2.1" } }, "sha512-eC8ryT/0onVNhl6uQRpXyp+yX88IHtrG9M2X3KCFUDPPl2y2NcgKcVWdCTCWqpoUOu7WM9TOmczmR49uflNnWg=="],
+    "@monstermann/string": ["@monstermann/string@0.2.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "string-ts": "^2.2.1" } }, "sha512-5HXNXLMC0ggFtQz3malUQd0hEFrFfAFaL3x3q9krW8FQZSY0pXoCD3fsz/f+RV8k8vrUfw1/CM6dMWrKtN97WA=="],
 
     "@monstermann/tables": ["@monstermann/tables@0.0.0", "", { "dependencies": { "cli-truncate": "^4.0.0", "picocolors": "^1.0.1", "string-width": "^7.1.0" } }, "sha512-mpM86yGT6EPHIyB0c4uIdKQ9mPupfNotn0UHWbj1EVeYpJP/hC9k0p6KoLf9ZZ/r3gHu9PRq61tr3K8Yeg/Rng=="],
 
