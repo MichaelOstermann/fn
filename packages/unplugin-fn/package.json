@@ -1,7 +1,7 @@
 {
     "name": "@monstermann/unplugin-fn",
     "type": "module",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "description": "A utility library for TypeScript.",
     "author": "Michael Ostermann <michaelostermann@me.com>",
     "license": "MIT",
