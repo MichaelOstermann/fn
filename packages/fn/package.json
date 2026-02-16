@@ -54,7 +54,7 @@
         "@monstermann/function": "^0.0.2",
         "@monstermann/geometry": "^0.3.0",
         "@monstermann/map": "^0.4.0",
-        "@monstermann/match": "^0.2.7",
+        "@monstermann/match": "^0.3.0",
         "@monstermann/number": "^0.2.0",
         "@monstermann/object": "^0.4.0",
         "@monstermann/promise": "^0.3.0",
