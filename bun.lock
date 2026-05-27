@@ -21,7 +21,7 @@
       "name": "@monstermann/fn",
       "version": "0.9.0",
       "dependencies": {
-        "@monstermann/array": "^0.5.0",
+        "@monstermann/array": "^0.6.0",
         "@monstermann/dfdl": "^0.1.0",
         "@monstermann/dll": "^0.2.0",
         "@monstermann/dsp": "^0.4.0",
@@ -277,7 +277,7 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.29", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-uw6guiW/gcAGPDhLmd77/6lW8QLeiV5RUTsAX46Db6oLhGaVj4lhnPwb184s1bkc8kdVg/+h988dro8GRDpmYQ=="],
 
-    "@monstermann/array": ["@monstermann/array@0.5.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.2.0", "type-fest": "^5.0.0" } }, "sha512-DIbqh489VHEqFyOn/D3XxoxZ9lFUQQkOhtikKeGIVoIjkfR8pkShyeim+JAFastpWhlzZA9Df51Y6Bt/gQM/4g=="],
+    "@monstermann/array": ["@monstermann/array@0.6.0", "", { "dependencies": { "@monstermann/dfdl": "^0.2.0", "@monstermann/remmi": "^0.2.0", "type-fest": "^5.0.0" } }, "sha512-GxuYBETHjLZdmPK4dDafGl03C1IesFEpvnf1J2qA40nB4nfwfSUqDC58Yp1VzYwvWngorHnIlZ7rbq+dNclm1g=="],
 
     "@monstermann/dfdl": ["@monstermann/dfdl@0.1.0", "", {}, "sha512-9/Z9x3C2aT7843JmoGk3lnsUdP73xSmK8kduh+xth/NjEUcc3yCJYoAoNlpyQkv6WVtmsc41hy/W77pNsb8L8Q=="],
 
@@ -1440,6 +1440,8 @@
     "@jridgewell/gen-mapping/@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.5.0", "", {}, "sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ=="],
 
     "@jridgewell/trace-mapping/@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.5.0", "", {}, "sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ=="],
+
+    "@monstermann/array/@monstermann/dfdl": ["@monstermann/dfdl@0.2.0", "", {}, "sha512-JAcoiVCjg5CeIEunYTGL4FJbk0jZzWxzFUWENNGmU67wAnogVBRwBAGq0PwpHmMRVBzc+DPzdxv+Ma+3WfhWYA=="],
 
     "@oxc-parser/binding-wasm32-wasi/@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@1.1.0", "", { "dependencies": { "@emnapi/core": "^1.7.1", "@emnapi/runtime": "^1.7.1", "@tybys/wasm-util": "^0.10.1" } }, "sha512-Fq6DJW+Bb5jaWE69/qOE0D1TUN9+6uWhCeZpdnSBk14pjLcCWR7Q8n49PTSPHazM37JqrsdpEthXy2xn6jWWiA=="],
 
