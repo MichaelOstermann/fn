@@ -27,7 +27,7 @@
         "@monstermann/dsp": "^0.4.0",
         "@monstermann/function": "^0.0.2",
         "@monstermann/geometry": "^0.5.0",
-        "@monstermann/map": "^0.4.0",
+        "@monstermann/map": "^0.5.0",
         "@monstermann/match": "^0.4.0",
         "@monstermann/number": "^0.2.0",
         "@monstermann/object": "^0.4.0",
@@ -293,7 +293,7 @@
 
     "@monstermann/geometry": ["@monstermann/geometry@0.5.0", "", { "dependencies": { "@monstermann/dfdl": "^0.2.0" } }, "sha512-WTAYyMd7ZAHoEZINq42Aa6Jt97aNIJ+jsqd1c2FN8pJ4ZAawdX3vMg9YitgKaEMfzX5yZSRtVJlVB3HKcXMmYQ=="],
 
-    "@monstermann/map": ["@monstermann/map@0.4.0", "", { "dependencies": { "@monstermann/dfdl": "^0.1.0", "@monstermann/remmi": "^0.2.0" } }, "sha512-8/qNGoN6jUei0+pTogfZT37Kxsh/BZhv3e3wfRflhaTAQQizUWPGK1pXg4aaJ3MvII2uaBmbOA6VOpYA/njqEw=="],
+    "@monstermann/map": ["@monstermann/map@0.5.0", "", { "dependencies": { "@monstermann/dfdl": "^0.2.0", "@monstermann/remmi": "^0.2.0" } }, "sha512-QujSGmNXZHcuHH55/lq3YNt0Xzi+cizmNxJ0Xlk1lAA3LXJHx/x5yH4OiGQkmkuv0yvbaIy+0VEmPv3fIXD40Q=="],
 
     "@monstermann/match": ["@monstermann/match@0.4.0", "", { "dependencies": { "type-fest": "^5.0.0" } }, "sha512-X5rbhciaz6O6r9dbt6A2JKuJxRDyE6q8hWKq0ylHUPCLUVYW98BbuEmYAeZlEiEboVdwFhKOylndCCQz3nEq9g=="],
 
@@ -1444,6 +1444,8 @@
     "@monstermann/array/@monstermann/dfdl": ["@monstermann/dfdl@0.2.0", "", {}, "sha512-JAcoiVCjg5CeIEunYTGL4FJbk0jZzWxzFUWENNGmU67wAnogVBRwBAGq0PwpHmMRVBzc+DPzdxv+Ma+3WfhWYA=="],
 
     "@monstermann/geometry/@monstermann/dfdl": ["@monstermann/dfdl@0.2.0", "", {}, "sha512-JAcoiVCjg5CeIEunYTGL4FJbk0jZzWxzFUWENNGmU67wAnogVBRwBAGq0PwpHmMRVBzc+DPzdxv+Ma+3WfhWYA=="],
+
+    "@monstermann/map/@monstermann/dfdl": ["@monstermann/dfdl@0.2.0", "", {}, "sha512-JAcoiVCjg5CeIEunYTGL4FJbk0jZzWxzFUWENNGmU67wAnogVBRwBAGq0PwpHmMRVBzc+DPzdxv+Ma+3WfhWYA=="],
 
     "@oxc-parser/binding-wasm32-wasi/@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@1.1.0", "", { "dependencies": { "@emnapi/core": "^1.7.1", "@emnapi/runtime": "^1.7.1", "@tybys/wasm-util": "^0.10.1" } }, "sha512-Fq6DJW+Bb5jaWE69/qOE0D1TUN9+6uWhCeZpdnSBk14pjLcCWR7Q8n49PTSPHazM37JqrsdpEthXy2xn6jWWiA=="],
 
