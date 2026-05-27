@@ -22,7 +22,7 @@
       "version": "0.9.0",
       "dependencies": {
         "@monstermann/array": "^0.6.0",
-        "@monstermann/dfdl": "^0.1.0",
+        "@monstermann/dfdl": "^0.2.0",
         "@monstermann/dll": "^0.2.0",
         "@monstermann/dsp": "^0.4.0",
         "@monstermann/function": "^0.0.2",
@@ -279,7 +279,7 @@
 
     "@monstermann/array": ["@monstermann/array@0.6.0", "", { "dependencies": { "@monstermann/dfdl": "^0.2.0", "@monstermann/remmi": "^0.2.0", "type-fest": "^5.0.0" } }, "sha512-GxuYBETHjLZdmPK4dDafGl03C1IesFEpvnf1J2qA40nB4nfwfSUqDC58Yp1VzYwvWngorHnIlZ7rbq+dNclm1g=="],
 
-    "@monstermann/dfdl": ["@monstermann/dfdl@0.1.0", "", {}, "sha512-9/Z9x3C2aT7843JmoGk3lnsUdP73xSmK8kduh+xth/NjEUcc3yCJYoAoNlpyQkv6WVtmsc41hy/W77pNsb8L8Q=="],
+    "@monstermann/dfdl": ["@monstermann/dfdl@0.2.0", "", {}, "sha512-JAcoiVCjg5CeIEunYTGL4FJbk0jZzWxzFUWENNGmU67wAnogVBRwBAGq0PwpHmMRVBzc+DPzdxv+Ma+3WfhWYA=="],
 
     "@monstermann/dll": ["@monstermann/dll@0.2.0", "", {}, "sha512-sNxk6ex/GfVbHCjQsXAEqlpcS/uo2bQsy2vRS7FBhb8Fs7D8wlwQM7Qo4bGt4moPTcWCwrBnbcfzb1LW6qM0aQ=="],
 
@@ -1441,7 +1441,23 @@
 
     "@jridgewell/trace-mapping/@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.5.0", "", {}, "sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ=="],
 
-    "@monstermann/array/@monstermann/dfdl": ["@monstermann/dfdl@0.2.0", "", {}, "sha512-JAcoiVCjg5CeIEunYTGL4FJbk0jZzWxzFUWENNGmU67wAnogVBRwBAGq0PwpHmMRVBzc+DPzdxv+Ma+3WfhWYA=="],
+    "@monstermann/function/@monstermann/dfdl": ["@monstermann/dfdl@0.1.0", "", {}, "sha512-9/Z9x3C2aT7843JmoGk3lnsUdP73xSmK8kduh+xth/NjEUcc3yCJYoAoNlpyQkv6WVtmsc41hy/W77pNsb8L8Q=="],
+
+    "@monstermann/geometry/@monstermann/dfdl": ["@monstermann/dfdl@0.1.0", "", {}, "sha512-9/Z9x3C2aT7843JmoGk3lnsUdP73xSmK8kduh+xth/NjEUcc3yCJYoAoNlpyQkv6WVtmsc41hy/W77pNsb8L8Q=="],
+
+    "@monstermann/map/@monstermann/dfdl": ["@monstermann/dfdl@0.1.0", "", {}, "sha512-9/Z9x3C2aT7843JmoGk3lnsUdP73xSmK8kduh+xth/NjEUcc3yCJYoAoNlpyQkv6WVtmsc41hy/W77pNsb8L8Q=="],
+
+    "@monstermann/number/@monstermann/dfdl": ["@monstermann/dfdl@0.1.0", "", {}, "sha512-9/Z9x3C2aT7843JmoGk3lnsUdP73xSmK8kduh+xth/NjEUcc3yCJYoAoNlpyQkv6WVtmsc41hy/W77pNsb8L8Q=="],
+
+    "@monstermann/object/@monstermann/dfdl": ["@monstermann/dfdl@0.1.0", "", {}, "sha512-9/Z9x3C2aT7843JmoGk3lnsUdP73xSmK8kduh+xth/NjEUcc3yCJYoAoNlpyQkv6WVtmsc41hy/W77pNsb8L8Q=="],
+
+    "@monstermann/promise/@monstermann/dfdl": ["@monstermann/dfdl@0.1.0", "", {}, "sha512-9/Z9x3C2aT7843JmoGk3lnsUdP73xSmK8kduh+xth/NjEUcc3yCJYoAoNlpyQkv6WVtmsc41hy/W77pNsb8L8Q=="],
+
+    "@monstermann/result/@monstermann/dfdl": ["@monstermann/dfdl@0.1.0", "", {}, "sha512-9/Z9x3C2aT7843JmoGk3lnsUdP73xSmK8kduh+xth/NjEUcc3yCJYoAoNlpyQkv6WVtmsc41hy/W77pNsb8L8Q=="],
+
+    "@monstermann/set/@monstermann/dfdl": ["@monstermann/dfdl@0.1.0", "", {}, "sha512-9/Z9x3C2aT7843JmoGk3lnsUdP73xSmK8kduh+xth/NjEUcc3yCJYoAoNlpyQkv6WVtmsc41hy/W77pNsb8L8Q=="],
+
+    "@monstermann/string/@monstermann/dfdl": ["@monstermann/dfdl@0.1.0", "", {}, "sha512-9/Z9x3C2aT7843JmoGk3lnsUdP73xSmK8kduh+xth/NjEUcc3yCJYoAoNlpyQkv6WVtmsc41hy/W77pNsb8L8Q=="],
 
     "@monstermann/geometry/@monstermann/dfdl": ["@monstermann/dfdl@0.2.0", "", {}, "sha512-JAcoiVCjg5CeIEunYTGL4FJbk0jZzWxzFUWENNGmU67wAnogVBRwBAGq0PwpHmMRVBzc+DPzdxv+Ma+3WfhWYA=="],
 
