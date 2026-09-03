@@ -64,6 +64,6 @@
         "@monstermann/string": "^0.3.0"
     },
     "devDependencies": {
-        "vitest": "^4.0.15"
+        "vitest": "^5.0.0"
     }
 }
