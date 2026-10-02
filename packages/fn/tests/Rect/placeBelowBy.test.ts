@@ -11,7 +11,7 @@ describe("placeBelowBy", () => {
         expect(result).toEqual({
             height: 25,
             left: 25,
-            top: 100,
+            top: 150,
             width: 50,
         })
     })

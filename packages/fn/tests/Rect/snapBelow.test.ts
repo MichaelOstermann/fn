@@ -11,7 +11,7 @@ describe("snapBelow", () => {
         expect(result).toEqual({
             height: 25,
             left: 25,
-            top: 75,
+            top: 125,
             width: 50,
         })
     })
