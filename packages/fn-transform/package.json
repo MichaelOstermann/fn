@@ -1,7 +1,7 @@
 {
     "name": "@monstermann/fn-transform",
     "type": "module",
-    "version": "0.10.0",
+    "version": "0.11.0",
     "description": "Tree-shakes the namespaces of @monstermann/fn and compiles its match expressions.",
     "author": "Michael Ostermann <michaelostermann@me.com>",
     "license": "MIT",
