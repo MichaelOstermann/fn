@@ -1,0 +1,45 @@
+{
+    "name": "@monstermann/fn-transform",
+    "type": "module",
+    "version": "0.10.0",
+    "description": "Tree-shakes the namespaces of @monstermann/fn and compiles its match expressions.",
+    "author": "Michael Ostermann <michaelostermann@me.com>",
+    "license": "MIT",
+    "homepage": "https://github.com/MichaelOstermann/fn",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MichaelOstermann/fn.git"
+    },
+    "bugs": {
+        "url": "https://github.com/MichaelOstermann/fn/issues"
+    },
+    "keywords": [],
+    "sideEffects": false,
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.mts",
+            "import": "./dist/index.mjs"
+        }
+    },
+    "main": "./dist/index.mjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.mts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "bundle": "tsdown",
+        "manifest": "bun scripts/manifest.ts"
+    },
+    "dependencies": {
+        "@jridgewell/remapping": "^2.3.5",
+        "@monstermann/barrels-treeshake": "^0.5.0",
+        "magic-string": "^1.4.2",
+        "oxc-parser": "^0.152.0",
+        "oxc-walker": "^1.1.1"
+    },
+    "devDependencies": {
+        "@monstermann/fn": "workspace:*",
+        "rolldown": "1.2.12"
+    }
+}

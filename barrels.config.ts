@@ -3,6 +3,7 @@ import { defineConfig, flat, namespace } from "@monstermann/barrels"
 export default defineConfig([
     namespace({
         entries: "./packages/fn/src/[A-Z]*",
+        exclude: "internals.ts",
     }),
     flat({
         entries: "./packages/fn/src/remmi",

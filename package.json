@@ -3,7 +3,7 @@
     "private": true,
     "workspaces": ["packages/*"],
     "scripts": {
-        "barrels": "barrels",
+        "barrels": "barrels && bun run --filter @monstermann/fn-transform manifest",
         "checks": "bun run eslint && bun run tsc && bun test",
         "bundles": "bun run --filter '*' bundle"
     },

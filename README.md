@@ -4,6 +4,9 @@
 
 **A utility library for TypeScript.**
 
-[Documentation](https://MichaelOstermann.github.io/fn)
-
 </div>
+
+| Package                                                | Description                                                                       |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------- |
+| [`@monstermann/fn`](./packages/fn)                     | The library.                                                                      |
+| [`@monstermann/fn-transform`](./packages/fn-transform) | Tree-shakes the namespaces of @monstermann/fn and compiles its match expressions. |

@@ -6,34 +6,24 @@
 
 import { add } from "./add.js";
 import { create } from "./create.js";
-import { createLink } from "./internals.js";
 import { dispose } from "./dispose.js";
 import { find } from "./find.js";
 import { includes } from "./includes.js";
 import { isDisposed } from "./isDisposed.js";
 import { isDsp } from "./isDsp.js";
-import { linkDsp } from "./internals.js";
-import { linkVal } from "./internals.js";
 import { remove } from "./remove.js";
 import { symbol } from "./symbol.js";
 import { unlink } from "./unlink.js";
-import { unlinkDsp } from "./internals.js";
-import { unlinkVal } from "./internals.js";
 
 export const Dsp = {
     add,
     create,
-    createLink,
     dispose,
     find,
     includes,
     isDisposed,
     isDsp,
-    linkDsp,
-    linkVal,
     remove,
     symbol,
     unlink,
-    unlinkDsp,
-    unlinkVal,
 }
