@@ -94,6 +94,9 @@ export function throttle<T extends unknown[]>(
         clearTimer(waitTimer)
         clearTimer(idleTimers)
 
+        // The next leading call is due once the wait time has passed.
+        if (options.leading) startTimer(waitTimer)
+
         try {
             await fn(...args)
         }
@@ -113,12 +116,14 @@ export function throttle<T extends unknown[]>(
     }
 
     function throttled(...args: T): void {
+        const isLeading = options.leading && !isPending && !isRunning && waitTimer.tid == null
+
         isPending = true
         nextArgs = args
 
         if (isRunning) return
 
-        if (!isPending && !isRunning && options.leading) {
+        if (isLeading) {
             invoke()
             return
         }
@@ -142,6 +147,7 @@ export function throttle<T extends unknown[]>(
                 resolve()
             })
             idleTimers.add(t)
+            if (!isPending && !isRunning) startTimer(t)
         })
     }
 

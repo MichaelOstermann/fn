@@ -120,13 +120,17 @@ export function debounce<T extends unknown[]>(
     }
 
     function debounced(...args: T): void {
+        // The wait timer keeps running after a leading call, to tell when the next one is due.
+        const isLeading = options.leading && !isPending && !isRunning && waitTimer.tid == null
+
         isPending = true
         nextArgs = args
 
         if (isRunning) return
 
-        if (!isPending && !isRunning && options.leading) {
+        if (isLeading) {
             invoke()
+            restartTimer(waitTimer)
             return
         }
 
@@ -150,6 +154,7 @@ export function debounce<T extends unknown[]>(
                 resolve()
             })
             idleTimers.add(t)
+            if (!isPending && !isRunning) startTimer(t)
         })
     }
 
