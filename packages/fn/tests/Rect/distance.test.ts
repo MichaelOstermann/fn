@@ -35,6 +35,22 @@ describe("distance", () => {
         expect(result).toBeCloseTo(106.07)
     })
 
+    it("calculates the shortest distance between the closest edges", () => {
+        const a: Rect = { height: 10, left: 0, top: 0, width: 10 }
+        const b: Rect = { height: 10, left: 40, top: 20, width: 10 }
+
+        expect(distance(a, b)).toBeCloseTo(Math.hypot(30, 10))
+        expect(distance(b, a)).toBeCloseTo(Math.hypot(30, 10))
+    })
+
+    it("supports rectangles without a size", () => {
+        const a: Rect = { height: 0, left: 0, top: 0, width: 0 }
+        const b: Rect = { height: 10, left: 30, top: 40, width: 10 }
+
+        expect(distance(a, b)).toBe(50)
+        expect(distance(a, a)).toBe(0)
+    })
+
     it("calculates diagonal distance when a is upper-right of b", () => {
         const a: Rect = { height: 25, left: 100, top: 0, width: 25 }
         const b: Rect = { height: 25, left: 0, top: 100, width: 25 }
