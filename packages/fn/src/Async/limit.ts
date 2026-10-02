@@ -26,7 +26,7 @@ type LimitOptions = number | {
  * const limiter = Async.limit({ concurrency: 3 });
  * const limiter2 = Async.limit(3); // Shorthand
  *
- * const results = await Async.all([
+ * const results = await Promise.all([
  *     // At most 3 functions are executed at any time
  *     limiter(() => fetch("/api/1")),
  *     limiter(() => fetch("/api/2")),

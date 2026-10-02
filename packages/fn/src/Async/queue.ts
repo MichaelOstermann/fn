@@ -28,7 +28,7 @@ type QueueOptions = number | {
  * const taskQueue = Async.queue({ concurrency: 2 });
  * const taskQueue2 = Async.queue(2); // shorthand
  *
- * const results = await Async.all([
+ * const results = await Promise.all([
  *     // At most 2 fetch calls are executed at any time
  *     taskQueue.add(() => fetchData(1)),
  *     taskQueue.add(() => fetchData(2)),
