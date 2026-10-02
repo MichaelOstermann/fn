@@ -1,0 +1,23 @@
+import { describe, expect, it } from "bun:test"
+import { isMutable, markAsImmutable, markAsMutable, withMutations } from "../../src/remmi/index"
+
+describe("markAsImmutable", () => {
+    it("should unmark within mutation contexts", () => {
+        expect.hasAssertions()
+        withMutations(() => {
+            const value = [0]
+            markAsMutable(value)
+            expect(isMutable(value)).toBe(true)
+            expect(markAsImmutable(value)).toBe(value)
+            expect(isMutable(value)).toBe(false)
+        })
+    })
+
+    it("should have no effect outside mutation contexts", () => {
+        const value = [0]
+        markAsMutable(value)
+        expect(isMutable(value)).toBe(false)
+        expect(markAsImmutable(value)).toBe(value)
+        expect(isMutable(value)).toBe(false)
+    })
+})

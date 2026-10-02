@@ -5,7 +5,7 @@
     "description": "A utility library for TypeScript.",
     "author": "Michael Ostermann <michaelostermann@me.com>",
     "license": "MIT",
-    "homepage": "https://MichaelOstermann.github.io/fn",
+    "homepage": "https://github.com/MichaelOstermann/fn",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/MichaelOstermann/fn.git"
@@ -43,27 +43,10 @@
         "dist"
     ],
     "scripts": {
-        "bundle": "bun run tsdown",
-        "release": "bun publish --access public"
+        "bundle": "bun run tsdown"
     },
     "dependencies": {
-        "@monstermann/array": "^0.6.0",
-        "@monstermann/dfdl": "^0.2.0",
-        "@monstermann/dll": "^0.2.0",
-        "@monstermann/dsp": "^0.4.0",
-        "@monstermann/function": "^0.0.2",
-        "@monstermann/geometry": "^0.5.0",
-        "@monstermann/map": "^0.5.0",
-        "@monstermann/match": "^0.4.0",
-        "@monstermann/number": "^0.3.0",
-        "@monstermann/object": "^0.5.0",
-        "@monstermann/promise": "^0.4.0",
-        "@monstermann/remmi": "^0.2.0",
-        "@monstermann/result": "^0.9.0",
-        "@monstermann/set": "^0.6.0",
-        "@monstermann/string": "^0.3.0"
-    },
-    "devDependencies": {
-        "vitest": "^4.0.15"
+        "string-ts": "^2.2.1",
+        "type-fest": "^5.0.0"
     }
 }

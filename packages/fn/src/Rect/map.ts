@@ -1,0 +1,34 @@
+import type { Rect } from "."
+import { dfdl } from "../dfdl/dfdl"
+import { merge } from "./merge"
+
+/**
+ * # map
+ *
+ * ```ts
+ * function Rect.map(rect: Rect, transform: (rect: Rect) => Partial<Rect>): Rect
+ * ```
+ *
+ * Applies a transformation function to a rectangle, merging the returned partial rectangle with the original.
+ *
+ * ## Example
+ *
+ * ```ts [data-first]
+ * Rect.map({ left: 10, top: 20, width: 100, height: 50 }, (r) => ({
+ *     width: r.width * 2,
+ * }));
+ * // { left: 10, top: 20, width: 200, height: 50 }
+ * ```
+ *
+ * ```ts [data-last]
+ * pipe(
+ *     { left: 10, top: 20, width: 100, height: 50 },
+ *     Rect.map((r) => ({ width: r.width * 2 })),
+ * );
+ * // { left: 10, top: 20, width: 200, height: 50 }
+ * ```
+ *
+ */
+export const map = dfdl((rect: Rect, transform: (rect: Rect) => Partial<Rect>): Rect => {
+    return merge(rect, transform(rect))
+}, 2)
