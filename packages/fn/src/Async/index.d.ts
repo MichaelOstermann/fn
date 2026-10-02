@@ -4,41 +4,20 @@
 // dprint-ignore-file
 // biome-ignore lint: disable
 
-import { all } from "./all.js";
-import { allSettled } from "./allSettled.js";
-import { andThen } from "./andThen.js";
-import { any } from "./any.js";
-import { create } from "./create.js";
 import { debounce } from "./debounce.js";
 import { Debounced } from "./debounce.js";
-import { defer } from "./defer.js";
-import { Deferred } from "./defer.js";
-import { is } from "./is.js";
 import { limit } from "./limit.js";
 import { Limited } from "./limit.js";
-import { orElse } from "./orElse.js";
 import { queue } from "./queue.js";
-import { reject } from "./reject.js";
-import { resolve } from "./resolve.js";
 import { throttle } from "./throttle.js";
 import { Throttled } from "./throttle.js";
 import { wait } from "./wait.js";
 
 declare namespace Async {
     export {
-        all,
-        allSettled,
-        andThen,
-        any,
-        create,
         debounce,
-        defer,
-        is,
         limit,
-        orElse,
         queue,
-        reject,
-        resolve,
         throttle,
         wait,
     }
@@ -47,7 +26,6 @@ declare namespace Async {
 export {
     Async,
     Debounced,
-    Deferred,
     Limited,
     Throttled,
 }

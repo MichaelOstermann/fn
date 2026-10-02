@@ -1,5 +1,5 @@
-import type { Deferred } from "./defer"
-import { defer } from "./defer"
+import type { Deferred } from "./internals/defer"
+import { defer } from "./internals/defer"
 import { createQueue, dequeue, enqueue } from "./internals/queue"
 
 interface Queue {
