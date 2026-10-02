@@ -1,4 +1,4 @@
-import type { Dsp } from "."
+import type { Dsp, DspValue } from "."
 import { unlinkVal } from "./internals"
 import { symbol } from "./symbol"
 
@@ -108,7 +108,7 @@ export function dispose(target: Dsp): void {
         }
 
         while (dsp.vals) {
-            const val: Dsp | (() => void) = dsp.vals.val
+            const val: DspValue = dsp.vals.val
             dsp.vals = dsp.vals.prevVal
             if (symbol in val) {
                 stack = { dsp: val, prev: stack }
@@ -116,7 +116,8 @@ export function dispose(target: Dsp): void {
             }
             else {
                 try {
-                    val()
+                    if (typeof val === "function") val()
+                    else val[Symbol.dispose]()
                 }
                 catch (err) {
                     errors ??= []

@@ -1,10 +1,10 @@
-import type { Dsp, DspLink } from "."
+import type { Dsp, DspLink, DspValue } from "."
 
 /**
  * # find
  *
  * ```ts
- * function Dsp.find(disposer: Dsp, value: (() => void) | Dsp): DspLink | undefined;
+ * function Dsp.find(disposer: Dsp, value: DspValue): DspLink | undefined;
  * ```
  *
  * `O(n)`
@@ -37,7 +37,7 @@ import type { Dsp, DspLink } from "."
  * ```
  *
  */
-export function find(target: Dsp, value: (() => void) | Dsp): DspLink | undefined {
+export function find(target: Dsp, value: DspValue): DspLink | undefined {
     let link = target.vals
     while (link) {
         if (link.val === value) return link

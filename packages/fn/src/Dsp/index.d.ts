@@ -20,11 +20,13 @@ import { unlink } from "./unlink.js";
 import { unlinkDsp } from "./internals.js";
 import { unlinkVal } from "./internals.js";
 
-interface Dsp {
+interface Dsp extends Disposable {
     dsps: DspLink | undefined
     [symbol]: boolean
     vals: DspLink | undefined
 }
+
+type DspValue = (() => void) | Dsp | Disposable
 
 interface DspLink {
     disposer: Dsp
@@ -32,7 +34,7 @@ interface DspLink {
     nextVal: DspLink | undefined
     prevDsp: DspLink | undefined
     prevVal: DspLink | undefined
-    val: (() => void) | Dsp
+    val: DspValue
 }
 
 declare namespace Dsp {
@@ -58,4 +60,5 @@ declare namespace Dsp {
 export {
     Dsp,
     DspLink,
+    DspValue,
 }

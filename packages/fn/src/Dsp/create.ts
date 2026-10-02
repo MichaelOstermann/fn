@@ -1,5 +1,10 @@
 import type { Dsp } from "."
+import { dispose } from "./dispose"
 import { symbol } from "./symbol"
+
+function disposeSelf(this: Dsp): void {
+    dispose(this)
+}
 
 /**
  * # create
@@ -23,6 +28,7 @@ export function create(): Dsp {
     return {
         dsps: undefined,
         [symbol]: false,
+        [Symbol.dispose]: disposeSelf,
         vals: undefined,
     }
 }

@@ -1,11 +1,11 @@
-import type { Dsp } from "."
+import type { Dsp, DspValue } from "."
 import { find } from "./find"
 
 /**
  * # dspIncludes
  *
  * ```ts
- * function Dsp.includes(disposer: Dsp, value: (() => void) | Dsp): boolean;
+ * function Dsp.includes(disposer: Dsp, value: DspValue): boolean;
  * ```
  *
  * `O(n)`
@@ -30,6 +30,6 @@ import { find } from "./find"
  * ```
  *
  */
-export function includes(target: Dsp, value: (() => void) | Dsp): boolean {
+export function includes(target: Dsp, value: DspValue): boolean {
     return !!find(target, value)
 }

@@ -1,4 +1,4 @@
-import type { Dsp } from "."
+import type { Dsp, DspValue } from "."
 import { find } from "./find"
 import { unlink } from "./unlink"
 
@@ -6,7 +6,7 @@ import { unlink } from "./unlink"
  * # remove
  *
  * ```ts
- * function Dsp.remove(disposer: Dsp, value: (() => void) | Dsp): void;
+ * function Dsp.remove(disposer: Dsp, value: DspValue): void;
  * ```
  *
  * `O(n)`
@@ -29,7 +29,7 @@ import { unlink } from "./unlink"
  * ```
  *
  */
-export function remove(disposer: Dsp, value: (() => void) | Dsp): void {
+export function remove(disposer: Dsp, value: DspValue): void {
     const link = find(disposer, value)
     if (link) unlink(link)
 }

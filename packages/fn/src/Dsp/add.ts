@@ -1,4 +1,4 @@
-import type { Dsp, DspLink } from "."
+import type { Dsp, DspLink, DspValue } from "."
 import { dispose } from "./dispose"
 import { createLink, linkDsp, linkVal } from "./internals"
 import { symbol } from "./symbol"
@@ -7,7 +7,7 @@ import { symbol } from "./symbol"
  * # add
  *
  * ```ts
- * function Dsp.add(disposer: Dsp, value: (() => void) | Dsp): DspLink | undefined;
+ * function Dsp.add(disposer: Dsp, value: DspValue): DspLink | undefined;
  * ```
  *
  * Takes a Dsp instance and attaches a callback or another Dsp.
@@ -41,8 +41,8 @@ import { symbol } from "./symbol"
  * ```
  *
  */
-export function add(target: Dsp, value: (() => void) | Dsp): DspLink | undefined
-export function add(a: Dsp, b: (() => void) | Dsp): DspLink | void {
+export function add(target: Dsp, value: DspValue): DspLink | undefined
+export function add(a: Dsp, b: DspValue): DspLink | void {
     if (symbol in b) {
         if (a === b) return
         if (b[symbol]) return
@@ -50,6 +50,6 @@ export function add(a: Dsp, b: (() => void) | Dsp): DspLink | void {
         return linkDsp(b, linkVal(a, createLink(a, b)))
     }
 
-    if (a[symbol]) return b()
+    if (a[symbol]) return typeof b === "function" ? b() : b[Symbol.dispose]()
     return linkVal(a, createLink(a, b))
 }
