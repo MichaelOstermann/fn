@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test"
-import { cloneMap, isMutable, markAsMutable, withMutations } from "../../src/remmi/index"
+import { cloneMap, isMutable, markAsMutable, withMutations } from "../../src/index"
 
 describe("cloneMap", () => {
     it("should clone inside mutation contexts when marked as mutable", () => {

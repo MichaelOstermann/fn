@@ -1,5 +1,5 @@
-import { dfdlT } from "../dfdl/dfdlT"
-import { cloneObject } from "../remmi/cloneObject"
+import { cloneObject } from "../cloneObject"
+import { dfdlT } from "../dfdlT"
 
 /**
  * # set

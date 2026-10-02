@@ -1,5 +1,5 @@
 import type { KeysOfUnion, Simplify } from "type-fest"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 type HasKey<T extends object, U extends KeysOfUnion<T>> = T extends unknown
     ? U extends keyof T

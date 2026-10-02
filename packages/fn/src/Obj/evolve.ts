@@ -1,6 +1,6 @@
 import type { UnknownArray } from "type-fest"
-import { dfdlT } from "../dfdl/dfdlT"
-import { cloneObject } from "../remmi/cloneObject"
+import { cloneObject } from "../cloneObject"
+import { dfdlT } from "../dfdlT"
 
 type Evolver<T> = T extends object
     ? T extends UnknownArray

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test"
-import { isImmutable, markAsMutable, withMutations } from "../../src/remmi/index"
+import { isImmutable, markAsMutable, withMutations } from "../../src/index"
 
 describe("isImmutable", () => {
     it("should return false for values marked as mutable", () => {

@@ -1,6 +1,6 @@
 /* eslint-disable prefer-rest-params */
 
-import type { AnyFn } from "./types"
+import type { AnyFn } from "./internals/types"
 
 /**
  * - `dfdlT(fn, arity?: boolean)`

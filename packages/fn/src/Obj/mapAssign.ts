@@ -1,5 +1,5 @@
 import type { Merge } from "type-fest"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 import { merge } from "./merge"
 
 /**

@@ -1,6 +1,6 @@
 import type { ConstantCase } from "string-ts"
 import { constantCase as apply } from "string-ts"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 /**
  * # constantCase

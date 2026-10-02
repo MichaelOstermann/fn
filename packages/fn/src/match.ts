@@ -1,10 +1,10 @@
 import type { Primitive } from "type-fest"
-import type { IsPlainObject } from "./types/IsPlainObject"
-import type { ShapeMatcher } from "./types/ShapeMatcher"
-import type { ShapeVariations } from "./types/ShapeVariations"
-import type { ValueMatcher } from "./types/ValueMatcher"
-import { Shape } from "./Shape"
-import { Value } from "./Value"
+import type { IsPlainObject } from "./internals/match/types/IsPlainObject"
+import type { ShapeMatcher } from "./internals/match/types/ShapeMatcher"
+import type { ShapeVariations } from "./internals/match/types/ShapeVariations"
+import type { ValueMatcher } from "./internals/match/types/ValueMatcher"
+import { Shape } from "./internals/match/Shape"
+import { Value } from "./internals/match/Value"
 
 export interface Match {
     <T extends Primitive | null | undefined>(value: T): ValueMatcher<T>

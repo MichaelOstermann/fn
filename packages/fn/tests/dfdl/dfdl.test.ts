@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test"
-import { dfdl } from "../../src/dfdl/dfdl"
+import { dfdl } from "../../src/dfdl"
 
 describe("dfdl", () => {
     it("should work with data-first style", () => {

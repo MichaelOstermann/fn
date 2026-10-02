@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test"
-import { flow } from "../../src/dfdl/flow"
+import { flow } from "../../src/flow"
 
 describe("flow", () => {
     it("should flow a single operation", () => {

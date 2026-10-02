@@ -1,5 +1,5 @@
 import type { Simplify } from "type-fest"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 type TestAllPredicates<T extends object> = Partial<{
     [K in keyof T]: (value: NoInfer<T>[K], key: K, target: Readonly<T>) => boolean

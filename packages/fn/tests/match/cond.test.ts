@@ -1,5 +1,5 @@
 import { describe, expect, expectTypeOf, test } from "bun:test"
-import { match } from "../../src/match/match"
+import { match } from "../../src/match"
 
 describe("cond", () => {
     describe("implementation", () => {

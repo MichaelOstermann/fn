@@ -1,5 +1,5 @@
 import type { Entries } from "type-fest"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 /**
  * # entries

@@ -1,4 +1,4 @@
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 import { merge } from "./merge"
 
 /**

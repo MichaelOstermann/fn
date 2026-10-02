@@ -1,6 +1,6 @@
 import MagicString from "magic-string"
 import { parseSync } from "oxc-parser"
-import { files, namespaces } from "./manifest"
+import { functions, namespaces } from "./manifest"
 
 /**
  * Points what is left of the imports from `from` at the files they are exported from,
@@ -12,7 +12,7 @@ import { files, namespaces } from "./manifest"
  *
  * ```ts
  * import type { Rect } from "@monstermann/fn";
- * import { pipe } from "@monstermann/fn/dfdl/pipe.mjs";
+ * import { pipe } from "@monstermann/fn/pipe.mjs";
  * import { Arr } from "@monstermann/fn/Arr/index.mjs";
  * ```
  */
@@ -35,7 +35,7 @@ export function transformImports(code: string, filePath: string, from: string, u
             if (specifier.importKind === "type") types.push(text)
             else if (unused.has(name)) continue
             else if (namespaces.has(name)) imports.push(`import { ${text} } from "${from}/${name}/index.mjs";`)
-            else if (name in files) imports.push(`import { ${text} } from "${from}/${files[name]}.mjs";`)
+            else if (functions.has(name)) imports.push(`import { ${text} } from "${from}/${name}.mjs";`)
             else rest.push(text)
         }
 

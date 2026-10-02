@@ -1,4 +1,4 @@
-import type { AnyFn } from "./types"
+import type { AnyFn } from "./internals/types"
 import { dfdlT } from "./dfdlT"
 
 type InferHead<T extends AnyFn> = Parameters<T> extends [infer U, ...infer _] ? U : never

@@ -21,7 +21,7 @@ const result = pipe(
 After:
 
 ```ts
-import { pipe } from "@monstermann/fn/dfdl/pipe.mjs";
+import { pipe } from "@monstermann/fn/pipe.mjs";
 import { mapEach as _mapEach } from "@monstermann/fn/Arr/mapEach.mjs";
 import { at as _at } from "@monstermann/fn/Arr/at.mjs";
 

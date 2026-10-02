@@ -28,8 +28,7 @@
         "dist"
     ],
     "scripts": {
-        "bundle": "tsdown",
-        "manifest": "bun scripts/manifest.ts"
+        "bundle": "tsdown"
     },
     "dependencies": {
         "@jridgewell/remapping": "^2.3.5",

@@ -1,13 +1,13 @@
-import { ctx } from "./ctx"
+import { ctx } from "./internals/ctx"
 
 /**
- * # isMutable
+ * # markAsImmutable
  *
  * ```ts
- * function isMutable(value: WeakKey): boolean;
+ * function markAsImmutable(value: WeakKey): WeakKey;
  * ```
  *
- * Returns a boolean indicating whether the provided value has been marked as mutable.
+ * Marks the provided value as immutable in the current mutation context.
  *
  * ## Example
  *
@@ -17,9 +17,8 @@ import { ctx } from "./ctx"
  *     isMutable,
  *     markAsMutable,
  *     markAsImmutable,
+ *     markAsImmutable,
  * } from "@monstermann/fn";
- *
- * isMutable(value); //=> false
  *
  * withMutations(() => {
  *     isMutable(value); //=> false
@@ -28,11 +27,10 @@ import { ctx } from "./ctx"
  *     markAsImmutable(value);
  *     isMutable(value); //=> false
  * });
- *
- * isMutable(value); //=> false
  * ```
  *
  */
-export function isMutable(value: WeakKey): boolean {
-    return ctx.current?.has(value) === true
+export function markAsImmutable<T extends WeakKey>(value: T): T {
+    ctx.current?.delete(value)
+    return value
 }

@@ -1,4 +1,4 @@
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 import { isASCII } from "./isASCII"
 
 let segmenter: Intl.Segmenter

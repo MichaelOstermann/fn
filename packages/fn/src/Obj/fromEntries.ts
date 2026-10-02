@@ -1,6 +1,6 @@
 // Courtesy of Remeda: https://github.com/remeda/remeda/blob/main/packages/remeda/src/fromEntries.ts
 import type { Simplify } from "type-fest"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 type IterableContainer<T = unknown> = ReadonlyArray<T> | readonly []
 

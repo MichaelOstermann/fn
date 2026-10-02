@@ -30,8 +30,8 @@ describe("transform", () => {
             import { pipe, cloneArray as clone, Arr } from "@monstermann/fn";
             pipe(clone(a), Arr.at(0));
         `)).toBe(dedent(`
-            import { pipe } from "@monstermann/fn/dfdl/pipe.mjs";
-            import { cloneArray as clone } from "@monstermann/fn/remmi/cloneArray.mjs";
+            import { pipe } from "@monstermann/fn/pipe.mjs";
+            import { cloneArray as clone } from "@monstermann/fn/cloneArray.mjs";
             import { at as _at } from "@monstermann/fn/Arr/at.mjs";
             pipe(clone(a), _at(0));
         `))
@@ -54,7 +54,7 @@ describe("transform", () => {
             let b: Dsp;
         `)).toBe(dedent(`
             import type { Dsp } from "@monstermann/fn";
-            import { pipe } from "@monstermann/fn/dfdl/pipe.mjs";
+            import { pipe } from "@monstermann/fn/pipe.mjs";
             import { origin as _origin } from "@monstermann/fn/Rect/origin.mjs";
             import type { Rect } from "@monstermann/fn";
             const a: Rect = _origin;
@@ -78,7 +78,7 @@ describe("transform", () => {
             import { match } from "@monstermann/fn";
             const a = match(value).case(1, "one").or("other");
             const b = match;
-        `)).toStartWith(`import { match } from "@monstermann/fn/match/match.mjs";`)
+        `)).toStartWith(`import { match } from "@monstermann/fn/match.mjs";`)
     })
 
     it("should leave unknown exports, other packages and namespace imports alone", () => {

@@ -1,5 +1,5 @@
-import type { Dsp, DspLink, DspValue } from "."
-import { symbol } from "./symbol"
+import type { Dsp, DspLink, DspValue } from ".."
+import { symbol } from "../symbol"
 
 export function createLink(disposer: Dsp, val: DspValue): DspLink {
     return {

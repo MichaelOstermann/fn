@@ -1,5 +1,5 @@
-import { dfdlT } from "../dfdl/dfdlT"
-import { cloneSet } from "../remmi/cloneSet"
+import { cloneSet } from "../cloneSet"
+import { dfdlT } from "../dfdlT"
 
 /**
  * # removeAll

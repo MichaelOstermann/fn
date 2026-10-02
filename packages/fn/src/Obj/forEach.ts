@@ -1,5 +1,5 @@
 import type { UnionToIntersection } from "type-fest"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 type ForEachCallback<T extends object> = T extends unknown
     ? UnionToIntersection<{

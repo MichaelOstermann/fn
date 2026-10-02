@@ -1,6 +1,6 @@
 import type { KebabCase } from "string-ts"
 import { kebabCase as apply } from "string-ts"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 /**
  * # kebabCase

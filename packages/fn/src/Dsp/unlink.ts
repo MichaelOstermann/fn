@@ -1,5 +1,5 @@
 import type { DspLink } from "."
-import { unlinkDsp, unlinkVal } from "./internals"
+import { unlinkDsp, unlinkVal } from "./internals/links"
 
 /**
  * # unlink

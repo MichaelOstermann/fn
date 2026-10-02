@@ -1,6 +1,6 @@
 import type { TitleCase } from "string-ts"
 import { titleCase as apply } from "string-ts"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 /**
  * # titleCase

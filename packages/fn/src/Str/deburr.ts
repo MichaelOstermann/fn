@@ -1,4 +1,4 @@
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 const CHAR_MAP: Record<string, string> = {
     Æ: "Ae",

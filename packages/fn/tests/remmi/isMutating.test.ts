@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test"
-import { isMutating, withMutations } from "../../src/remmi/index"
+import { isMutating, withMutations } from "../../src/index"
 
 describe("isMutating", () => {
     it("should return true inside mutation contexts", () => {

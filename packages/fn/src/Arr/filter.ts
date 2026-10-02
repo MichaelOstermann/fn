@@ -1,5 +1,5 @@
-import { dfdlT } from "../dfdl/dfdlT"
-import { cloneArray } from "../remmi/cloneArray"
+import { cloneArray } from "../cloneArray"
+import { dfdlT } from "../dfdlT"
 import { addRange, createRange, hasRange, spliceRange } from "./internals/range"
 
 /**

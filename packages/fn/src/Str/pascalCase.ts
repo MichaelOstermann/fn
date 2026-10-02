@@ -1,6 +1,6 @@
 import type { PascalCase } from "string-ts"
 import { pascalCase as apply } from "string-ts"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 /**
  * # pascalCase

@@ -1,5 +1,5 @@
 import { capitalize as apply } from "string-ts"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 /**
  * # capitalize

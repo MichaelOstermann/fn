@@ -1,5 +1,5 @@
 import type { AllUnionFields } from "type-fest"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 /**
  * # getOrElse

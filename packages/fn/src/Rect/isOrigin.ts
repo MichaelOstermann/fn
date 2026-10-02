@@ -1,5 +1,5 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl/dfdl"
+import { dfdl } from "../dfdl"
 import { isEqual } from "./isEqual"
 import { origin } from "./origin"
 

@@ -1,5 +1,5 @@
-import { dfdlT } from "../dfdl/dfdlT"
-import { cloneMap } from "../remmi/cloneMap"
+import { cloneMap } from "../cloneMap"
+import { dfdlT } from "../dfdlT"
 
 /**
  * # findMapOrElse

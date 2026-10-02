@@ -1,4 +1,4 @@
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 import { deburr } from "./deburr"
 
 const NON_ALPHANUMERIC = /[^a-z0-9\s-]/g

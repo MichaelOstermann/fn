@@ -3,9 +3,8 @@ import { tmpdir } from "node:os"
 import Path from "node:path"
 import { describe, expect, it } from "bun:test"
 import { rolldown } from "rolldown"
-import * as generated from "../scripts/manifest"
 import { fn, transform } from "../src"
-import * as manifest from "../src/manifest"
+import { functions, namespaces } from "../src/manifest"
 
 const entry = Path.join(import.meta.dirname, "__fixtures__/entry.ts")
 const src = Path.resolve(import.meta.dirname, "../../fn/src")
@@ -26,9 +25,17 @@ async function evaluate(code: string): Promise<unknown> {
 }
 
 describe("manifest", () => {
-    it("should be up to date", () => {
-        expect([...manifest.namespaces].sort()).toEqual([...generated.namespaces].sort())
-        expect(manifest.files).toEqual(generated.files)
+    it("should list everything @monstermann/fn exports", async () => {
+        const exports = Object.entries(await import("../../fn/src/index"))
+        const isNamespace = ([name, value]: [string, unknown]): boolean => /^[A-Z]/.test(name) && typeof value === "object"
+
+        expect([...namespaces]).toEqual(exports.filter(isNamespace).map(([name]) => name).sort())
+        expect([...functions]).toEqual(exports.filter(entry => !isNamespace(entry)).map(([name]) => name).sort())
+    })
+
+    it("should match the files of @monstermann/fn", async () => {
+        for (const name of namespaces) expect(await Bun.file(Path.join(src, name, "index.js")).exists()).toBe(true)
+        for (const name of functions) expect(await Bun.file(Path.join(src, `${name}.ts`)).exists()).toBe(true)
     })
 })
 

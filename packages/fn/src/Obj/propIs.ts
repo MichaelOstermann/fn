@@ -1,5 +1,5 @@
 import type { AllUnionFields, Simplify } from "type-fest"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 type PropIs<T extends object, U, V> = T extends unknown
     ? U extends keyof T

@@ -1,6 +1,6 @@
-import { dfdlT } from "../dfdl/dfdlT"
-import { isMutable } from "../remmi/isMutable"
-import { markAsMutable } from "../remmi/markAsMutable"
+import { dfdlT } from "../dfdlT"
+import { isMutable } from "../isMutable"
+import { markAsMutable } from "../markAsMutable"
 
 /**
  * # merge

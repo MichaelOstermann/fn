@@ -1,5 +1,5 @@
 import { describe, expectTypeOf, it } from "bun:test"
-import { dfdlT } from "../../src/dfdl/index"
+import { dfdlT } from "../../src/index"
 
 describe("dfdlT", () => {
     it("should infer data-first style", () => {

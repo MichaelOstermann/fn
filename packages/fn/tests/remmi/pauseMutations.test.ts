@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test"
-import { isMutating, pauseMutations, withMutations } from "../../src/remmi/index"
+import { isMutating, pauseMutations, withMutations } from "../../src/index"
 
 describe("pauseMutations", () => {
     it("should return output", () => {

@@ -1,5 +1,5 @@
 import type { Rect } from "./types.js"
-import { dfdl } from "../dfdl/dfdl"
+import { dfdl } from "../dfdl"
 
 /**
  * # intersects

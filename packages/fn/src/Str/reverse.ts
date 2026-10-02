@@ -1,6 +1,6 @@
 import type { Reverse } from "string-ts"
 import { reverse as apply } from "string-ts"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 /**
  * # reverse

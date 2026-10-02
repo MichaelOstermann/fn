@@ -1,5 +1,5 @@
-import { dfdlT } from "../dfdl/dfdlT"
-import { markAsMutable } from "../remmi/markAsMutable"
+import { dfdlT } from "../dfdlT"
+import { markAsMutable } from "../markAsMutable"
 
 /**
  * # unique

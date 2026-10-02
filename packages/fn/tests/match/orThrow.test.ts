@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { match } from "../../src/match/match"
+import { match } from "../../src/match"
 
 describe("orThrow", () => {
     test("should return exhaustive match", () => {

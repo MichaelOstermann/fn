@@ -1,5 +1,5 @@
 import { describe, expectTypeOf, it } from "bun:test"
-import { pipe } from "../../src/dfdl/pipe"
+import { pipe } from "../../src/pipe"
 
 describe("pipe", () => {
     it("should act as identity with 0 functions", () => {

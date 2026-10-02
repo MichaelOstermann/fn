@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test"
-import { pipe } from "../../src/dfdl/pipe"
+import { pipe } from "../../src/pipe"
 
 describe("pipe", () => {
     it("should pass through data with 0 functions", () => {

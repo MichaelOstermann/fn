@@ -1,6 +1,6 @@
 import type { SnakeCase } from "string-ts"
 import { snakeCase as apply } from "string-ts"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 /**
  * # snakeCase

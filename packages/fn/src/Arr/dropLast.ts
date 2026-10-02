@@ -1,6 +1,6 @@
-import { dfdlT } from "../dfdl/dfdlT"
-import { cloneArray } from "../remmi/cloneArray"
-import { markAsMutable } from "../remmi/markAsMutable"
+import { cloneArray } from "../cloneArray"
+import { dfdlT } from "../dfdlT"
+import { markAsMutable } from "../markAsMutable"
 
 /**
  * # dropLast

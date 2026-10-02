@@ -1,5 +1,5 @@
 import type { Simplify } from "type-fest"
-import { dfdlT } from "../dfdl/dfdlT"
+import { dfdlT } from "../dfdlT"
 
 type Matches<T extends object, U extends T> = T extends unknown
     ? U extends T

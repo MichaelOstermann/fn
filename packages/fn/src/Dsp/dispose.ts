@@ -1,5 +1,5 @@
 import type { Dsp, DspValue } from "."
-import { unlinkVal } from "./internals"
+import { unlinkVal } from "./internals/links"
 import { symbol } from "./symbol"
 
 type DisposeStack =

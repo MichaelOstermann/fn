@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test"
-import { match } from "../../fn/src/match/match"
+import { match } from "../../fn/src/match"
 import { transformMatches } from "../src/match"
 
 type Scope = { fallback: string, value: any }

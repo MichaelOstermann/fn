@@ -1,6 +1,6 @@
 /* eslint-disable unused-imports/no-unused-vars */
 import { describe, expect, expectTypeOf, test } from "bun:test"
-import { match } from "../../src/match/match"
+import { match } from "../../src/match"
 
 describe("onCase", () => {
     describe("implementation", () => {

@@ -1,6 +1,6 @@
 import type { DistributedPick, KeysOfUnion } from "type-fest"
-import { dfdlT } from "../dfdl/dfdlT"
-import { markAsMutable } from "../remmi/markAsMutable"
+import { dfdlT } from "../dfdlT"
+import { markAsMutable } from "../markAsMutable"
 
 /**
  * # pick

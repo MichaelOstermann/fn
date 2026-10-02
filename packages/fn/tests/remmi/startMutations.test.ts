@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test"
-import { endMutations, isMutable, isMutating, markAsMutable, startMutations } from "../../src/remmi/index"
+import { endMutations, isMutable, isMutating, markAsMutable, startMutations } from "../../src/index"
 
 describe("startMutations", () => {
     it("should create mutation contexts", () => {

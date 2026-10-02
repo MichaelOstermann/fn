@@ -1,5 +1,5 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl/dfdl"
+import { dfdl } from "../dfdl"
 import { clamp } from "./internals/clamp"
 import { merge } from "./merge"
 
