@@ -58,7 +58,8 @@ export const merge = dfdl((target: Rect, source: Partial<Rect>): Rect => {
         if (source[k] === undefined) continue
         if (target[k] === source[k]) continue
         if (!Number.isFinite(source[k])) return target
-        copy ??= { ...target }
+        // Not spreading, the properties of eg. a DOMRect are getters of its prototype.
+        copy ??= { height: target.height, left: target.left, top: target.top, width: target.width }
         copy[k] = source[k]
     }
     if (!copy) return target
