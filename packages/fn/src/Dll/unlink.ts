@@ -23,6 +23,8 @@ import type { Dll, DllLink } from "."
  *
  */
 export function unlink<T>(dll: Dll<T>, link: DllLink<T>): void {
+    // The link has been unlinked before, it keeps its neighbours so running iterations can continue.
+    if (link.prev ? link.prev.next !== link : dll.head !== link) return
     if (link.prev) link.prev.next = link.next
     if (link.next) link.next.prev = link.prev
     if (dll.tail === link) dll.tail = link.prev
