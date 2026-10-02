@@ -42,5 +42,5 @@ type WritableArray<T> = T extends readonly [...infer U] ? U : T
 export function cloneArray<T extends ReadonlyArray<unknown>>(array: T): WritableArray<T> {
     return isMutable(array)
         ? array as WritableArray<T>
-        : markAsMutable([...array]) as WritableArray<T>
+        : markAsMutable(array.slice()) as WritableArray<T>
 }
