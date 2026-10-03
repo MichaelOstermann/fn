@@ -33,16 +33,21 @@ export const omit: {
     <T extends object, K extends KeysOfUnion<T>>(keys: Iterable<K>): (target: T) => DistributedOmit<T, K>
     <T extends object, K extends KeysOfUnion<T>>(target: T, keys: Iterable<K>): DistributedOmit<T, K>
 } = dfdlT((target: any, keys: any): any => {
-    for (const key of keys) {
+    // Property names are strings, also the ones given as numbers.
+    const omitted = new Set<PropertyKey>()
+    for (const key of keys) omitted.add(typeof key === "number" ? String(key) : key)
+
+    for (const key of omitted) {
         if (key in target) {
             const result = {} as any
             for (const k in target) {
-                if (!keys.includes(k)) {
+                if (!omitted.has(k)) {
                     result[k] = target[k]
                 }
             }
             return markAsMutable(result)
         }
     }
+
     return target
 }, 2)
