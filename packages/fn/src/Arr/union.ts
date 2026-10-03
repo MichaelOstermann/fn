@@ -36,11 +36,17 @@ export const union: {
     <T>(target: readonly T[], source: Iterable<NoInfer<T>>): readonly T[]
 } = dfdlT(<T>(target: T[], source: Iterable<NoInfer<T>>): T[] => {
     let result: T[] | undefined
+    let seen: Set<T> | undefined
+    let scans = 0
+
     for (const item of source) {
-        if (!target.includes(item)) {
-            result ??= cloneArray(target)
-            result.push(item)
-        }
+        // Scanning is faster for a few items, a set for everything beyond that.
+        if (!seen && scans++ === 8 && (result ?? target).length > 16) seen = new Set(result ?? target)
+        if (seen ? seen.has(item) : (result ?? target).includes(item)) continue
+        result ??= cloneArray(target)
+        result.push(item)
+        seen?.add(item)
     }
+
     return result ?? target
 }, 2)
