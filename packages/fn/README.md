@@ -38,7 +38,6 @@ Everything is exported from the root, grouped into namespaces. [`@monstermann/fn
 | `Async`   | 5         | `debounce`, `throttle`, `queue`, `limit`, `wait`.   |
 | `Rect`    | 85        | Rectangles: `{ left, top, width, height }`.         |
 | `Dsp`     | 10        | Disposers that can be nested and used with `using`. |
-| `Dll`     | 36        | Doubly-linked lists.                                |
 
 Each function is documented where it is declared, your editor shows it on hover and in autocomplete.
 
