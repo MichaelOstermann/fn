@@ -15,7 +15,7 @@
     },
     "packages/fn": {
       "name": "@monstermann/fn",
-      "version": "0.11.0",
+      "version": "0.12.0",
       "dependencies": {
         "string-ts": "^2.2.1",
         "type-fest": "^5.0.0",
@@ -23,7 +23,7 @@
     },
     "packages/fn-transform": {
       "name": "@monstermann/fn-transform",
-      "version": "0.11.0",
+      "version": "0.12.0",
       "dependencies": {
         "@jridgewell/remapping": "^2.3.5",
         "@monstermann/barrels-treeshake": "^0.5.0",
