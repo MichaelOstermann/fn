@@ -39,14 +39,19 @@ export const removeAll: {
     <T, const U extends T>(target: T[], values: Iterable<U>): IsLiteral<U> extends true ? Exclude<T, U>[] : T[]
     <T, const U extends T>(target: readonly T[], values: Iterable<U>): IsLiteral<U> extends true ? readonly Exclude<T, U>[] : readonly T[]
 } = dfdlT((target: any, values: any): any => {
-    const range = createRange()
+    const removals = new Set(values)
+    if (!removals.size) return target
 
-    for (const value of values) {
-        let idx = target.indexOf(value)
-        while (idx !== -1) {
-            addRange(range, idx)
-            idx = target.indexOf(value, idx + 1)
-        }
+    // Like indexOf: NaN is never found, and holes are not undefined.
+    removals.delete(Number.NaN)
+    const hasUndefined = removals.has(undefined)
+
+    const range = createRange()
+    for (let i = 0; i < target.length; i++) {
+        const value = target[i]
+        if (!removals.has(value)) continue
+        if (value === undefined && hasUndefined && !(i in target)) continue
+        addRange(range, i)
     }
 
     if (hasRange(range)) {

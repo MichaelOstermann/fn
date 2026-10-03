@@ -1,3 +1,4 @@
+/** Indices to remove, in ascending order. */
 type Range = number[]
 
 export function createRange(): Range {
@@ -8,29 +9,27 @@ export function hasRange(range: Range): boolean {
     return range.length > 0
 }
 
+/** Indices have to be added in ascending order. */
 export function addRange(range: Range, idx: number): void {
-    let i = range.length
-    while (i--) {
-        const v = range[i]!
-        if (v === idx) return
-        if (v < idx) {
-            range.splice(i + 1, 0, idx)
-            return
-        }
-    }
-    range.unshift(idx)
+    range.push(idx)
 }
 
+/** Removes the indices in a single pass, moving what stays to the front. */
 export function spliceRange<T>(target: T[], range: Range): void {
-    let i = range.length
-    while (i--) {
-        let start = range[i]!
-        let len = 1
-        while (range[i - 1] === start - 1) {
-            start--
-            len++
-            i--
+    const length = target.length
+    let write = range[0]!
+    let next = 1
+
+    for (let read = write + 1; read < length; read++) {
+        if (read === range[next]) {
+            next++
+            continue
         }
-        target.splice(start, len)
+        // Holes stay holes, as they do with splice.
+        if (read in target) target[write] = target[read]!
+        else delete target[write]
+        write++
     }
+
+    target.length = write
 }
