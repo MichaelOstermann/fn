@@ -55,4 +55,56 @@ describe("Async.throttle", () => {
         const fn = throttle(() => {}, { wait: 20 })
         expect(await Promise.race([fn.idle().then(() => "idle"), sleep(50)])).toBe("idle")
     })
+
+    it("should only flush the call that was pending when flushing", async () => {
+        const calls: number[] = []
+        const releases: (() => void)[] = []
+        const fn = throttle(async (n: number) => {
+            calls.push(n)
+            await new Promise<void>(resolve => releases.push(resolve))
+        }, { wait: 30 })
+
+        fn(1)
+        fn.flush()
+        fn(2)
+        fn.flush()
+        releases.shift()!()
+        await sleep(1)
+        expect(calls).toEqual([1, 2])
+
+        // Not flushed, this one has to wait again.
+        fn(3)
+        releases.shift()!()
+        await sleep(1)
+        expect(calls).toEqual([1, 2])
+
+        await sleep(60)
+        expect(calls).toEqual([1, 2, 3])
+        releases.shift()!()
+        await fn.idle()
+    })
+
+    it("should forget about a flush when cleared", async () => {
+        const calls: number[] = []
+        const releases: (() => void)[] = []
+        const fn = throttle(async (n: number) => {
+            calls.push(n)
+            await new Promise<void>(resolve => releases.push(resolve))
+        }, { wait: 30 })
+
+        fn(1)
+        fn.flush()
+        fn(2)
+        fn.flush()
+        fn.clear()
+        fn(3)
+        releases.shift()!()
+        await sleep(1)
+        expect(calls).toEqual([1])
+
+        await sleep(60)
+        expect(calls).toEqual([1, 3])
+        releases.shift()!()
+        await fn.idle()
+    })
 })

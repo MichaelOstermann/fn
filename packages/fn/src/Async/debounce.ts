@@ -82,6 +82,7 @@ export function debounce<T extends unknown[]>(
         if (!isPending) return
 
         isPending = false
+        flushAsap = false
         nextArgs = undefined
         clearTimer(waitTimer)
         clearTimer(maxWaitTimer)
@@ -106,7 +107,11 @@ export function debounce<T extends unknown[]>(
         finally {
             isRunning = false
 
-            if (isPending && flushAsap) {
+            // A flush only concerns the call that was pending when it was asked for.
+            const flush = flushAsap
+            flushAsap = false
+
+            if (isPending && flush) {
                 invoke()
             }
             else if (isPending) {
