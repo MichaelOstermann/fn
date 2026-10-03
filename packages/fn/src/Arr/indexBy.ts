@@ -1,4 +1,5 @@
 import { dfdlT } from "../dfdlT"
+import { setOwn } from "./internals/own"
 
 /**
  * # indexBy
@@ -72,7 +73,7 @@ export const indexBy: {
 ): Record<U, T | V> => {
     return target.reduce((acc, value, idx) => {
         const key = by(value, idx, target)
-        acc[key] = transform ? transform(value, key, idx, target) : value
+        setOwn(acc, key, transform ? transform(value, key, idx, target) : value)
         return acc
     }, {} as Record<U, T | V>)
 }, args => Array.isArray(args[0]))

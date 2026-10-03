@@ -1,4 +1,5 @@
 import { dfdlT } from "../dfdlT"
+import { getOwn, setOwn } from "./internals/own"
 
 /**
  * # groupBy
@@ -59,8 +60,9 @@ export const groupBy: {
 ): Record<U, (T | V)[]> => {
     return target.reduce((acc, value, idx) => {
         const key = by(value, idx, target)
-        acc[key] ??= []
-        acc[key].push(transform ? transform(value, key, idx, target) : value)
+        let group = getOwn(acc, key)
+        if (!group) setOwn(acc, key, group = [])
+        group.push(transform ? transform(value, key, idx, target) : value)
         return acc
     }, {} as Record<U, (T | V)[]>)
 }, args => Array.isArray(args[0]))
