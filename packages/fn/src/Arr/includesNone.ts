@@ -31,8 +31,14 @@ export const includesNone: {
     <T>(values: Iterable<NoInfer<T>>): (target: readonly T[]) => boolean
     <T>(target: readonly T[], values: Iterable<NoInfer<T>>): boolean
 } = dfdlT(<T>(target: readonly T[], values: Iterable<NoInfer<T>>): boolean => {
+    let seen: Set<T> | undefined
+    let scans = 0
+
     for (const value of values) {
-        if (target.includes(value)) return false
+        // Scanning is faster for a few values, a set for everything beyond that.
+        if (!seen && scans++ === 8 && target.length > 16) seen = new Set(target)
+        if ((seen ? seen.has(value) : target.includes(value))) return false
     }
+
     return true
 }, 2)
