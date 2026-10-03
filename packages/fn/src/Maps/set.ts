@@ -66,7 +66,8 @@ export const set: {
     <K, V>(target: Map<K, V>, key: NoInfer<K>, value: NoInfer<V>): Map<K, V>
     <K, V>(target: ReadonlyMap<K, V>, key: NoInfer<K>, value: NoInfer<V>): ReadonlyMap<K, V>
 } = dfdlT(<K, V>(target: Map<K, V>, key: NoInfer<K>, value: NoInfer<V>): Map<K, V> => {
-    if (target.get(key) === value) return target
+    // A missing key is not the same as one that is set to undefined.
+    if (target.get(key) === value && (value !== undefined || target.has(key))) return target
     target = cloneMap(target)
     target.set(key, value)
     return target
