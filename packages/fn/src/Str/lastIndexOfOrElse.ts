@@ -42,5 +42,5 @@ export const lastIndexOfOrElse: {
     <T>(target: string, source: string, orElse: (target: string) => T): number | T
 } = dfdlT(<T>(a: string, b: string, orElse: (target: string) => T): number | T => {
     const idx = a.lastIndexOf(b)
-    return Number.isFinite(idx) ? idx : orElse(a)
+    return idx >= 0 ? idx : orElse(a)
 }, 3)

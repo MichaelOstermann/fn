@@ -34,6 +34,6 @@ export const lastIndexOfOrThrow: {
     (target: string, source: string): number
 } = dfdlT((a: string, b: string): number => {
     const idx = a.lastIndexOf(b)
-    if (Number.isFinite(idx)) return idx
+    if (idx >= 0) return idx
     throw new Error("String.lastIndexOfOrThrow: Value not found.")
 }, 2)

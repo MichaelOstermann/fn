@@ -35,5 +35,5 @@ export const indexOfOr: {
     <T>(target: string, source: string, or: T): number | T
 } = dfdlT(<T>(a: string, b: string, or: T): number | T => {
     const idx = a.indexOf(b)
-    return Number.isFinite(idx) ? idx : or
+    return idx >= 0 ? idx : or
 }, 3)
