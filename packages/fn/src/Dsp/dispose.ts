@@ -100,6 +100,7 @@ export function dispose(target: Dsp): void {
     let dsp: Dsp | undefined = target
 
     while (dsp) {
+        let child: Dsp | undefined
         dsp[symbol] = true
 
         while (dsp.dsps) {
@@ -111,22 +112,22 @@ export function dispose(target: Dsp): void {
             const val: DspValue = dsp.vals.val
             dsp.vals = dsp.vals.prevVal
             if (symbol in val) {
-                stack = { dsp: val, prev: stack }
-                dsp = val
+                child = val
+                break
             }
-            else {
-                try {
-                    if (typeof val === "function") val()
-                    else val[Symbol.dispose]()
-                }
-                catch (err) {
-                    errors ??= []
-                    errors.push(err)
-                }
+            try {
+                if (typeof val === "function") val()
+                else val[Symbol.dispose]()
+            }
+            catch (err) {
+                errors ??= []
+                errors.push(err)
             }
         }
 
-        stack = stack?.prev
+        // Continue with the child, to come back for the remaining values afterwards.
+        if (child) stack = { dsp: child, prev: stack }
+        else stack = stack?.prev
         dsp = stack?.dsp
     }
 

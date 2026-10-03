@@ -87,4 +87,33 @@ describe("Dsp.dispose", () => {
 
         expect(calls).toEqual([9, 8, 7, 12, 11, 10, 6, 5, 4, 3, 2, 1])
     })
+
+    it("should mark nested dsps as disposed", () => {
+        const order: number[] = []
+        const a = Dsp.create()
+        const b = Dsp.create()
+        const c = Dsp.create()
+        const other = Dsp.create()
+
+        Dsp.add(a, () => order.push(1))
+        Dsp.add(a, b)
+        Dsp.add(a, () => order.push(4))
+        Dsp.add(b, () => order.push(2))
+        Dsp.add(b, c)
+        Dsp.add(c, () => order.push(3))
+        Dsp.add(other, b)
+
+        Dsp.dispose(a)
+
+        expect(order).toEqual([4, 3, 2, 1])
+        expect(Dsp.isDisposed(a)).toBe(true)
+        expect(Dsp.isDisposed(b)).toBe(true)
+        expect(Dsp.isDisposed(c)).toBe(true)
+        // Disposed dsps remove themselves from everything else they have been added to.
+        expect(Dsp.includes(other, b)).toBe(false)
+
+        // Adding to a disposed dsp disposes right away.
+        Dsp.add(b, () => order.push(5))
+        expect(order).toEqual([4, 3, 2, 1, 5])
+    })
 })
