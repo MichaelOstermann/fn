@@ -68,8 +68,8 @@ describe("transform", () => {
             const a = match(value).case(1, "one").or("other");
         `)).toBe(dedent(`
 
-            const a = (value === (1)) ? ("one")
-            : ("other");
+            const a = ((value === (1)) ? ("one")
+            : ("other"));
         `))
     })
 

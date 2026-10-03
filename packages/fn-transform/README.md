@@ -97,4 +97,6 @@ await Bun.build({
 - Files that do not mention `@monstermann/fn` are skipped without being parsed.
 - A namespace that is used as a value (`call(Arr)`) is imported as a whole, from its own file.
 - `match` is only compiled when it has been imported from `@monstermann/fn`, renamed imports are followed. A chain needs to end with `or`, `orElse` or `orThrow`.
+- A compiled chain only evaluates the result of the branch that matches. Without the transform every argument is evaluated: `match(value).case(1, a()).or(b())` calls both `a` and `b`, compiled it calls one of them.
+- Callbacks are inlined where that does not change what they do (`v => v + 1` becomes `value + 1`), and called as they are otherwise: async callbacks, functions, and callbacks that assign to their parameter.
 - `import * as Fn from "@monstermann/fn"` is left alone.

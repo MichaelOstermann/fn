@@ -1,6 +1,6 @@
 import type { Node, ObjectExpression } from "oxc-parser"
 import type { Branch, Context } from "./types"
-import { abort, AbortError } from "./helpers"
+import { abort, AbortError, isReassigned } from "./helpers"
 import { transformCallback } from "./transformCallback"
 
 export function transformShape(node: Node, branches: Branch[], parent: Node | undefined, ctx: Context): boolean {
@@ -13,19 +13,12 @@ export function transformShape(node: Node, branches: Branch[], parent: Node | un
     const needsSemicolon = parent?.type === "ExpressionStatement"
 
     try {
-        if (value.type === "ObjectExpression") {
-            const id = ctx.id("match")
-            const result = `((${id}) => ${transformBranches(id, branches, ctx)})(${ctx.code.slice(value.start, value.end)})`
+        // The value is matched as it was when the chain started, also when something in the chain assigns to it.
+        if (value.type === "Identifier" && !isReassigned(node, value.name)) {
+            const result = `(${transformBranches(value.name, branches, ctx)})`
             ctx.ms.overwrite(node.start, node.end, needsSemicolon ? `;${result}` : result)
             return true
         }
-
-        else if (value.type === "Identifier") {
-            const result = transformBranches(value.name, branches, ctx)
-            ctx.ms.overwrite(node.start, node.end, needsSemicolon ? `;${result}` : result)
-            return true
-        }
-
         else {
             const id = ctx.id("match")
             const result = `((${id}) => ${transformBranches(id, branches, ctx)})(${ctx.code.slice(value.start, value.end)})`
@@ -94,17 +87,18 @@ function tryTransformPattern(match: string, pattern: ObjectExpression, ctx: Cont
             abort()
         }
         else if (property.key.type === "Identifier" && !property.computed) {
-            branches.push(`${match}.${property.key.name} === ${ctx.code.slice(property.value.start, property.value.end)}`)
+            branches.push(`${match}.${property.key.name} === (${ctx.code.slice(property.value.start, property.value.end)})`)
         }
         else if (property.key.type === "Identifier" && property.computed) {
-            branches.push(`${match}[${property.key.name}] === ${ctx.code.slice(property.value.start, property.value.end)}`)
+            branches.push(`${match}[${property.key.name}] === (${ctx.code.slice(property.value.start, property.value.end)})`)
         }
         else if (property.key.type === "Literal") {
-            branches.push(`${match}[${ctx.code.slice(property.key.start, property.key.end)}] === ${ctx.code.slice(property.value.start, property.value.end)}`)
+            branches.push(`${match}[${ctx.code.slice(property.key.start, property.key.end)}] === (${ctx.code.slice(property.value.start, property.value.end)})`)
         }
         else {
             abort()
         }
     }
-    return `(${branches.join(" && ")})`
+    // An empty pattern matches everything.
+    return branches.length ? `(${branches.join(" && ")})` : "(true)"
 }

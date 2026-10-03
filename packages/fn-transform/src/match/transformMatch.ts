@@ -1,6 +1,6 @@
 import type { Node } from "oxc-parser"
 import type { Branch, Context } from "./types"
-import { abort, AbortError } from "./helpers"
+import { abort, AbortError, isReassigned } from "./helpers"
 import { transformCallback } from "./transformCallback"
 
 export function transformMatch(node: Node, branches: Branch[], parent: Node | undefined, ctx: Context): boolean {
@@ -13,8 +13,9 @@ export function transformMatch(node: Node, branches: Branch[], parent: Node | un
     const needsSemicolon = parent?.type === "ExpressionStatement"
 
     try {
-        if (value.type === "Identifier") {
-            const result = transformBranches(value.name, branches, ctx)
+        // The value is matched as it was when the chain started, also when something in the chain assigns to it.
+        if (value.type === "Identifier" && !isReassigned(node, value.name)) {
+            const result = `(${transformBranches(value.name, branches, ctx)})`
             ctx.ms.overwrite(node.start, node.end, needsSemicolon ? `;${result}` : result)
             return true
         }

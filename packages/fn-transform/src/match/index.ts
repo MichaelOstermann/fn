@@ -2,7 +2,7 @@ import type { Node } from "oxc-parser"
 import type { Context } from "./types"
 import MagicString from "magic-string"
 import { parseSync } from "oxc-parser"
-import { walk } from "oxc-walker"
+import { ScopeTracker, walk } from "oxc-walker"
 import { collectBranches } from "./collectBranches"
 import { transformMatch } from "./transformMatch"
 import { transformShape } from "./transformShape"
@@ -21,7 +21,7 @@ export interface MatchResult {
  * ```
  *
  * ```ts
- * (value === (1)) ? ("one") : ("other")
+ * ((value === (1)) ? ("one") : ("other"))
  * ```
  *
  * Returns `undefined` when `match` has not been imported from `from`.
@@ -61,12 +61,20 @@ export function transformMatches(code: string, filePath: string, from: string): 
         },
     }
 
+    // Collects all declarations, including hoisted ones, to tell whether `match` is the import where it is used.
+    const scopeTracker = new ScopeTracker({ preserveExitedScopes: true })
+    walk(program, { scopeTracker })
+    scopeTracker.freeze()
+
     walk(program, {
+        scopeTracker,
         enter(node, parent) {
             if (node.type === "ImportDeclaration") return this.skip()
             if (node.type === "Identifier" && node.name === local && !isPropertyName(node, parent)) references++
             const branches = collectBranches(node, local)
             if (!branches) return
+            // Something else that is called the same: function run(match) { match(value)… }
+            if (scopeTracker.getDeclaration(local)?.type !== "Import") return
             if (transformShape(node, branches, parent ?? undefined, ctx) || transformMatch(node, branches, parent ?? undefined, ctx)) {
                 transformed++
                 // The chain has been replaced as a whole, chains nested in its callbacks are kept as they are.
