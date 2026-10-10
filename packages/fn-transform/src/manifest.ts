@@ -13,6 +13,7 @@ export const namespaces: ReadonlySet<string> = new Set([
 
 /** The functions of @monstermann/fn, each is a file of the same name: `pipe` → `pipe.mjs`. */
 export const functions: ReadonlySet<string> = new Set([
+    "_",
     "cloneArray",
     "cloneMap",
     "cloneObject",

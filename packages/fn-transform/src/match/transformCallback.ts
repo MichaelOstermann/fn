@@ -12,7 +12,10 @@ import { ScopeTracker, walk } from "oxc-walker"
  * Everything where that would change what the callback does is called as it is: `(callback)(value)`.
  */
 export function transformCallback(value: string, cb: Node, ctx: Context): string {
-    const call = `(${ctx.code.slice(cb.start, cb.end)})(${value})`
+    // A method is called without the object it belongs to, the same way it is when being passed along.
+    const call = isFunction(cb) || cb.type === "Identifier"
+        ? `(${ctx.code.slice(cb.start, cb.end)})(${value})`
+        : `(0, ${ctx.code.slice(cb.start, cb.end)})(${value})`
 
     // Functions have their own `this` and `arguments`, async functions return a promise.
     if (cb.type !== "ArrowFunctionExpression" || cb.async) return call
@@ -28,7 +31,7 @@ export function transformCallback(value: string, cb: Node, ctx: Context): string
         body = statement?.argument ?? undefined
     }
 
-    if (cb.params.length === 0) return body ? ctx.code.slice(body.start, body.end) : "undefined"
+    if (cb.params.length === 0) return body ? ctx.code.slice(body.start, body.end) : "void 0"
     if (!body) return call
 
     const param = cb.params[0]!
@@ -37,9 +40,16 @@ export function transformCallback(value: string, cb: Node, ctx: Context): string
     return inline(value, param.name, body, ctx) ?? call
 }
 
+export function isFunction(node: Node): boolean {
+    return node.type === "ArrowFunctionExpression" || node.type === "FunctionExpression"
+}
+
 /** Replaces the parameter with the value, unless that is not possible without changing the meaning. */
 function inline(value: string, param: string, body: Expression, ctx: Context): string | undefined {
-    const scope = new ScopeTracker()
+    // Collects all declarations first, including the ones that are hoisted above where they are written.
+    const scope = new ScopeTracker({ preserveExitedScopes: true })
+    walk(body, { scopeTracker: scope })
+    scope.freeze()
     const parents: Node[] = []
     const start = body.start
     const code = new MagicString(ctx.code.slice(body.start, body.end))
@@ -52,6 +62,8 @@ function inline(value: string, param: string, body: Expression, ctx: Context): s
             parents.push(node)
 
             if (node.type !== "Identifier" || node.name !== param) return
+            // import.meta, new.target
+            if (parent?.type === "MetaProperty") return
             // Another declaration of the same name, further inside.
             if (scope.getDeclaration(param)?.node != null) return
             if (isPropertyName(node, parent)) return

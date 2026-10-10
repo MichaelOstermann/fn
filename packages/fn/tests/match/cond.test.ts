@@ -8,7 +8,7 @@ describe("cond", () => {
                 .cond(v => v === 1, "one")
                 .cond(v => v === 2, "two")
                 .cond(v => v === 3, "three")
-                .or(null)
+                .unwrapOr(null)
 
             expect(result).toBe("two")
         })
@@ -20,7 +20,7 @@ describe("cond", () => {
                 .cond(v => v === 0, 0)
                 .cond(v => v === 1, "1")
                 .cond(v => v === 2, true)
-                .or(null)
+                .unwrapOr(null)
 
             expectTypeOf(result).toEqualTypeOf<number | string | boolean | null>()
         })

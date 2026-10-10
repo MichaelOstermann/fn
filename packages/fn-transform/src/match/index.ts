@@ -1,51 +1,93 @@
-import type { Node } from "oxc-parser"
-import type { Context } from "./types"
+import type { ImportDeclaration, Node } from "oxc-parser"
+import type { Context, Helpers } from "./types"
 import MagicString from "magic-string"
 import { parseSync } from "oxc-parser"
 import { ScopeTracker, walk } from "oxc-walker"
-import { collectBranches } from "./collectBranches"
-import { transformMatch } from "./transformMatch"
-import { transformShape } from "./transformShape"
+import { collectChain } from "./collectChain"
+import { compileChain } from "./compileChain"
+import { AbortError } from "./helpers"
+
+export type { Helpers } from "./types"
 
 export interface MatchResult {
-    /** Whether every usage of `match` has been compiled away. */
-    isUnused: boolean
     ms: MagicString
+    /** What has been imported and is not referred to any more, now that every usage of it has been compiled away: `match`, `_` */
+    unused: string[]
+}
+
+interface Imported {
+    /** How often it has been imported. */
+    count: number
+    local: string
+    node: ImportDeclaration
 }
 
 /**
- * Compiles `match(value).case(…).or(…)` chains into conditional expressions:
+ * Compiles `match(value).case(…).shape(…).unwrapOr(…)` chains into conditional expressions:
  *
  * ```ts
- * match(value).case(1, "one").or("other")
+ * match(value).case(1, 2, "few").onShape({ type: "a" }, v => v.id).unwrapOr("other")
  * ```
  *
  * ```ts
- * ((value === (1)) ? ("one") : ("other"))
+ * (((value === (1)) || (value === (2))) ? ("few")
+ * : (typeof value === "object" && value !== null && value.type === ("a")) ? (value.id)
+ * : ("other"))
  * ```
+ *
+ * Chains inside of the callbacks of another chain are left for another run, which is what `helpers` is passed along for:
+ * what has been imported already for shapes that are not written where they are used.
  *
  * Returns `undefined` when `match` has not been imported from `from`.
  */
-export function transformMatches(code: string, filePath: string, from: string): MatchResult | undefined {
+export function transformMatches(code: string, filePath: string, from: string, helpers: Helpers = {}): MatchResult | undefined {
     const { program } = parseSync(filePath, code)
-    const local = findLocalName(program.body, from)
-    if (!local) return
+    const match = findImport(program.body, from, "match")
+    if (!match) return
+    const wildcard = findImport(program.body, from, "_")
 
     let ids: Set<string> | undefined
-    let references = 0
     let transformed = 0
+    const references = { _: 0, match: 0 }
+    const added: (keyof Helpers)[] = []
+
+    // Collects all declarations, including hoisted ones, to tell what a name refers to where it is used.
+    const scopeTracker = new ScopeTracker({ preserveExitedScopes: true })
+    const parents = new Map<Node, Node | null>()
+    const assigned = new Set<string>()
+    walk(program, {
+        scopeTracker,
+        enter(node, parent) {
+            parents.set(node, parent)
+            if (node.type === "AssignmentExpression") collectTargets(node.left, assigned)
+            else if (node.type === "UpdateExpression") collectTargets(node.argument, assigned)
+            else if (node.type === "ForInStatement" || node.type === "ForOfStatement") collectTargets(node.left, assigned)
+        },
+    })
+    scopeTracker.freeze()
 
     const ctx: Context = {
         code,
         filePath,
+        helpers,
+        match: match.local,
         ms: new MagicString(code, { filename: filePath }),
+        used: { _: 0, match: 0 },
+        wildcard: wildcard?.local,
+        helper(name: keyof Helpers): string {
+            if (!helpers[name]) {
+                helpers[name] = this.id(name)
+                added.push(name)
+            }
+            return helpers[name]
+        },
         id(base: string): string {
             let count = 0
             const ids = this.ids
             while (ids.has(`${base}${count}`)) {
                 count++
             }
-            this.ids.add(`${base}${count}`)
+            ids.add(`${base}${count}`)
             return `${base}${count}`
         },
         get ids() {
@@ -59,47 +101,108 @@ export function transformMatches(code: string, filePath: string, from: string): 
             })
             return ids
         },
+        isImport(name: string): boolean {
+            return scopeTracker.getDeclaration(name)?.type === "Import"
+        },
+        isStable(name: string): boolean {
+            const declaration = scopeTracker.getDeclaration(name)
+            // Globals and what has been imported can be changed from somewhere else.
+            if (!declaration || declaration.type === "Import") return false
+            if (declaration.type === "Variable" && declaration.variableNode.kind === "const") return true
+            return !assigned.has(name)
+        },
     }
 
-    // Collects all declarations, including hoisted ones, to tell whether `match` is the import where it is used.
-    const scopeTracker = new ScopeTracker({ preserveExitedScopes: true })
-    walk(program, { scopeTracker })
-    scopeTracker.freeze()
+    const count = (node: Node, by: -1 | 1): void => {
+        references.match += by * countReferences(node, match.local)
+        if (wildcard) references._ += by * countReferences(node, wildcard.local)
+    }
 
     walk(program, {
         scopeTracker,
         enter(node, parent) {
             if (node.type === "ImportDeclaration") return this.skip()
-            if (node.type === "Identifier" && node.name === local && !isPropertyName(node, parent)) references++
-            const branches = collectBranches(node, local)
-            if (!branches) return
-            // Something else that is called the same: function run(match) { match(value)… }
-            if (scopeTracker.getDeclaration(local)?.type !== "Import") return
-            if (transformShape(node, branches, parent ?? undefined, ctx) || transformMatch(node, branches, parent ?? undefined, ctx)) {
-                transformed++
-                // The chain has been replaced as a whole, chains nested in its callbacks are kept as they are.
-                references += countReferences(node, local)
-                this.skip()
+            if (node.type === "Identifier" && !isPropertyName(node, parent)) {
+                if (node.name === match.local) references.match++
+                else if (node.name === wildcard?.local) references._++
             }
+
+            const chain = collectChain(node, match.local)
+            if (!chain) return
+            // Something else that is called the same: function run(match) { match(value)… }
+            if (!ctx.isImport(match.local)) return
+
+            const known = added.length
+            ctx.used = { _: 0, match: 0 }
+            try {
+                const result = compileChain(node, chain, ctx)
+                ctx.ms.overwrite(node.start, node.end, startsStatement(node, parents) ? `;${result}` : result)
+            }
+            catch (error) {
+                // What has been asked for by a chain that is kept as it is.
+                for (const name of added.splice(known)) delete helpers[name]
+                if (error instanceof AbortError) return
+                throw error
+            }
+
+            transformed++
+            // The chain has been replaced as a whole, what is left in there of what has been imported is still being used.
+            count(node, 1)
+            references.match -= 1 + ctx.used.match
+            references._ -= ctx.used._
+            this.skip()
         },
     })
 
-    return {
-        isUnused: transformed > 0 && references === transformed,
-        ms: ctx.ms,
+    for (const name of added) {
+        ctx.ms.appendLeft(match.node.end, `\nimport { ${name} as ${helpers[name]} } from "${from}/internals/match/${name}.mjs";`)
     }
+
+    // Dropping an import by its name would drop the others of that name.
+    const unused: string[] = []
+    if (transformed && !references.match && match.count === 1) unused.push("match")
+    if (transformed && !references._ && wildcard?.count === 1) unused.push("_")
+    return { ms: ctx.ms, unused }
 }
 
-/** `import { match as foo } from "from"` → `"foo"` */
-function findLocalName(statements: Node[], from: string): string | undefined {
+/** `import { match as foo } from "from"` → `"foo"`, chains of the first one are compiled when there are several. */
+function findImport(statements: Node[], from: string, name: string): Imported | undefined {
+    let result: Imported | undefined
     for (const node of statements) {
         if (node.type !== "ImportDeclaration" || node.importKind === "type" || node.source.value !== from) continue
         for (const specifier of node.specifiers) {
             if (specifier.type !== "ImportSpecifier" || specifier.importKind === "type") continue
-            if (specifier.imported.type === "Identifier" && specifier.imported.name === "match") return specifier.local.name
+            if (specifier.imported.type !== "Identifier" || specifier.imported.name !== name) continue
+            if (result) result.count++
+            else result = { count: 1, local: specifier.local.name, node }
         }
     }
-    return undefined
+    return result
+}
+
+/**
+ * Whether what a chain is replaced with is the start of a statement that follows another one,
+ * which it would be read as a call of when that one does not end with a semicolon.
+ */
+function startsStatement(node: Node, parents: Map<Node, Node | null>): boolean {
+    for (let parent = parents.get(node); parent; parent = parents.get(parent)) {
+        if (parent.start !== node.start) return false
+        if (parent.type !== "ExpressionStatement") continue
+        const list = parents.get(parent)
+        // Not what an `if` or a loop is followed by, which a semicolon would end.
+        return !list || list.type === "Program" || list.type === "BlockStatement" || list.type === "StaticBlock" || list.type === "SwitchCase" || list.type === "TSModuleBlock"
+    }
+    return false
+}
+
+/** The names that are assigned to: `a = 1`, `[a, { b }] = c`, `a++`, `for (a of b)` */
+function collectTargets(node: Node, names: Set<string>): void {
+    if (node.type === "Identifier") names.add(node.name)
+    else if (node.type === "ArrayPattern") node.elements.forEach(element => element && collectTargets(element, names))
+    else if (node.type === "ObjectPattern") node.properties.forEach(property => collectTargets(property.type === "Property" ? property.value : property, names))
+    else if (node.type === "AssignmentPattern") collectTargets(node.left, names)
+    else if (node.type === "RestElement") collectTargets(node.argument, names)
+    else if (node.type === "ParenthesizedExpression" || node.type === "TSAsExpression" || node.type === "TSNonNullExpression" || node.type === "TSSatisfiesExpression" || node.type === "TSTypeAssertion") collectTargets(node.expression, names)
 }
 
 function isPropertyName(node: Node, parent: Node | null): boolean {

@@ -1,4 +1,4 @@
-export class Exhaustive {
+export class Matched {
     constructor(readonly value: unknown) {}
 
     case(): this {
@@ -17,19 +17,27 @@ export class Exhaustive {
         return this
     }
 
-    or(): any {
-        return this.value
-    }
-
-    orElse(): any {
-        return this.value
-    }
-
-    orThrow(): unknown {
-        return this.value
+    onShape(): this {
+        return this
     }
 
     returnType(): this {
         return this
+    }
+
+    shape(): this {
+        return this
+    }
+
+    unwrap(): unknown {
+        return this.value
+    }
+
+    unwrapOr(): unknown {
+        return this.value
+    }
+
+    unwrapOrElse(): unknown {
+        return this.value
     }
 }

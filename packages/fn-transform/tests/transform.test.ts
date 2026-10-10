@@ -65,18 +65,45 @@ describe("transform", () => {
     it("should compile match expressions and remove the import", () => {
         expect(run(`
             import { match } from "@monstermann/fn";
-            const a = match(value).case(1, "one").or("other");
+            const a = (value) => match(value).case(1, "one").unwrapOr("other");
         `)).toBe(dedent(`
 
-            const a = ((value === (1)) ? ("one")
+            const a = (value) => ((value === (1)) ? ("one")
             : ("other"));
+        `))
+    })
+
+    it("should compile chains inside of the callbacks of other chains", () => {
+        expect(run(`
+            import { _, match } from "@monstermann/fn";
+            const a = (value, other, pattern) => match(value).onCase(1, v => match(other).case(v, "same").shape(pattern, [_, v], "alike").unwrap()).unwrapOrElse(() => match(other).case(2, "other").unwrapOr("none"));
+        `)).toBe(dedent(`
+
+            import { matches as matches0 } from "@monstermann/fn/internals/match/matches.mjs";
+            import { throwUnmatched as throwUnmatched0 } from "@monstermann/fn/internals/match/throwUnmatched.mjs";
+            const a = (value, other, pattern) => ((value === (1)) ? (((other === (value)) ? ("same")
+            : (matches0(other, pattern) || (Array.isArray(other) && other.length === 2 && other[1] === (value))) ? ("alike")
+            : throwUnmatched0(other)))
+            : (((other === (2)) ? ("other")
+            : ("none"))));
+        `))
+    })
+
+    it("should keep the import of a wildcard that is still used", () => {
+        expect(run(`
+            import { _, match } from "@monstermann/fn";
+            const a = (value) => match(value).shape([_], "one").unwrapOr(_);
+        `)).toBe(dedent(`
+            import { _ } from "@monstermann/fn/_.mjs";
+            const a = (value) => ((Array.isArray(value) && value.length === 1) ? ("one")
+            : (_));
         `))
     })
 
     it("should keep the import of match when it is still used", () => {
         expect(run(`
             import { match } from "@monstermann/fn";
-            const a = match(value).case(1, "one").or("other");
+            const a = match(value).case(1, "one").unwrapOr("other");
             const b = match;
         `)).toStartWith(`import { match } from "@monstermann/fn/match.mjs";`)
     })
@@ -94,7 +121,7 @@ describe("transform", () => {
     })
 
     it("should create sourcemaps", () => {
-        const result = transform(`import { match, Arr, pipe } from "@monstermann/fn";\nmatch(a).case(1, Arr.at(b, 0)).or(pipe(c));`, "source.ts")
+        const result = transform(`import { match, Arr, pipe } from "@monstermann/fn";\nmatch(a).case(1, Arr.at(b, 0)).unwrapOr(pipe(c));`, "source.ts")
         expect(result!.map.sources).toEqual(["source.ts"])
         expect(result!.map.mappings).toBeTruthy()
         expect(result!.map.sourcesContent![0]).toContain(`match(a).case(1`)

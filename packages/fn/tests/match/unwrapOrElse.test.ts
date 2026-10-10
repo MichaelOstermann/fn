@@ -1,15 +1,15 @@
 import { describe, expect, expectTypeOf, test } from "bun:test"
 import { match } from "../../src/match"
 
-describe("or", () => {
+describe("unwrapOrElse", () => {
     describe("implementation", () => {
         test("should return exhaustive match", () => {
-            const result = match(0 as 0 | 1).case(0, true).or(false)
+            const result = match(0 as 0 | 1).case(0, true).unwrapOrElse(() => false)
             expect(result).toBe(true)
         })
 
         test("should return fallback on non-exhaustive match", () => {
-            const result = match(1 as 0 | 1).case(0, true).or(false)
+            const result = match(1 as 0 | 1).case(0, true).unwrapOrElse(() => false)
             expect(result).toBe(false)
         })
     })
@@ -18,7 +18,7 @@ describe("or", () => {
         test("inferred return type", () => {
             const result = match(0 as 0 | 1)
                 .case(0, true)
-                .or(null)
+                .unwrapOrElse(() => null)
 
             expectTypeOf(result).toEqualTypeOf<boolean | null>()
         })
@@ -28,12 +28,12 @@ describe("or", () => {
                 .returnType<boolean>()
                 .case(0, true)
                 // @ts-expect-error test case.
-                .or(null)
+                .unwrapOrElse(() => null)
 
             match(0 as 0 | 1)
                 .returnType<boolean>()
                 .case(0, true)
-                .or(false)
+                .unwrapOrElse(() => false)
         })
     })
 })

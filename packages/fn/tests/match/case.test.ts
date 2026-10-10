@@ -9,7 +9,7 @@ describe("case", () => {
                 .case(1, "one")
                 .case(2, "two")
                 .case(3, "three")
-                .orThrow()
+                .unwrap()
 
             expect(result).toBe("two")
         })
@@ -21,7 +21,7 @@ describe("case", () => {
                 .case(0, 0)
                 .case(1, "1")
                 .case(2, true)
-                .orThrow()
+                .unwrap()
 
             expectTypeOf(result).toEqualTypeOf<number | string | boolean>()
         })
@@ -38,35 +38,35 @@ describe("case", () => {
             match("foo" as "foo" | "bar")
                 .case("foo", "foo")
                 .case("bar", "bar")
-                .orThrow()
+                .unwrap()
         })
 
         test("exhaustive patterns #2", () => {
             match(0 as 0 | 1)
                 .case(0, 0)
                 .case(1, 1)
-                .orThrow()
+                .unwrap()
         })
 
         test("exhaustive patterns #3", () => {
             match(true as boolean)
                 .case(true, true)
                 .case(false, false)
-                .orThrow()
+                .unwrap()
         })
 
         test("exhaustive patterns #4", () => {
             match("foo" as "foo" | null)
                 .case("foo", "foo")
                 .case(null, null)
-                .orThrow()
+                .unwrap()
         })
 
         test("exhaustive patterns #5", () => {
             match("foo" as "foo" | undefined)
                 .case("foo", "foo")
                 .case(undefined, undefined)
-                .orThrow()
+                .unwrap()
         })
 
         test("exhaustive patterns #6", () => {
@@ -75,18 +75,18 @@ describe("case", () => {
                 .case(Status.A, "a")
                 .case(Status.B, "b")
                 .case(Status.C, "c")
-                .orThrow()
+                .unwrap()
         })
 
         test("non-exhaustive patterns #1", () => {
             match("foo" as "foo" | "bar")
                 .case("foo", "foo")
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match("foo" as "foo" | "bar")
                 .case("foo", "foo")
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<"bar">()
                 })
         })
@@ -95,11 +95,11 @@ describe("case", () => {
             match("foo" as string)
                 .case("foo", "foo")
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match("foo" as string)
                 .case("foo", "foo")
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<string>()
                 })
         })
@@ -108,11 +108,11 @@ describe("case", () => {
             match("foo" as string)
                 .case("foo" as string, "foo")
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match("foo" as string)
                 .case("foo" as string, "foo")
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<string>()
                 })
         })
@@ -121,11 +121,11 @@ describe("case", () => {
             match(true as boolean)
                 .case(true, true)
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match(true as boolean)
                 .case(true, true)
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<false>()
                 })
         })
@@ -134,11 +134,11 @@ describe("case", () => {
             match(true as boolean)
                 .case(true as boolean, true)
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match(true as boolean)
                 .case(true as boolean, true)
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<boolean>()
                 })
         })
@@ -147,11 +147,11 @@ describe("case", () => {
             match(0 as 0 | 1)
                 .case(0, 0)
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match(0 as 0 | 1)
                 .case(0, 0)
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<1>()
                 })
         })
@@ -160,11 +160,11 @@ describe("case", () => {
             match(0 as number)
                 .case(0, 0)
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match(0 as number)
                 .case(0, 0)
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<number>()
                 })
         })
@@ -173,11 +173,11 @@ describe("case", () => {
             match(0 as number)
                 .case(0 as number, 0)
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match(0 as number)
                 .case(0 as number, 0)
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<number>()
                 })
         })
@@ -186,11 +186,11 @@ describe("case", () => {
             match("foo" as "foo" | null)
                 .case("foo", "foo")
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match("foo" as "foo" | null)
                 .case("foo", "foo")
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<null>()
                 })
         })
@@ -199,11 +199,11 @@ describe("case", () => {
             match("foo" as "foo" | undefined)
                 .case("foo", "foo")
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match("foo" as "foo" | undefined)
                 .case("foo", "foo")
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<undefined>()
                 })
         })
@@ -212,11 +212,11 @@ describe("case", () => {
             match(null as "foo" | null)
                 .case(null, null)
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match(null as "foo" | null)
                 .case(null, null)
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<"foo">()
                 })
         })
@@ -225,11 +225,11 @@ describe("case", () => {
             match(undefined as "foo" | undefined)
                 .case(undefined, undefined)
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match(undefined as "foo" | undefined)
                 .case(undefined, undefined)
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<"foo">()
                 })
         })
@@ -305,12 +305,7 @@ describe("case", () => {
         test("invalid patterns #3", () => {
             match(true)
                 // @ts-expect-error test case.
-                .case(0 as boolean, true)
-        })
-
-        test("invalid patterns #4", () => {
-            // @ts-expect-error test case.
-            match({ foo: true } as { foo: boolean } | string)
+                .case(false as boolean, true)
         })
 
         test("autocompletion #1", () => {

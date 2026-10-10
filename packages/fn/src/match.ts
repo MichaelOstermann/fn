@@ -1,20 +1,52 @@
-import type { Primitive } from "type-fest"
-import type { IsPlainObject } from "./internals/match/types/IsPlainObject"
-import type { ShapeMatcher } from "./internals/match/types/ShapeMatcher"
-import type { ShapeVariations } from "./internals/match/types/ShapeVariations"
-import type { ValueMatcher } from "./internals/match/types/ValueMatcher"
-import { Shape } from "./internals/match/Shape"
-import { Value } from "./internals/match/Value"
+import type { Matcher } from "./internals/match/types/Matcher"
+import { _ } from "./_"
+import { Unmatched } from "./internals/match/Unmatched"
 
 export interface Match {
-    <T extends Primitive | null | undefined>(value: T): ValueMatcher<T>
-    shape: <T extends object>(value: IsPlainObject<T> extends true ? T : never) => ShapeMatcher<ShapeVariations<T>>
+    <const T>(value: T): Matcher<T>
+    /** Matches anything at a position of a tuple, the same as `_`. */
+    readonly _: typeof _
 }
 
-export const match = function (value: any) {
-    return new Value(value) as any
-} as Match
+/**
+ * `match(value)`
+ *
+ * Matches a value, returning the result of the first branch that applies.
+ *
+ * - `.case(...values, result)` compares with `===`, and returns `result`
+ * - `.shape(...patterns, result)` compares objects field by field, and tuples position by position, `_` standing for any value
+ * - `.cond(predicate, result)` asks a function
+ * - `.onCase(...values, fn)`, `.onShape(...patterns, fn)` and `.onCond(predicate, fn)` return what `fn` returns for the value
+ * - `.unwrap()` ends a chain that covers every case, and throws for a value that the types did not tell about
+ * - `.unwrapOr(result)` and `.unwrapOrElse(fn)` end a chain with a fallback
+ * - `.returnType<T>()` asks every result to be a `T`
+ *
+ * ```ts
+ * import { _, match } from "@monstermann/fn";
+ *
+ * type Message = { type: "text"; value: string } | { type: "ping" } | null;
+ *
+ * const describe = (message: Message) =>
+ *     match(message)
+ *         .case(null, "nothing")
+ *         .shape({ type: "ping" }, "ping")
+ *         .onShape({ type: "text" }, (message) => message.value)
+ *         .unwrap();
+ *
+ * describe({ type: "text", value: "hello" }); // "hello"
+ *
+ * const next = (state: "idle" | "busy", event: "start" | "stop") =>
+ *     match([state, event])
+ *         .shape(["idle", "start"], "busy")
+ *         .shape(["busy", "stop"], "idle")
+ *         .onShape([_, _], ([state]) => state)
+ *         .unwrap();
+ *
+ * next("idle", "start"); // "busy"
+ * ```
+ */
+export const match = function (value: unknown) {
+    return new Unmatched(value)
+} as unknown as Match
 
-match.shape = function (value: any) {
-    return new Shape(value) as any
-}
+(match as { _: unknown })._ = _

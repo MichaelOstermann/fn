@@ -47,7 +47,7 @@ Each function is documented where it is declared, your editor shows it on hover 
 | --------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `pipe`, `flow`                                | Pass a value through a sequence of functions.                                         |
 | `dfdl`, `dfdlT`                               | Create functions that can be called data-first and data-last.                         |
-| `match`                                       | Pattern matching, compiled into conditional expressions by the transform.             |
+| `match`, `_`                                  | Pattern matching, compiled into conditional expressions by the transform.             |
 | `withMutations`, `cloneArray`, `isMutable`, … | Mutate copies in place while inside a mutation context, instead of cloning each time. |
 
 ## Immutability

@@ -9,7 +9,7 @@ describe("onCase", () => {
                 .onCase(1, () => "one")
                 .onCase(2, () => "two")
                 .onCase(3, () => "three")
-                .orThrow()
+                .unwrap()
 
             expect(result).toBe("two")
         })
@@ -20,7 +20,7 @@ describe("onCase", () => {
                     expect(num).toBe(0)
                     return true
                 })
-                .orThrow()
+                .unwrap()
 
             expect(result).toBe(true)
         })
@@ -32,7 +32,7 @@ describe("onCase", () => {
                 .onCase(0, () => 0)
                 .onCase(1, () => "1")
                 .onCase(2, () => true)
-                .orThrow()
+                .unwrap()
 
             expectTypeOf(result).toEqualTypeOf<number | string | boolean>()
         })
@@ -55,7 +55,7 @@ describe("onCase", () => {
                     expectTypeOf(value).toEqualTypeOf<"bar">()
                     return "bar"
                 })
-                .orThrow()
+                .unwrap()
         })
 
         test("exhaustive patterns #2", () => {
@@ -68,7 +68,7 @@ describe("onCase", () => {
                     expectTypeOf(value).toEqualTypeOf<1>()
                     return 1
                 })
-                .orThrow()
+                .unwrap()
         })
 
         test("exhaustive patterns #3", () => {
@@ -81,7 +81,7 @@ describe("onCase", () => {
                     expectTypeOf(value).toEqualTypeOf<false>()
                     return false
                 })
-                .orThrow()
+                .unwrap()
         })
 
         test("exhaustive patterns #4", () => {
@@ -94,7 +94,7 @@ describe("onCase", () => {
                     expectTypeOf(value).toEqualTypeOf<null>()
                     return null
                 })
-                .orThrow()
+                .unwrap()
         })
 
         test("exhaustive patterns #5", () => {
@@ -107,7 +107,7 @@ describe("onCase", () => {
                     expectTypeOf(value).toEqualTypeOf<undefined>()
                     return undefined
                 })
-                .orThrow()
+                .unwrap()
         })
 
         test("non-exhaustive patterns #1", () => {
@@ -117,14 +117,14 @@ describe("onCase", () => {
                     return "foo"
                 })
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match("foo" as "foo" | "bar")
                 .onCase("foo", (value) => {
                     expectTypeOf(value).toEqualTypeOf<"foo">()
                     return "foo"
                 })
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<"bar">()
                 })
         })
@@ -136,14 +136,14 @@ describe("onCase", () => {
                     return "foo"
                 })
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match("foo" as string)
                 .onCase("foo", (value) => {
                     expectTypeOf(value).toEqualTypeOf<"foo">()
                     return "foo"
                 })
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<string>()
                 })
         })
@@ -155,14 +155,14 @@ describe("onCase", () => {
                     return "foo"
                 })
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match("foo" as string)
                 .onCase("foo" as string, (value) => {
                     expectTypeOf(value).toEqualTypeOf<string>()
                     return "foo"
                 })
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<string>()
                 })
         })
@@ -174,14 +174,14 @@ describe("onCase", () => {
                     return true
                 })
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match(true as boolean)
                 .onCase(true, (value) => {
                     expectTypeOf(value).toEqualTypeOf<true>()
                     return true
                 })
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<false>()
                 })
         })
@@ -193,14 +193,14 @@ describe("onCase", () => {
                     return true
                 })
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match(true as boolean)
                 .onCase(true as boolean, (value) => {
                     expectTypeOf(value).toEqualTypeOf<boolean>()
                     return true
                 })
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<boolean>()
                 })
         })
@@ -212,14 +212,14 @@ describe("onCase", () => {
                     return 0
                 })
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match(0 as 0 | 1)
                 .onCase(0, (value) => {
                     expectTypeOf(value).toEqualTypeOf<0>()
                     return 0
                 })
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<1>()
                 })
         })
@@ -231,14 +231,14 @@ describe("onCase", () => {
                     return 0
                 })
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match(0 as number)
                 .onCase(0, (value) => {
                     expectTypeOf(value).toEqualTypeOf<0>()
                     return 0
                 })
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<number>()
                 })
         })
@@ -250,14 +250,14 @@ describe("onCase", () => {
                     return 0
                 })
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match(0 as number)
                 .onCase(0 as number, (value) => {
                     expectTypeOf(value).toEqualTypeOf<number>()
                     return 0
                 })
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<number>()
                 })
         })
@@ -269,14 +269,14 @@ describe("onCase", () => {
                     return "foo"
                 })
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match("foo" as "foo" | null)
                 .onCase("foo", (value) => {
                     expectTypeOf(value).toEqualTypeOf<"foo">()
                     return "foo"
                 })
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<null>()
                 })
         })
@@ -288,14 +288,14 @@ describe("onCase", () => {
                     return "foo"
                 })
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match("foo" as "foo" | undefined)
                 .onCase("foo", (value) => {
                     expectTypeOf(value).toEqualTypeOf<"foo">()
                     return "foo"
                 })
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<undefined>()
                 })
         })
@@ -307,14 +307,14 @@ describe("onCase", () => {
                     return null
                 })
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match(null as "foo" | null)
                 .onCase(null, (value) => {
                     expectTypeOf(value).toEqualTypeOf<null>()
                     return null
                 })
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<"foo">()
                 })
         })
@@ -326,14 +326,14 @@ describe("onCase", () => {
                     return undefined
                 })
                 // @ts-expect-error test case.
-                .orThrow()
+                .unwrap()
 
             match(undefined as "foo" | undefined)
                 .onCase(undefined, (value) => {
                     expectTypeOf(value).toEqualTypeOf<undefined>()
                     return undefined
                 })
-                .orElse((value) => {
+                .unwrapOrElse((value) => {
                     expectTypeOf(value).toEqualTypeOf<"foo">()
                 })
         })
@@ -409,12 +409,7 @@ describe("onCase", () => {
         test("invalid patterns #3", () => {
             match(true)
                 // @ts-expect-error test case.
-                .onCase(0 as boolean, () => true)
-        })
-
-        test("invalid patterns #4", () => {
-            // @ts-expect-error test case.
-            match({ foo: true } as { foo: boolean } | string)
+                .onCase(false as boolean, () => true)
         })
 
         test("autocompletion #1", () => {

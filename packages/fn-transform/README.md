@@ -13,7 +13,7 @@ import { Arr, match, pipe } from "@monstermann/fn";
 
 const result = pipe(
     values,
-    Arr.mapEach((value) => match(value).case(1, "one").or("other")),
+    Arr.mapEach((value) => match(value).case(1, "one").unwrapOr("other")),
     Arr.at(0),
 );
 ```
@@ -96,7 +96,11 @@ await Bun.build({
 
 - Files that do not mention `@monstermann/fn` are skipped without being parsed.
 - A namespace that is used as a value (`call(Arr)`) is imported as a whole, from its own file.
-- `match` is only compiled when it has been imported from `@monstermann/fn`, renamed imports are followed. A chain needs to end with `or`, `orElse` or `orThrow`.
-- A compiled chain only evaluates the result of the branch that matches. Without the transform every argument is evaluated: `match(value).case(1, a()).or(b())` calls both `a` and `b`, compiled it calls one of them.
+- `match` is only compiled when it has been imported from `@monstermann/fn`, renamed imports are followed. A chain needs to end with `unwrap`, `unwrapOr` or `unwrapOrElse`.
+- A compiled chain only evaluates what it needs to find the branch that matches, and the result of that branch. Without the transform every argument is evaluated: `match(value).case(1, a()).unwrapOr(b())` calls both `a` and `b`, compiled it calls one of them. The same goes for what is compared against: `.case(1, "a").case(next(), "b")` does not call `next` when the value is `1`.
+- `.case(value, …)` compiles into `===`, whatever the value is: something written there, a member of an enum, something that has been imported.
+- `.shape(pattern, …)` compiles into a comparison of each field or position when the pattern is written where it is used: `.shape({ type: "a" }, [1, _], …)`. `match([a, b])` never creates the array. A shape that is passed as a name is looked at when the code runs.
+- `_` is recognized as `_` and `match._`, as what they have been imported as, and is removed with `match` when nothing refers to it any more.
+- Chains inside of the callbacks of another chain are compiled as well.
 - Callbacks are inlined where that does not change what they do (`v => v + 1` becomes `value + 1`), and called as they are otherwise: async callbacks, functions, and callbacks that assign to their parameter.
 - `import * as Fn from "@monstermann/fn"` is left alone.

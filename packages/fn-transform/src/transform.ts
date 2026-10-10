@@ -1,4 +1,5 @@
 import type { SourceMap } from "magic-string"
+import type { Helpers } from "./match"
 import remapping from "@jridgewell/remapping"
 import { transform as treeshake } from "@monstermann/barrels-treeshake"
 import { SourceMap as MagicSourceMap } from "magic-string"
@@ -35,9 +36,10 @@ export function transform(code: string, filePath: string, options: FnOptions = {
     const unused = new Set<string>()
     const generateMap = { hires: "boundary", includeContent: true, source: filePath } as const
 
-    const matches = transformMatches(code, filePath, from)
-    if (matches?.ms.hasChanged()) {
-        if (matches.isUnused) unused.add("match")
+    // Chains inside of the callbacks of another chain are compiled by another run.
+    const helpers: Helpers = {}
+    for (let matches = transformMatches(code, filePath, from, helpers); matches?.ms.hasChanged(); matches = transformMatches(code, filePath, from, helpers)) {
+        for (const name of matches.unused) unused.add(name)
         code = matches.ms.toString()
         maps.push(matches.ms.generateMap(generateMap))
     }
