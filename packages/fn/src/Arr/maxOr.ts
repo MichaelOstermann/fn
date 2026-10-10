@@ -32,5 +32,5 @@ export const maxOr: {
     <T>(target: readonly number[], or: T): number | T
 } = dfdlT(<T>(target: readonly number[], or: T): number | T => {
     if (target.length === 0) return or
-    return target.reduce((a, b) => Math.max(a, b), 0)
+    return target.reduce((a, b) => Math.max(a, b), -Infinity)
 }, 2)

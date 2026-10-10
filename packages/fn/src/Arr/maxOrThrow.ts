@@ -31,5 +31,5 @@ export const maxOrThrow: {
     (target: readonly number[]): number
 } = dfdlT((target: readonly number[]): number => {
     if (target.length === 0) throw new Error("Array.maxOrThrow: Target is empty.")
-    return target.reduce((a, b) => Math.max(a, b), 0)
+    return target.reduce((a, b) => Math.max(a, b), -Infinity)
 }, 1)

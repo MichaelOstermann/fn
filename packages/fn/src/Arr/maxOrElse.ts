@@ -41,5 +41,5 @@ export const maxOrElse: {
     <T>(target: readonly number[], orElse: (target: readonly number[]) => T): number | T
 } = dfdlT(<T>(target: readonly number[], orElse: (target: readonly number[]) => T): number | T => {
     if (target.length === 0) return orElse(target)
-    return target.reduce((a, b) => Math.max(a, b), 0)
+    return target.reduce((a, b) => Math.max(a, b), -Infinity)
 }, 2)

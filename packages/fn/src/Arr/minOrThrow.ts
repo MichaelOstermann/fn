@@ -31,5 +31,5 @@ export const minOrThrow: {
     (target: readonly number[]): number
 } = dfdlT((target: readonly number[]): number => {
     if (target.length === 0) throw new Error("Array.minOrThrow: Target is empty.")
-    return target.reduce((a, b) => Math.min(a, b), 0)
+    return target.reduce((a, b) => Math.min(a, b), Infinity)
 }, 1)
