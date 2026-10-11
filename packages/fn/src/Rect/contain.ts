@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { merge } from "./merge"
 
 /**
@@ -13,24 +12,16 @@ import { merge } from "./merge"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.contain(
  *     { left: 10, top: 20, width: 200, height: 100 },
  *     { left: 0, top: 0, width: 150, height: 120 },
  * );
- * // { left: 37.5, top: 30, width: 75, height: 60 }
- * ```
- *
- * ```ts [data-last]
- * pipe(
- *     { left: 10, top: 20, width: 200, height: 100 },
- *     Rect.contain({ left: 0, top: 0, width: 150, height: 120 }),
- * );
- * // { left: 37.5, top: 30, width: 75, height: 60 }
+ * // { left: 0, top: 22.5, width: 150, height: 75 }
  * ```
  *
  */
-export const contain = dfdl((target: Rect, source: Rect): Rect => {
+export function contain(target: Rect, source: Rect): Rect {
     const scale = Math.min(
         source.width / target.width,
         source.height / target.height,
@@ -45,4 +36,4 @@ export const contain = dfdl((target: Rect, source: Rect): Rect => {
         top: source.top + (source.height - height) / 2,
         width,
     })
-}, 2)
+}

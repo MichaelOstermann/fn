@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { clamp } from "./internals/clamp"
 import { merge } from "./merge"
 
@@ -14,18 +13,13 @@ import { merge } from "./merge"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.shrink({ left: 10, top: 20, width: 100, height: 60 }, 15);
  * // { left: 25, top: 35, width: 70, height: 30 }
  * ```
  *
- * ```ts [data-last]
- * pipe({ left: 10, top: 20, width: 100, height: 60 }, Rect.shrink(15));
- * // { left: 25, top: 35, width: 70, height: 30 }
- * ```
- *
  */
-export const shrink = dfdl((rect: Rect, amount: number): Rect => {
+export function shrink(rect: Rect, amount: number): Rect {
     const dw = clamp(amount, 0, rect.width / 2)
     const dh = clamp(amount, 0, rect.height / 2)
     return merge(rect, {
@@ -34,4 +28,4 @@ export const shrink = dfdl((rect: Rect, amount: number): Rect => {
         top: rect.top + dh,
         width: rect.width - (dw * 2),
     })
-}, 2)
+}

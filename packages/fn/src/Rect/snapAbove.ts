@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { placeAboveBy } from "./placeAboveBy"
 
 /**
@@ -13,7 +12,7 @@ import { placeAboveBy } from "./placeAboveBy"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.snapAbove(
  *     { left: 50, top: 100, width: 40, height: 30 },
  *     { left: 0, top: 60, width: 100, height: 20 },
@@ -21,15 +20,7 @@ import { placeAboveBy } from "./placeAboveBy"
  * // { left: 50, top: 30, width: 40, height: 30 }
  * ```
  *
- * ```ts [data-last]
- * pipe(
- *     { left: 50, top: 100, width: 40, height: 30 },
- *     Rect.snapAbove({ left: 0, top: 60, width: 100, height: 20 }),
- * );
- * // { left: 50, top: 30, width: 40, height: 30 }
- * ```
- *
  */
-export const snapAbove = dfdl((target: Rect, source: Rect): Rect => {
+export function snapAbove(target: Rect, source: Rect): Rect {
     return placeAboveBy(target, source, 0)
-}, 2)
+}

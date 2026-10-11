@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { isEqual } from "./isEqual"
 
 /**
@@ -13,18 +12,13 @@ import { isEqual } from "./isEqual"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.normalize({ left: 50, top: 60, width: -30, height: -40 });
  * // { left: 20, top: 20, width: 30, height: 40 }
  * ```
  *
- * ```ts [data-last]
- * pipe({ left: 50, top: 60, width: -30, height: -40 }, Rect.normalize());
- * // { left: 20, top: 20, width: 30, height: 40 }
- * ```
- *
  */
-export const normalize = dfdl((rect: Rect): Rect => {
+export function normalize(rect: Rect): Rect {
     const result = {
         height: Math.abs(rect.height),
         left: rect.width < 0 ? rect.left + rect.width : rect.left,
@@ -32,4 +26,4 @@ export const normalize = dfdl((rect: Rect): Rect => {
         width: Math.abs(rect.width),
     }
     return isEqual(result, rect) ? rect : result
-}, 1)
+}

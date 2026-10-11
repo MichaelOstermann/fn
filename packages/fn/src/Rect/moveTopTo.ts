@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { merge } from "./merge"
 
 /**
@@ -13,17 +12,12 @@ import { merge } from "./merge"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.moveTopTo({ left: 10, top: 20, width: 100, height: 50 }, 50);
  * // { left: 10, top: 50, width: 100, height: 50 }
  * ```
  *
- * ```ts [data-last]
- * pipe({ left: 10, top: 20, width: 100, height: 50 }, Rect.moveTopTo(50));
- * // { left: 10, top: 50, width: 100, height: 50 }
- * ```
- *
  */
-export const moveTopTo = dfdl((rect: Rect, top: number): Rect => {
+export function moveTopTo(rect: Rect, top: number): Rect {
     return merge(rect, { top })
-}, 2)
+}

@@ -16,10 +16,10 @@ export interface MatchResult {
 }
 
 interface Imported {
-    /** How often it has been imported. */
+    /** How often it has been imported, not at all when it is the global. */
     count: number
     local: string
-    node: ImportDeclaration
+    node: ImportDeclaration | undefined
 }
 
 /**
@@ -42,8 +42,8 @@ interface Imported {
  */
 export function transformMatches(code: string, filePath: string, from: string, helpers: Helpers = {}): MatchResult | undefined {
     const { program } = parseSync(filePath, code)
-    const match = findImport(program.body, from, "match")
-    if (!match) return
+    // Without an import, `match` is the global, which a declaration of that name in the file is not.
+    const match = findImport(program.body, from, "match") ?? { count: 0, local: "match", node: undefined }
     const wildcard = findImport(program.body, from, "_")
 
     let ids: Set<string> | undefined
@@ -130,7 +130,7 @@ export function transformMatches(code: string, filePath: string, from: string, h
             const chain = collectChain(node, match.local)
             if (!chain) return
             // Something else that is called the same: function run(match) { match(value)… }
-            if (!ctx.isImport(match.local)) return
+            if (match.node ? !ctx.isImport(match.local) : scopeTracker.getDeclaration(match.local)) return
 
             const known = added.length
             ctx.used = { _: 0, match: 0 }
@@ -154,8 +154,12 @@ export function transformMatches(code: string, filePath: string, from: string, h
         },
     })
 
+    // Without an import to put them next to, they are added to an existing line, so every line stays where it is.
+    const first = program.body.find(node => node.type !== "ExpressionStatement" || !node.directive)
     for (const name of added) {
-        ctx.ms.appendLeft(match.node.end, `\nimport { ${name} as ${helpers[name]} } from "${from}/internals/match/${name}.mjs";`)
+        const helper = `import { ${name} as ${helpers[name]} } from "${from}/internals/match/${name}.mjs";`
+        if (match.node) ctx.ms.appendLeft(match.node.end, `\n${helper}`)
+        else ctx.ms.appendLeft(first?.start ?? code.length, helper)
     }
 
     // Dropping an import by its name would drop the others of that name.
@@ -184,7 +188,7 @@ function findImport(statements: Node[], from: string, name: string): Imported | 
  * Whether what a chain is replaced with is the start of a statement that follows another one,
  * which it would be read as a call of when that one does not end with a semicolon.
  */
-function startsStatement(node: Node, parents: Map<Node, Node | null>): boolean {
+export function startsStatement(node: Node, parents: Map<Node, Node | null>): boolean {
     for (let parent = parents.get(node); parent; parent = parents.get(parent)) {
         if (parent.start !== node.start) return false
         if (parent.type !== "ExpressionStatement") continue
@@ -196,7 +200,7 @@ function startsStatement(node: Node, parents: Map<Node, Node | null>): boolean {
 }
 
 /** The names that are assigned to: `a = 1`, `[a, { b }] = c`, `a++`, `for (a of b)` */
-function collectTargets(node: Node, names: Set<string>): void {
+export function collectTargets(node: Node, names: Set<string>): void {
     if (node.type === "Identifier") names.add(node.name)
     else if (node.type === "ArrayPattern") node.elements.forEach(element => element && collectTargets(element, names))
     else if (node.type === "ObjectPattern") node.properties.forEach(property => collectTargets(property.type === "Property" ? property.value : property, names))

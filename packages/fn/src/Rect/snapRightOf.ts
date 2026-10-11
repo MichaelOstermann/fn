@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { placeRightOfBy } from "./placeRightOfBy"
 
 /**
@@ -13,7 +12,7 @@ import { placeRightOfBy } from "./placeRightOfBy"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.snapRightOf(
  *     { left: 10, top: 50, width: 40, height: 30 },
  *     { left: 20, top: 20, width: 100, height: 20 },
@@ -21,15 +20,7 @@ import { placeRightOfBy } from "./placeRightOfBy"
  * // { left: 120, top: 50, width: 40, height: 30 }
  * ```
  *
- * ```ts [data-last]
- * pipe(
- *     { left: 10, top: 50, width: 40, height: 30 },
- *     Rect.snapRightOf({ left: 20, top: 20, width: 100, height: 20 }),
- * );
- * // { left: 120, top: 50, width: 40, height: 30 }
- * ```
- *
  */
-export const snapRightOf = dfdl((target: Rect, source: Rect): Rect => {
+export function snapRightOf(target: Rect, source: Rect): Rect {
     return placeRightOfBy(target, source, 0)
-}, 2)
+}

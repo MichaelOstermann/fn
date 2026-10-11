@@ -2,6 +2,10 @@
     "extends": "@monstermann/tsconfig",
     "compilerOptions": {
         "lib": ["DOM", "DOM.Iterable", "ES2023", "ESNext.Disposable"],
+        "paths": {
+            "@monstermann/fn": ["./packages/fn/src/index.ts"],
+            "@monstermann/fn/*": ["./packages/fn/src/*"]
+        },
         "types": ["bun"]
     },
     "exclude": [

@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { isEqual } from "./isEqual"
 import { origin } from "./origin"
 
@@ -14,17 +13,12 @@ import { origin } from "./origin"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.isOrigin({ left: 0, top: 0, width: 0, height: 0 });
  * // true
  * ```
  *
- * ```ts [data-last]
- * pipe({ left: 0, top: 0, width: 0, height: 0 }, Rect.isOrigin());
- * // true
- * ```
- *
  */
-export const isOrigin = dfdl((rect: Rect): boolean => {
+export function isOrigin(rect: Rect): boolean {
     return isEqual(rect, origin)
-}, 1)
+}

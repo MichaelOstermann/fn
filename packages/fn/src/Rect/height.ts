@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 
 /**
  * # height
@@ -12,17 +11,12 @@ import { dfdl } from "../dfdl"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.height({ left: 10, top: 20, width: 100, height: 50 });
  * // 50
  * ```
  *
- * ```ts [data-last]
- * pipe({ left: 10, top: 20, width: 100, height: 50 }, Rect.height());
- * // 50
- * ```
- *
  */
-export const height = dfdl((rect: Rect): number => {
+export function height(rect: Rect): number {
     return rect.height
-}, 1)
+}

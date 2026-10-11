@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 
 /**
  * # area
@@ -12,17 +11,12 @@ import { dfdl } from "../dfdl"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.area({ left: 10, top: 20, width: 100, height: 50 });
  * // 5000
  * ```
  *
- * ```ts [data-last]
- * pipe({ left: 10, top: 20, width: 100, height: 50 }, Rect.area());
- * // 5000
- * ```
- *
  */
-export const area = dfdl((rect: Rect): number => {
+export function area(rect: Rect): number {
     return rect.width * rect.height
-}, 1)
+}

@@ -1,35 +1,23 @@
-/** The namespaces of @monstermann/fn, each member is a file of the same name: `Arr.at` → `Arr/at.mjs`. */
+/** The namespaces of @monstermann/fn, each member is a file of the same name: `Rect.area` → `Rect/area.mjs`. */
 export const namespaces: ReadonlySet<string> = new Set([
-    "Arr",
-    "Async",
-    "Dsp",
-    "Maps",
-    "Num",
-    "Obj",
     "Rect",
-    "Sets",
-    "Str",
 ])
 
-/** The functions of @monstermann/fn, each is a file of the same name: `pipe` → `pipe.mjs`. */
-export const functions: ReadonlySet<string> = new Set([
-    "_",
-    "cloneArray",
-    "cloneMap",
-    "cloneObject",
-    "cloneSet",
-    "dfdl",
-    "dfdlT",
-    "endMutations",
-    "flow",
-    "isImmutable",
-    "isMutable",
-    "isMutating",
-    "markAsImmutable",
-    "markAsMutable",
-    "match",
-    "pauseMutations",
-    "pipe",
-    "startMutations",
-    "withMutations",
+/** Everything else @monstermann/fn exports, and the file it lives in: `pipe` → `pipe.mjs`. */
+export const functions: ReadonlyMap<string, string> = new Map([
+    ["_", "_"],
+    ["Err", "Result"],
+    ["ErrAsync", "ResultAsync"],
+    ["match", "match"],
+    ["Ok", "Result"],
+    ["OkAsync", "ResultAsync"],
+    ["pipe", "pipe"],
+    ["Result", "Result"],
+    ["ResultAsync", "ResultAsync"],
 ])
+
+/** Files that are only there for when the code runs as it is written. */
+export const guards: readonly string[] = [
+    "globals",
+    "patch",
+]

@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { setWidth } from "./setWidth"
 
 /**
@@ -13,17 +12,13 @@ import { setWidth } from "./setWidth"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.setRight({ left: 10, top: 20, width: 100, height: 50 }, 130);
  * // { left: 10, top: 20, width: 120, height: 50 }
  * ```
  *
- * ```ts [data-last]
- * pipe({ left: 10, top: 20, width: 100, height: 50 }, Rect.setRight(130));
- * // { left: 10, top: 20, width: 120, height: 50 }
- * ```
- *
  */
-export const setRight = dfdl((rect: Rect, right: number): Rect => {
+export function setRight(rect: Rect, right: number): Rect {
+    if (right === rect.left + rect.width) return rect
     return setWidth(rect, Math.max(rect.left, right) - rect.left)
-}, 2)
+}

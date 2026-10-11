@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { clamp } from "./internals/clamp"
 import { merge } from "./merge"
 
@@ -14,21 +13,17 @@ import { merge } from "./merge"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.takeRightPx({ left: 10, top: 20, width: 100, height: 50 }, 30);
  * // { left: 80, top: 20, width: 30, height: 50 }
  * ```
  *
- * ```ts [data-last]
- * pipe({ left: 10, top: 20, width: 100, height: 50 }, Rect.takeRightPx(30));
- * // { left: 80, top: 20, width: 30, height: 50 }
- * ```
- *
  */
-export const takeRightPx = dfdl((rect: Rect, amount: number): Rect => {
+export function takeRightPx(rect: Rect, amount: number): Rect {
     const width = clamp(amount, 0, rect.width)
+    if (width === rect.width) return rect
     return merge(rect, {
         left: rect.left + rect.width - width,
         width,
     })
-}, 2)
+}

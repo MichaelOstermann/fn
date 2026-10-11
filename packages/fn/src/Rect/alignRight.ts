@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { moveRightTo } from "./moveRightTo"
 
 /**
@@ -13,7 +12,7 @@ import { moveRightTo } from "./moveRightTo"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.alignRight(
  *     { left: 10, top: 10, width: 100, height: 50 },
  *     { left: 50, top: 30, width: 80, height: 40 },
@@ -21,15 +20,7 @@ import { moveRightTo } from "./moveRightTo"
  * // { left: 30, top: 10, width: 100, height: 50 }
  * ```
  *
- * ```ts [data-last]
- * pipe(
- *     { left: 10, top: 10, width: 100, height: 50 },
- *     Rect.alignRight({ left: 50, top: 30, width: 80, height: 40 }),
- * );
- * // { left: 30, top: 10, width: 100, height: 50 }
- * ```
- *
  */
-export const alignRight = dfdl((target: Rect, source: Rect): Rect => {
+export function alignRight(target: Rect, source: Rect): Rect {
     return moveRightTo(target, source.left + source.width)
-}, 2)
+}

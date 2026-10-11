@@ -1,5 +1,4 @@
 import type { Rect } from "./types.js"
-import { dfdl } from "../dfdl"
 
 /**
  * # intersects
@@ -12,7 +11,7 @@ import { dfdl } from "../dfdl"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.intersects(
  *     { left: 0, top: 0, width: 50, height: 50 },
  *     { left: 25, top: 25, width: 50, height: 50 },
@@ -20,20 +19,12 @@ import { dfdl } from "../dfdl"
  * // true
  * ```
  *
- * ```ts [data-last]
- * pipe(
- *     { left: 0, top: 0, width: 50, height: 50 },
- *     Rect.intersects({ left: 25, top: 25, width: 50, height: 50 }),
- * );
- * // true
- * ```
- *
  */
-export const intersects = dfdl((a: Rect, b: Rect): boolean => {
+export function intersects(a: Rect, b: Rect): boolean {
     return !(
         a.left >= (b.left + b.width)
         || (a.left + a.width) <= b.left
         || a.top >= (b.top + b.height)
         || (a.top + a.height) <= b.top
     )
-}, 2)
+}

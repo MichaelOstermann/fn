@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { centerX } from "./centerX"
 import { centerY } from "./centerY"
 import { merge } from "./merge"
@@ -15,25 +14,20 @@ import { merge } from "./merge"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.scale({ left: 10, top: 20, width: 100, height: 50 }, 1.5);
  * // { left: -15, top: 7.5, width: 150, height: 75 }
  * ```
  *
- * ```ts [data-last]
- * pipe({ left: 10, top: 20, width: 100, height: 50 }, Rect.scale(1.5));
- * // { left: -15, top: 7.5, width: 150, height: 75 }
- * ```
- *
  */
-export const scale = dfdl((rect: Rect, factor: number): Rect => {
+export function scale(rect: Rect, factor: number): Rect {
     factor = Math.max(factor, 0)
     const width = rect.width * factor
     const height = rect.height * factor
     return merge(rect, {
         height,
-        left: centerX(rect) - width / 2,
-        top: centerY(rect) - height / 2,
+        left: width === rect.width ? rect.left : centerX(rect) - width / 2,
+        top: height === rect.height ? rect.top : centerY(rect) - height / 2,
         width,
     })
-}, 2)
+}

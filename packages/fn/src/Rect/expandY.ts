@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { merge } from "./merge"
 
 /**
@@ -13,21 +12,16 @@ import { merge } from "./merge"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.expandY({ left: 10, top: 20, width: 100, height: 50 }, 10);
  * // { left: 10, top: 10, width: 100, height: 70 }
  * ```
  *
- * ```ts [data-last]
- * pipe({ left: 10, top: 20, width: 100, height: 50 }, Rect.expandY(10));
- * // { left: 10, top: 10, width: 100, height: 70 }
- * ```
- *
  */
-export const expandY = dfdl((rect: Rect, amount: number): Rect => {
+export function expandY(rect: Rect, amount: number): Rect {
     const d = Math.max(amount, 0)
     return merge(rect, {
         height: rect.height + (d * 2),
         top: rect.top - d,
     })
-}, 2)
+}

@@ -1,7 +1,8 @@
+import { P, match as tsPattern } from "ts-pattern"
 import { match } from "../../packages/fn/src/match"
 import { A, B, C, D, E, F, Kind } from "./constants"
 
-// Compares chains as they are compiled to running them as they are: bun benchmarks/match/index.ts
+// Compares chains as they are compiled to running them as they are, and to ts-pattern: bun benchmarks/match/index.ts
 
 const size = 1_000_000
 const rounds = 15
@@ -67,6 +68,28 @@ const benchmarks: [name: string, run: () => number][] = [
         for (let i = 0; i < size; i++) {
             const v = tuples[i]!
             sum += (match([v[0], v[1]]) as any).shape([A, B], 1).shape([C, match._], 2).shape([E, F], 3).unwrapOr(0)
+        }
+        return sum
+    }],
+    ["cases, ts-pattern", () => {
+        let sum = 0
+        for (let i = 0; i < size; i++) {
+            sum += tsPattern(values[i]!).with(A, () => 1).with(B, () => 2).with(C, () => 3).with(D, () => 4).with(E, () => 5).with(F, () => 6).otherwise(() => 0)
+        }
+        return sum
+    }],
+    ["shapes, ts-pattern", () => {
+        let sum = 0
+        for (let i = 0; i < size; i++) {
+            sum += tsPattern(shapes[i]!).with({ type: Kind.a }, () => 1).with({ type: Kind.b }, () => 2).with({ type: Kind.c }, () => 3).otherwise(() => 0)
+        }
+        return sum
+    }],
+    ["tuples, ts-pattern", () => {
+        let sum = 0
+        for (let i = 0; i < size; i++) {
+            const v = tuples[i]!
+            sum += tsPattern([v[0], v[1]]).with([A, B], () => 1).with([C, P._], () => 2).with([E, F], () => 3).otherwise(() => 0)
         }
         return sum
     }],

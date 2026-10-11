@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { centerX } from "./centerX"
 import { setCenterX } from "./setCenterX"
 
@@ -14,23 +13,15 @@ import { setCenterX } from "./setCenterX"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.alignCenterX(
  *     { left: 10, top: 10, width: 100, height: 50 },
  *     { left: 50, top: 30, width: 80, height: 40 },
  * );
- * // { left: 50, top: 10, width: 100, height: 50 }
- * ```
- *
- * ```ts [data-last]
- * pipe(
- *     { left: 10, top: 10, width: 100, height: 50 },
- *     Rect.alignCenterX({ left: 50, top: 30, width: 80, height: 40 }),
- * );
- * // { left: 50, top: 10, width: 100, height: 50 }
+ * // { left: 40, top: 10, width: 100, height: 50 }
  * ```
  *
  */
-export const alignCenterX = dfdl((target: Rect, source: Rect): Rect => {
+export function alignCenterX(target: Rect, source: Rect): Rect {
     return setCenterX(target, centerX(source))
-}, 2)
+}

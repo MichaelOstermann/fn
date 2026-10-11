@@ -14,7 +14,6 @@
         "url": "https://github.com/MichaelOstermann/fn/issues"
     },
     "keywords": [
-        "curried",
         "fp",
         "functional",
         "lodash",
@@ -31,11 +30,22 @@
         "utility",
         "utils"
     ],
-    "sideEffects": false,
+    "sideEffects": [
+        "./dist/globals.mjs",
+        "./dist/patch.mjs"
+    ],
     "exports": {
         ".": {
             "types": "./dist/index.d.mts",
             "import": "./dist/index.mjs"
+        },
+        "./globals": {
+            "types": "./dist/globals.d.mts",
+            "import": "./dist/globals.mjs"
+        },
+        "./patch": {
+            "types": "./dist/patch.d.mts",
+            "import": "./dist/patch.mjs"
         },
         "./*": "./dist/*"
     },

@@ -1,0 +1,30 @@
+import type { Mut, MutOptions, Updated } from "../internals/types"
+
+/**
+ * # shuffle
+ *
+ * ```ts
+ * Array.shuffle(target, options?)
+ * ```
+ *
+ * Puts the elements in a random order.
+ *
+ * With `{ mut: true }`, `target` itself is changed and returned.
+ *
+ * ## Example
+ *
+ * ```ts
+ * Array.shuffle([1, 2, 3]); // [2, 3, 1]
+ * ```
+ */
+export function shuffle<T extends readonly unknown[]>(target: T, options?: MutOptions<T>): Updated<T>
+export function shuffle(target: unknown[], options?: Mut): unknown[] {
+    const result = options?.mut ? target : [...target]
+    for (let i = 0; i < result.length; i++) {
+        const random = i + Math.floor(Math.random() * (result.length - i))
+        const value = result[random]
+        result[random] = result[i]
+        result[i] = value
+    }
+    return result
+}

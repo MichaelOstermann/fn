@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { merge } from "./merge"
 
 /**
@@ -13,24 +12,16 @@ import { merge } from "./merge"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.cover(
  *     { left: 10, top: 20, width: 100, height: 50 },
  *     { left: 0, top: 0, width: 150, height: 120 },
  * );
- * // { left: -75, top: -30, width: 300, height: 150 }
- * ```
- *
- * ```ts [data-last]
- * pipe(
- *     { left: 10, top: 20, width: 100, height: 50 },
- *     Rect.cover({ left: 0, top: 0, width: 150, height: 120 }),
- * );
- * // { left: -75, top: -30, width: 300, height: 150 }
+ * // { left: -45, top: 0, width: 240, height: 120 }
  * ```
  *
  */
-export const cover = dfdl((target: Rect, source: Rect): Rect => {
+export function cover(target: Rect, source: Rect): Rect {
     const scale = Math.max(
         source.width / target.width,
         source.height / target.height,
@@ -45,4 +36,4 @@ export const cover = dfdl((target: Rect, source: Rect): Rect => {
         top: source.top + (source.height - height) / 2,
         width,
     })
-}, 2)
+}

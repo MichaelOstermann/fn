@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { setHeight } from "./setHeight"
 
 /**
@@ -13,17 +12,13 @@ import { setHeight } from "./setHeight"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.setBottom({ left: 10, top: 20, width: 100, height: 50 }, 80);
  * // { left: 10, top: 20, width: 100, height: 60 }
  * ```
  *
- * ```ts [data-last]
- * pipe({ left: 10, top: 20, width: 100, height: 50 }, Rect.setBottom(80));
- * // { left: 10, top: 20, width: 100, height: 60 }
- * ```
- *
  */
-export const setBottom = dfdl((rect: Rect, bottom: number): Rect => {
+export function setBottom(rect: Rect, bottom: number): Rect {
+    if (bottom === rect.top + rect.height) return rect
     return setHeight(rect, (Math.max(rect.top, bottom)) - rect.top)
-}, 2)
+}

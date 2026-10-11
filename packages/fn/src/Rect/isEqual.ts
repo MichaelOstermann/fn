@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 
 /**
  * # isEqual
@@ -12,7 +11,7 @@ import { dfdl } from "../dfdl"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.isEqual(
  *     { left: 10, top: 20, width: 100, height: 50 },
  *     { left: 10, top: 20, width: 100, height: 50 },
@@ -20,19 +19,11 @@ import { dfdl } from "../dfdl"
  * // true
  * ```
  *
- * ```ts [data-last]
- * pipe(
- *     { left: 10, top: 20, width: 100, height: 50 },
- *     Rect.isEqual({ left: 10, top: 20, width: 100, height: 50 }),
- * );
- * // true
- * ```
- *
  */
-export const isEqual = dfdl((a: Rect, b: Rect): boolean => {
+export function isEqual(a: Rect, b: Rect): boolean {
     return a === b
         || (a.left === b.left
             && a.width === b.width
             && a.top === b.top
             && a.height === b.height)
-}, 2)
+}

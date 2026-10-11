@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { moveRightTo } from "./moveRightTo"
 
 /**
@@ -13,7 +12,7 @@ import { moveRightTo } from "./moveRightTo"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.placeLeftOfBy(
  *     { left: 100, top: 50, width: 40, height: 30 },
  *     { left: 60, top: 20, width: 100, height: 20 },
@@ -22,15 +21,7 @@ import { moveRightTo } from "./moveRightTo"
  * // { left: 10, top: 50, width: 40, height: 30 }
  * ```
  *
- * ```ts [data-last]
- * pipe(
- *     { left: 100, top: 50, width: 40, height: 30 },
- *     Rect.placeLeftOfBy({ left: 60, top: 20, width: 100, height: 20 }, 10),
- * );
- * // { left: 10, top: 50, width: 40, height: 30 }
- * ```
- *
  */
-export const placeLeftOfBy = dfdl((target: Rect, source: Rect, distance: number): Rect => {
+export function placeLeftOfBy(target: Rect, source: Rect, distance: number): Rect {
     return moveRightTo(target, source.left - distance)
-}, 3)
+}

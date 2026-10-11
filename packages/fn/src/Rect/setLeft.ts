@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { merge } from "./merge"
 
 /**
@@ -13,22 +12,18 @@ import { merge } from "./merge"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.setLeft({ left: 20, top: 10, width: 100, height: 50 }, 30);
  * // { left: 30, top: 10, width: 90, height: 50 }
  * ```
  *
- * ```ts [data-last]
- * pipe({ left: 20, top: 10, width: 100, height: 50 }, Rect.setLeft(30));
- * // { left: 30, top: 10, width: 90, height: 50 }
- * ```
- *
  */
-export const setLeft = dfdl((rect: Rect, left: number): Rect => {
+export function setLeft(rect: Rect, left: number): Rect {
+    if (left === rect.left) return rect
     const right = rect.left + rect.width
     left = Math.min(left, right)
     return merge(rect, {
         left,
         width: right - left,
     })
-}, 2)
+}

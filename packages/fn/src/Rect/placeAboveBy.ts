@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 import { moveBottomTo } from "./moveBottomTo"
 
 /**
@@ -13,24 +12,16 @@ import { moveBottomTo } from "./moveBottomTo"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.placeAboveBy(
  *     { left: 50, top: 100, width: 40, height: 30 },
  *     { left: 0, top: 60, width: 100, height: 20 },
  *     10,
  * );
- * // { left: 50, top: 30, width: 40, height: 30 }
- * ```
- *
- * ```ts [data-last]
- * pipe(
- *     { left: 50, top: 100, width: 40, height: 30 },
- *     Rect.placeAboveBy({ left: 0, top: 60, width: 100, height: 20 }, 10),
- * );
- * // { left: 50, top: 30, width: 40, height: 30 }
+ * // { left: 50, top: 20, width: 40, height: 30 }
  * ```
  *
  */
-export const placeAboveBy = dfdl((target: Rect, source: Rect, distance: number): Rect => {
+export function placeAboveBy(target: Rect, source: Rect, distance: number): Rect {
     return moveBottomTo(target, source.top - distance)
-}, 3)
+}

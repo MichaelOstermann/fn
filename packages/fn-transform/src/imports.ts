@@ -1,5 +1,6 @@
 import MagicString from "magic-string"
 import { parseSync } from "oxc-parser"
+import { importEnd } from "./globals"
 import { functions, namespaces } from "./manifest"
 
 /**
@@ -35,14 +36,14 @@ export function transformImports(code: string, filePath: string, from: string, u
             if (specifier.importKind === "type") types.push(text)
             else if (unused.has(name)) continue
             else if (namespaces.has(name)) imports.push(`import { ${text} } from "${from}/${name}/index.mjs";`)
-            else if (functions.has(name)) imports.push(`import { ${text} } from "${from}/${name}.mjs";`)
+            else if (functions.has(name)) imports.push(`import { ${text} } from "${from}/${functions.get(name)}.mjs";`)
             else rest.push(text)
         }
 
         if (rest.length === node.specifiers.length) continue
         if (rest.length) imports.unshift(`import { ${rest.join(", ")} } from "${from}";`)
         if (types.length) imports.unshift(`import type { ${types.join(", ")} } from "${from}";`)
-        ms.overwrite(node.start, node.end, imports.join("\n"))
+        ms.overwrite(node.start, importEnd(node, code), imports.join("\n"))
     }
 
     return ms

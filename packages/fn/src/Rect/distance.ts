@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 
 /**
  * # distance
@@ -12,7 +11,7 @@ import { dfdl } from "../dfdl"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.distance(
  *     { left: 0, top: 0, width: 50, height: 50 },
  *     { left: 100, top: 0, width: 50, height: 50 },
@@ -20,17 +19,9 @@ import { dfdl } from "../dfdl"
  * // 50
  * ```
  *
- * ```ts [data-last]
- * pipe(
- *     { left: 0, top: 0, width: 50, height: 50 },
- *     Rect.distance({ left: 100, top: 0, width: 50, height: 50 }),
- * );
- * // 50
- * ```
- *
  */
-export const distance = dfdl((a: Rect, b: Rect): number => {
+export function distance(a: Rect, b: Rect): number {
     const x = Math.max(0, a.left - (b.left + b.width), b.left - (a.left + a.width))
     const y = Math.max(0, a.top - (b.top + b.height), b.top - (a.top + a.height))
     return Math.hypot(x, y)
-})
+}

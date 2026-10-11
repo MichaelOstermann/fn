@@ -1,0 +1,27 @@
+import type { Mut, MutOptions, Narrowed, Updated } from "../internals/types"
+import { indexWhere, setAt } from "../internals/arrays"
+
+/**
+ * # mapFirstWhere
+ *
+ * ```ts
+ * Array.mapFirstWhere(target, predicate, map, options?)
+ * ```
+ *
+ * Applies `map` to the first element that satisfies `predicate`.
+ * Returns `target` itself when there is no such element, or when `map` returned it as it was.
+ *
+ * With `{ mut: true }`, `target` itself is changed and returned.
+ *
+ * ## Example
+ *
+ * ```ts
+ * Array.mapFirstWhere(tasks, task => task.id === id, task => ({ ...task, title }));
+ * ```
+ */
+export function mapFirstWhere<T extends readonly unknown[], P extends (value: T[number], index: number, target: T) => boolean>(target: T, predicate: P, map: (value: Narrowed<P, T[number]>, index: number, target: T) => T[number], options?: MutOptions<T>): Updated<T>
+export function mapFirstWhere(target: unknown[], predicate: (value: unknown, index: number, target: unknown[]) => boolean, map: (value: unknown, index: number, target: unknown[]) => unknown, options?: Mut): unknown[] {
+    const index = indexWhere(target, predicate, false)
+    if (index === -1) return target
+    return setAt(target, index, map(target[index], index, target), options)
+}

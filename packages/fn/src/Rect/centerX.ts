@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 
 /**
  * # centerX
@@ -12,17 +11,12 @@ import { dfdl } from "../dfdl"
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.centerX({ left: 10, top: 20, width: 100, height: 50 });
  * // 60
  * ```
  *
- * ```ts [data-last]
- * pipe({ left: 10, top: 20, width: 100, height: 50 }, Rect.centerX());
- * // 60
- * ```
- *
  */
-export const centerX = dfdl((rect: Rect): number => {
+export function centerX(rect: Rect): number {
     return rect.left + rect.width / 2
-}, 1)
+}

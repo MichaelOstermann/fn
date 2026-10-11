@@ -1,5 +1,4 @@
 import type { Rect } from "."
-import { dfdl } from "../dfdl"
 
 type RectEdges = {
     readonly bottom: number
@@ -19,18 +18,13 @@ type RectEdges = {
  *
  * ## Example
  *
- * ```ts [data-first]
+ * ```ts
  * Rect.fromEdges({ left: 10, top: 20, right: 110, bottom: 70 });
  * // { left: 10, top: 20, width: 100, height: 50 }
  * ```
  *
- * ```ts [data-last]
- * pipe({ left: 10, top: 20, right: 110, bottom: 70 }, Rect.fromEdges());
- * // { left: 10, top: 20, width: 100, height: 50 }
- * ```
- *
  */
-export const fromEdges = dfdl((edges: RectEdges): Rect => {
+export function fromEdges(edges: RectEdges): Rect {
     const top = Math.min(edges.top, edges.bottom)
     const left = Math.min(edges.left, edges.right)
     const bottom = Math.max(edges.top, edges.bottom)
@@ -41,4 +35,4 @@ export const fromEdges = dfdl((edges: RectEdges): Rect => {
         top,
         width: right - left,
     }
-}, 1)
+}

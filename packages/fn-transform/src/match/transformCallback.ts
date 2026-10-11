@@ -45,7 +45,7 @@ export function isFunction(node: Node): boolean {
 }
 
 /** Replaces the parameter with the value, unless that is not possible without changing the meaning. */
-function inline(value: string, param: string, body: Expression, ctx: Context): string | undefined {
+export function inline(value: string, param: string, body: Expression, ctx: Pick<Context, "code">): string | undefined {
     // Collects all declarations first, including the ones that are hoisted above where they are written.
     const scope = new ScopeTracker({ preserveExitedScopes: true })
     walk(body, { scopeTracker: scope })
@@ -85,7 +85,7 @@ function inline(value: string, param: string, body: Expression, ctx: Context): s
     return isPossible ? code.toString() : undefined
 }
 
-function isPropertyName(node: Node, parent: Node | undefined): boolean {
+export function isPropertyName(node: Node, parent: Node | null | undefined): boolean {
     if (parent?.type === "MemberExpression") return parent.property === node && !parent.computed
     // The key of a shorthand property is visited before its value, which is the one to replace.
     if (parent?.type === "Property") return parent.key === node && !parent.computed && (!parent.shorthand || parent.value !== node)
