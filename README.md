@@ -136,7 +136,7 @@ What I learned building this, maybe that is useful to somebody.
 
 ### Currying
 
-I was a big fan of currying, in particular the "data-first / data-last" approach of Ramda and Effect: `Arr.find(tasks, isDone)` and `pipe(tasks, Arr.find(isDone))`. A couple of issues:
+I was a big fan of currying, in particular the "data-first / data-last" approach of Remeda and Effect: `Arr.find(tasks, isDone)` and `pipe(tasks, Arr.find(isDone))`. A couple of issues:
 
 - Inconsistency
     - It is annoying to apply to your own functions, so you end up with code where some things are curried and some are not.
