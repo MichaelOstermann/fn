@@ -14,17 +14,16 @@
         "typescript": "^6.0.0",
       },
     },
-    "packages/fn": {
-      "name": "@monstermann/fn",
-      "version": "0.13.0",
+    "packages/stdlib": {
+      "name": "@monstermann/stdlib",
+      "version": "0.1.0",
       "dependencies": {
-        "string-ts": "^2.2.1",
         "type-fest": "^5.0.0",
       },
     },
-    "packages/fn-transform": {
-      "name": "@monstermann/fn-transform",
-      "version": "0.13.0",
+    "packages/stdlib-transform": {
+      "name": "@monstermann/stdlib-transform",
+      "version": "0.1.0",
       "dependencies": {
         "@jridgewell/remapping": "^2.3.5",
         "@monstermann/barrels-treeshake": "^0.5.0",
@@ -33,7 +32,7 @@
         "oxc-walker": "^1.1.1",
       },
       "devDependencies": {
-        "@monstermann/fn": "workspace:*",
+        "@monstermann/stdlib": "workspace:*",
         "rolldown": "1.2.12",
       },
     },
@@ -169,9 +168,9 @@
 
     "@monstermann/eslint-config": ["@monstermann/eslint-config@0.8.0", "", { "dependencies": { "@eslint-community/eslint-plugin-eslint-comments": "^4.8.1", "@eslint-react/eslint-plugin": "^5.23.1", "@stylistic/eslint-plugin": "^5.10.0", "@typescript-eslint/eslint-plugin": "^8.71.0", "@typescript-eslint/parser": "^8.71.0", "eslint": "^10.11.0", "eslint-plugin-antfu": "^3.2.3", "eslint-plugin-better-tailwindcss": "^4.7.0", "eslint-plugin-format": "^2.0.1", "eslint-plugin-import-x": "^4.17.1", "eslint-plugin-jsdoc": "^65.0.0", "eslint-plugin-jsonc": "^3.4.2", "eslint-plugin-n": "^18.4.0", "eslint-plugin-perfectionist": "^5.12.1", "eslint-plugin-react-compiler": "^19.1.0-rc.2", "eslint-plugin-react-hooks": "^7.1.1", "eslint-plugin-react-refresh": "^0.5.7", "eslint-plugin-regexp": "^3.3.1", "eslint-plugin-unicorn": "^76.0.0", "eslint-plugin-unused-imports": "^4.4.1", "globals": "^17.12.0", "jsonc-eslint-parser": "^3.3.0", "prettier": "^3.9.9" } }, "sha512-zrkehRwKpNfMNjYeCwE16Y2aRl2C7s4bH2WetofY+U8vDsnOItXIgmMTJTs2Hc6Vhab9mxtnlXNnUvYjh9yFfw=="],
 
-    "@monstermann/fn": ["@monstermann/fn@workspace:packages/fn"],
+    "@monstermann/stdlib": ["@monstermann/stdlib@workspace:packages/stdlib"],
 
-    "@monstermann/fn-transform": ["@monstermann/fn-transform@workspace:packages/fn-transform"],
+    "@monstermann/stdlib-transform": ["@monstermann/stdlib-transform@workspace:packages/stdlib-transform"],
 
     "@monstermann/tsconfig": ["@monstermann/tsconfig@0.0.0", "", {}, "sha512-DJfOlZ71AOBJWxPUUcy8SIkJLXOy1c9LP84o52I2JcpiODNOn7/c5P7Gqp7z6hPLLi9rgRCIzOEBrNOazZsYfQ=="],
 

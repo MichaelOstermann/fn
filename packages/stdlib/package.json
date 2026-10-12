@@ -1,0 +1,61 @@
+{
+    "name": "@monstermann/stdlib",
+    "type": "module",
+    "version": "0.1.0",
+    "description": "A utility library for TypeScript.",
+    "author": "Michael Ostermann <michaelostermann@me.com>",
+    "license": "MIT",
+    "homepage": "https://github.com/MichaelOstermann/stdlib",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MichaelOstermann/stdlib.git"
+    },
+    "bugs": {
+        "url": "https://github.com/MichaelOstermann/stdlib/issues"
+    },
+    "keywords": [
+        "fp",
+        "functional",
+        "lodash",
+        "radash",
+        "radashi",
+        "ramda",
+        "remeda",
+        "stdlib",
+        "toolkit",
+        "typescript",
+        "underscore",
+        "util",
+        "utilities",
+        "utility",
+        "utils"
+    ],
+    "sideEffects": [
+        "./dist/globals.mjs",
+        "./dist/patch.mjs"
+    ],
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.mts",
+            "import": "./dist/index.mjs"
+        },
+        "./globals": {
+            "types": "./dist/globals.d.mts",
+            "import": "./dist/globals.mjs"
+        },
+        "./patch": {
+            "types": "./dist/patch.d.mts",
+            "import": "./dist/patch.mjs"
+        },
+        "./*": "./dist/*"
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "bundle": "bun run tsdown"
+    },
+    "dependencies": {
+        "type-fest": "^5.0.0"
+    }
+}

@@ -1,4 +1,4 @@
-import { pipe } from "../../packages/fn/src/pipe"
+import { pipe } from "../../packages/stdlib/src/pipe"
 
 // Compares calls as they are replaced to running them as they are: bun benchmarks/pipe/index.ts
 

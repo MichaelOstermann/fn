@@ -1,0 +1,31 @@
+import type { Err } from "../Result"
+import { RetryAgain } from "../internals/retry"
+import { Err as fail } from "../Result"
+
+/**
+ * # again
+ *
+ * ```ts
+ * function Retry.again<E>(error: E, delay?: number): Err<RetryAgain<E>>
+ * ```
+ *
+ * A failure that `Retry.run` tries again for. `error` is what the result fails with when it does not, `delay` the milliseconds to wait in place of the ones it would wait by itself.
+ *
+ * ## Example
+ *
+ * ```ts
+ * Retry.run(async () => {
+ *     const response = await fetch(url);
+ *     if (response.status === 503) return Retry.again("unavailable" as const);
+ *     if (response.status === 429) return Retry.again("busy" as const, 30 * Duration.SECOND);
+ *     return Ok(response);
+ * });
+ * ```
+ *
+ */
+export function again(): Err<RetryAgain<void>>
+export function again<E extends string>(error: E, delay?: number): Err<RetryAgain<E>>
+export function again<E>(error: E, delay?: number): Err<RetryAgain<E>>
+export function again<E>(error?: E, delay?: number): Err<RetryAgain<E | void>> {
+    return fail(new RetryAgain(error, delay))
+}

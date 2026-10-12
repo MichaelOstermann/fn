@@ -1,5 +1,5 @@
 import { P, match as tsPattern } from "ts-pattern"
-import { match } from "../../packages/fn/src/match"
+import { match } from "../../packages/stdlib/src/match"
 import { A, B, C, D, E, F, Kind } from "./constants"
 
 // Compares chains as they are compiled to running them as they are, and to ts-pattern: bun benchmarks/match/index.ts

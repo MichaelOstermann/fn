@@ -3,11 +3,11 @@ import { defineConfig, flat, namespace } from "@monstermann/barrels"
 export default defineConfig([
     // What is not a global of its own. `Array`, `Function` and the like are collected by scripts/globals.ts instead.
     namespace({
-        entries: "./packages/fn/src/Rect",
+        entries: ["./packages/stdlib/src/Bytes", "./packages/stdlib/src/Duration", "./packages/stdlib/src/Retry"],
     }),
     flat({
-        entries: "./packages/fn/src",
+        entries: "./packages/stdlib/src",
         exclude: ["declarations.ts", "globals.ts", "patch.ts"],
-        include: ["*.ts", "Rect/index.js"],
+        include: ["*.ts", "{Bytes,Duration,Retry}/index.js"],
     }),
 ])
